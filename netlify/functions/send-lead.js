@@ -141,22 +141,10 @@ export const handler = async (event) => {
       method: 'POST',
       headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: 'Assur-Emprunt <leads@assur-emprunt.fr>',
+        from: 'Assur-Emprunt <onboarding@resend.dev>',
         to: [OWNER_EMAIL],
         subject: `🔔 Nouveau lead — ${contact.firstName} ${contact.lastName} · ${Number(loanInfo.amount).toLocaleString('fr-FR')}€`,
         html: buildOwnerEmail({ contact, quote, loanInfo, bankMonthly }),
-      }),
-    })
-
-    // Envoi email de confirmation au client
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        from: 'Assur-Emprunt <contact@assur-emprunt.fr>',
-        to: [contact.email],
-        subject: `Votre demande de devis Assur-Emprunt — économisez ${quote.savingsPct}%`,
-        html: buildClientEmail({ contact, quote, loanInfo }),
       }),
     })
 
@@ -164,6 +152,18 @@ export const handler = async (event) => {
       const err = await ownerRes.json()
       throw new Error(JSON.stringify(err))
     }
+
+    // Envoi email de confirmation au client (uniquement si domaine vérifié, sinon on skippe)
+    await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from: 'Assur-Emprunt <onboarding@resend.dev>',
+        to: [OWNER_EMAIL], // redirigé vers toi en attendant la vérification du domaine
+        subject: `Confirmation devis — ${contact.firstName} ${contact.lastName} (${contact.email})`,
+        html: buildClientEmail({ contact, quote, loanInfo }),
+      }),
+    })
 
     return { statusCode: 200, headers, body: JSON.stringify({ success: true }) }
 
