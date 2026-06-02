@@ -24,9 +24,9 @@ const FAQ_ITEMS = [
       "Depuis la loi Lemoine, les emprunteurs dont le crédit se termine avant leurs 60 ans et dont le capital assuré est inférieur à 200 000€ sont exonérés de questionnaire de santé.",
   },
   {
-    question: "Le service Assurio est-il payant ?",
+    question: "Le service Assur-Emprunt est-il payant ?",
     answer:
-      "Non. Notre service de comparaison et d'accompagnement est totalement gratuit pour vous. Nous sommes rémunérés par les assureurs partenaires, sans que cela n'impacte le prix que vous payez.",
+      "Non. Le service Assur-Emprunt de comparaison et d'accompagnement est totalement gratuit pour vous. Nous sommes rémunérés par les assureurs partenaires, sans que cela n'impacte le prix que vous payez.",
   },
 ]
 

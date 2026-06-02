@@ -9,7 +9,7 @@ const TESTIMONIALS = [
     color: 'from-blue-500 to-indigo-600',
     savings: '11 200€',
     rating: 5,
-    text: "J'étais sceptique au début, mais Assurio m'a permis d'économiser plus de 11 000€ sur mon prêt de 280 000€. Le processus était incroyablement simple.",
+    text: "J'étais sceptique au début, mais Assur-Emprunt m'a permis d'économiser plus de 11 000€ sur mon prêt de 280 000€. Le processus était incroyablement simple.",
   },
   {
     name: 'Sophie M.',
@@ -48,7 +48,7 @@ export const Testimonials = () => (
           Avis vérifiés
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0a1340] mb-4 tracking-tight">
-          Ils ont fait confiance à Assurio
+          Ils ont fait confiance à Assur-Emprunt
         </h2>
         <div className="flex items-center justify-center gap-3 mt-4">
           <StarRating count={5} />

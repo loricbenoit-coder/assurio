@@ -52,7 +52,7 @@ export const Advantages = () => (
       {/* Header */}
       <div className="text-center mb-16">
         <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-4">
-          Pourquoi Assurio
+          Pourquoi Assur-Emprunt
         </span>
         <h2 className="text-4xl md:text-5xl font-bold text-[#0a1340] mb-4 tracking-tight">
           Des avantages concrets
