@@ -13,7 +13,7 @@ export const Footer = () => (
       <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
         {/* Brand */}
         <div className="col-span-2 md:col-span-1">
-          <Logo dark className="mb-4" />
+          <Logo dark withTagline className="mb-4" />
           <p className="text-sm text-slate-400 leading-relaxed max-w-xs mt-4">
             Le comparateur d&apos;assurance emprunteur qui vous fait vraiment économiser.
           </p>
