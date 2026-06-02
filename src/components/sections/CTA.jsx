@@ -30,17 +30,21 @@ export const CTA = () => (
       </p>
 
       <div className="flex flex-col sm:flex-row gap-4 justify-center">
-        <Button size="lg" className="group">
-          Obtenir mon devis gratuit
-          <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-        </Button>
-        <Button
-          variant="outline"
-          size="lg"
-          className="border-white/20 text-white hover:bg-white/10"
-        >
-          Parler à un conseiller
-        </Button>
+        <a href="#simulateur">
+          <Button size="lg" className="group">
+            Obtenir mon devis gratuit
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+          </Button>
+        </a>
+        <a href="#simulateur">
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-white/20 text-white hover:bg-white/10"
+          >
+            Parler à un conseiller
+          </Button>
+        </a>
       </div>
 
       <p className="mt-8 text-sm text-white/30">

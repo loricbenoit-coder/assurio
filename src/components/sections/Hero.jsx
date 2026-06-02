@@ -90,10 +90,13 @@ export const Hero = () => {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Button size="lg" className="group" data-sb-field-path="ctaPrimary">
-              {content.ctaPrimary}
-              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <a href="#simulateur">
+              <Button size="lg" className="group" data-sb-field-path="ctaPrimary">
+                {content.ctaPrimary}
+                <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </a>
+            <a href="#simulateur">
             <Button
               variant="outline"
               size="lg"
@@ -102,6 +105,7 @@ export const Hero = () => {
             >
               {content.ctaSecondary}
             </Button>
+            </a>
           </div>
 
           {/* Stats */}

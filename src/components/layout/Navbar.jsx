@@ -64,7 +64,7 @@ export const Navbar = () => {
           >
             Se connecter
           </Button>
-          <Button size="sm">Obtenir un devis</Button>
+          <a href="#simulateur"><Button size="sm">Obtenir un devis</Button></a>
         </div>
 
         {/* Mobile toggle */}
@@ -90,7 +90,9 @@ export const Navbar = () => {
               {label}
             </a>
           ))}
-          <Button size="sm" className="w-full mt-2">Obtenir un devis</Button>
+          <a href="#simulateur" onClick={() => setMenuOpen(false)}>
+            <Button size="sm" className="w-full mt-2">Obtenir un devis</Button>
+          </a>
         </div>
       )}
     </header>
