@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/Button'
 
 export const CTA = () => (
   <section className="py-24 bg-[#0a1340] relative overflow-hidden">
-    {/* Background decoration */}
     <div
       className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-10 rounded-full"
       style={{ background: 'radial-gradient(circle, #10b981 0%, transparent 70%)' }}
@@ -13,7 +12,9 @@ export const CTA = () => (
     <div className="relative max-w-4xl mx-auto px-6 text-center">
       <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-2 mb-8">
         <ShieldCheck className="w-4 h-4 text-[#10b981]" />
-        <span className="text-sm text-white/80 font-medium">Gratuit · Sans engagement · 100% en ligne</span>
+        <span className="text-sm text-white/80 font-medium">
+          Gratuit · Sans engagement · 100% en ligne
+        </span>
       </div>
 
       <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-6 tracking-tight leading-tight">
@@ -23,7 +24,8 @@ export const CTA = () => (
       </h2>
 
       <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto">
-        Rejoignez 50 000 emprunteurs qui ont déjà optimisé leur assurance.
+        Rejoignez 50 000 emprunteurs qui ont déjà optimisé leur assurance avec
+        <span className="text-white font-semibold"> Assur-Emprunt</span>.
         Obtenez votre comparatif gratuit en 2 minutes.
       </p>
 
@@ -32,7 +34,11 @@ export const CTA = () => (
           Obtenir mon devis gratuit
           <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
         </Button>
-        <Button variant="outline" size="lg" className="border-white/20 text-white hover:bg-white/10">
+        <Button
+          variant="outline"
+          size="lg"
+          className="border-white/20 text-white hover:bg-white/10"
+        >
           Parler à un conseiller
         </Button>
       </div>

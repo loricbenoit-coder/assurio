@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { Shield, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { Logo } from '@/components/ui/Logo'
 import { cn } from '@/lib/utils'
 
 const NAV_LINKS = [
@@ -31,13 +32,11 @@ export const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-[#0f1f6b] flex items-center justify-center">
-            <Shield className="w-4 h-4 text-[#10b981]" />
-          </div>
-          <span className="text-xl font-bold text-[#0f1f6b] tracking-tight">
-            Assurio
-          </span>
+        <a href="#" aria-label="Assur-Emprunt - Accueil">
+          {scrolled
+            ? <Logo dark />
+            : <Logo dark={false} />
+          }
         </a>
 
         {/* Desktop nav */}
@@ -46,7 +45,10 @@ export const Navbar = () => {
             <a
               key={href}
               href={href}
-              className="text-sm font-medium text-slate-600 hover:text-[#0f1f6b] transition-colors"
+              className={cn(
+                'text-sm font-medium transition-colors',
+                scrolled ? 'text-slate-600 hover:text-[#0a1340]' : 'text-white/70 hover:text-white'
+              )}
             >
               {label}
             </a>
@@ -55,13 +57,19 @@ export const Navbar = () => {
 
         {/* CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <Button variant="outline" size="sm">Se connecter</Button>
+          <Button
+            variant={scrolled ? 'outline' : 'ghost'}
+            size="sm"
+            className={!scrolled ? 'text-white/80 hover:text-white hover:bg-white/10' : ''}
+          >
+            Se connecter
+          </Button>
           <Button size="sm">Obtenir un devis</Button>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 text-slate-600"
+          className={cn('md:hidden p-2', scrolled ? 'text-slate-600' : 'text-white')}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
@@ -76,7 +84,7 @@ export const Navbar = () => {
             <a
               key={href}
               href={href}
-              className="text-sm font-medium text-slate-600 hover:text-[#0f1f6b]"
+              className="text-sm font-medium text-slate-600 hover:text-[#0a1340]"
               onClick={() => setMenuOpen(false)}
             >
               {label}
