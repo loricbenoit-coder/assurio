@@ -6,3 +6,8 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Netlify Visual Editor
+[dev]
+  command = "npm run dev"
+  port = 5173
