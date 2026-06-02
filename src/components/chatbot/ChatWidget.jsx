@@ -143,15 +143,7 @@ export const ChatWidget = () => {
 
   return (
     <>
-      {/* Notification badge */}
-      {!open && hasNewMessage && (
-        <div className="fixed bottom-[88px] right-6 z-50 bg-white rounded-xl shadow-lg border border-slate-100 px-4 py-2.5 max-w-[220px]">
-          <p className="text-xs text-slate-600 font-medium">
-            💬 Un conseiller IA est disponible pour vous aider !
-          </p>
-          <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white border-r border-b border-slate-100 rotate-45" />
-        </div>
-      )}
+      {/* Notification badge supprimée */}
 
       {/* Launcher button */}
       <button
