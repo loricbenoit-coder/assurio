@@ -1,20 +1,15 @@
+functionsDirectory = "C:\\Users\\loric\\SITE ASSURANCE\\assurio\\netlify\\functions"
+functionsDirectoryOrigin = "config"
 redirectsOrigin = "config"
 plugins = []
 headers = []
-
-[dev]
-command = "npm run dev"
-port = 5173.0
-
-[functions]
-
-[functions."*"]
 
 [build]
 publish = "C:\\Users\\loric\\SITE ASSURANCE\\assurio\\dist"
 publishOrigin = "config"
 commandOrigin = "config"
 command = "npm run build"
+functions = "C:\\Users\\loric\\SITE ASSURANCE\\assurio\\netlify\\functions"
 
 [build.environment]
 
@@ -29,6 +24,15 @@ command = "npm run build"
 [build.processing.js]
 
 [build.services]
+
+[dev]
+command = "npm run dev"
+port = 5173.0
+
+[functions]
+
+[functions."*"]
+node_bundler = "esbuild"
 
 [[redirects]]
 from = "/*"
