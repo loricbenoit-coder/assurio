@@ -1,7 +1,10 @@
-import React from 'react'
-import { ArrowRight, CheckCircle2, Star } from 'lucide-react'
+import React, { useState } from 'react'
+import { ArrowRight, CheckCircle2, Star, Play } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { VideoModal } from '@/components/ui/VideoModal'
 import { useHeroContent } from '@/hooks/useContent'
+
+const openChatBot = () => window.dispatchEvent(new CustomEvent('openChat'))
 
 const TRUST_ITEMS = [
   'Réponse en 2 minutes',
@@ -17,6 +20,7 @@ const STATS = [
 
 export const Hero = () => {
   const content = useHeroContent()
+  const [videoOpen, setVideoOpen] = useState(false)
 
   return (
     <section
@@ -96,17 +100,19 @@ export const Hero = () => {
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
-            <a href="#simulateur">
             <Button
               variant="outline"
               size="lg"
-              className="border-white/20 text-white hover:bg-white/10"
+              className="border-white/20 text-white hover:bg-white/10 gap-2"
+              onClick={() => setVideoOpen(true)}
               data-sb-field-path="ctaSecondary"
             >
+              <Play className="w-4 h-4 fill-white" />
               {content.ctaSecondary}
             </Button>
-            </a>
           </div>
+
+          <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
 
           {/* Stats */}
           <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">

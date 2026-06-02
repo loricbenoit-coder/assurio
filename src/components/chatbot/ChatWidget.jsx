@@ -75,6 +75,16 @@ export const ChatWidget = () => {
   const bottomRef = useRef(null)
   const inputRef = useRef(null)
 
+  // Permet d'ouvrir le chat depuis n'importe quel bouton du site
+  useEffect(() => {
+    const handleOpenChat = () => {
+      setOpen(true)
+      setMinimized(false)
+    }
+    window.addEventListener('openChat', handleOpenChat)
+    return () => window.removeEventListener('openChat', handleOpenChat)
+  }, [])
+
   useEffect(() => {
     if (open) {
       setHasNewMessage(false)

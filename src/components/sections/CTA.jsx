@@ -1,6 +1,8 @@
 import React from 'react'
-import { ArrowRight, ShieldCheck } from 'lucide-react'
+import { ArrowRight, ShieldCheck, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+
+const openChatBot = () => window.dispatchEvent(new CustomEvent('openChat'))
 
 export const CTA = () => (
   <section className="py-24 bg-[#0a1340] relative overflow-hidden">
@@ -36,15 +38,15 @@ export const CTA = () => (
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
           </Button>
         </a>
-        <a href="#simulateur">
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-white/20 text-white hover:bg-white/10"
-          >
-            Parler à un conseiller
-          </Button>
-        </a>
+        <Button
+          variant="outline"
+          size="lg"
+          className="border-white/20 text-white hover:bg-white/10"
+          onClick={openChatBot}
+        >
+          <MessageCircle className="w-5 h-5" />
+          Parler à un conseiller
+        </Button>
       </div>
 
       <p className="mt-8 text-sm text-white/30">
