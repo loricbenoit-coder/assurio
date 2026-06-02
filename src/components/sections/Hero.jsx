@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { ArrowRight, CheckCircle2, Star, Play } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { VideoModal } from '@/components/ui/VideoModal'
+import { AnimatedHeadline } from '@/components/ui/AnimatedHeadline'
 import { useHeroContent } from '@/hooks/useContent'
 
 const openChatBot = () => window.dispatchEvent(new CustomEvent('openChat'))
@@ -61,18 +62,8 @@ export const Hero = () => {
             </span>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
-            <span data-sb-field-path="headline">{content.headline}</span>
-            {' '}
-            <span
-              className="text-transparent bg-clip-text"
-              style={{ backgroundImage: 'linear-gradient(135deg, #10b981, #34d399)' }}
-              data-sb-field-path="highlight"
-            >
-              {content.highlight}
-            </span>
-          </h1>
+          {/* Headline animé */}
+          <AnimatedHeadline />
 
           {/* Subtitle */}
           <p

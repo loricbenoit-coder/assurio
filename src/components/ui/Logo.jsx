@@ -2,83 +2,76 @@ import React from 'react'
 import { cn } from '@/lib/utils'
 
 /**
- * Logo Assur-Emprunt
- * Style : forme géométrique en "A" navy + checkmark dégradé teal/cyan
- * Inspiré du style professionnel courtage assurance
+ * Logo Assur-Emprunt v3
+ * Style : carré arrondi navy avec monogramme "AE" géométrique + accent teal
+ * Typographie : ASSUR en navy, -EMPRUNT en dégradé teal
  */
 
-export const LogoIcon = ({ size = 44, className }) => (
+export const LogoIcon = ({ size = 40, className }) => (
   <svg
     width={size}
-    height={Math.round(size * 0.92)}
-    viewBox="0 0 100 92"
+    height={size}
+    viewBox="0 0 48 48"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
     <defs>
-      <linearGradient id="tealCheck" x1="0" y1="92" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+      <linearGradient id="lgTeal" x1="0" y1="48" x2="48" y2="0" gradientUnits="userSpaceOnUse">
         <stop offset="0%" stopColor="#10b981" />
-        <stop offset="60%" stopColor="#06b6d4" />
-        <stop offset="100%" stopColor="#0ea5e9" />
-      </linearGradient>
-      <linearGradient id="tealCheckDark" x1="0" y1="92" x2="100" y2="0" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#34d399" />
-        <stop offset="100%" stopColor="#38bdf8" />
+        <stop offset="100%" stopColor="#06b6d4" />
       </linearGradient>
     </defs>
 
-    {/* Jambe gauche du A — bleu marine */}
-    <polygon points="4,3 19,3 48,84 33,84" fill="#162058" />
+    {/* Fond carré arrondi navy */}
+    <rect width="48" height="48" rx="12" fill="#0f1f6b" />
 
-    {/* Jambe droite du A — bleu marine */}
-    <polygon points="96,3 81,3 52,84 67,84" fill="#162058" />
-
-    {/* Barre horizontale du A — bleu marine */}
-    <polygon points="27,42 73,42 68,54 32,54" fill="#162058" />
-
-    {/* Checkmark dégradé teal — superposé sur la partie basse */}
-    <polyline
-      points="18,56 40,76 82,30"
-      stroke="url(#tealCheck)"
-      strokeWidth="9"
+    {/* Lettre A stylisée — blanc */}
+    <path
+      d="M11 34 L19 14 L24 26 L29 14 L37 34"
+      stroke="white"
+      strokeWidth="3.2"
       strokeLinecap="round"
       strokeLinejoin="round"
       fill="none"
     />
+    {/* Barre du A */}
+    <line x1="15.5" y1="27" x2="32.5" y2="27" stroke="white" strokeWidth="3.2" strokeLinecap="round" />
+
+    {/* Trait accent teal en bas */}
+    <line x1="11" y1="38" x2="37" y2="38" stroke="url(#lgTeal)" strokeWidth="3" strokeLinecap="round" />
   </svg>
 )
 
 export const LogoWordmark = ({ dark = false, withTagline = false, className }) => (
-  <div className={cn('inline-flex items-center gap-3 select-none', className)}>
-    <LogoIcon size={44} />
-    <div className="flex flex-col justify-center">
-      <div className="leading-none">
+  <div className={cn('inline-flex items-center gap-2.5 select-none', className)}>
+    <LogoIcon size={38} />
+    <div className="flex flex-col justify-center leading-none">
+      <div>
         <span
-          className="font-black text-xl tracking-tight uppercase"
-          style={{ color: dark ? '#162058' : '#ffffff', letterSpacing: '-0.02em' }}
+          className="font-extrabold text-[18px] tracking-tight"
+          style={{ color: dark ? '#0f1f6b' : '#ffffff' }}
         >
-          ASSUR
+          assur
         </span>
         <span
-          className="font-black text-xl tracking-tight uppercase"
+          className="font-extrabold text-[18px] tracking-tight"
           style={{
             background: 'linear-gradient(135deg, #10b981, #06b6d4)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             backgroundClip: 'text',
-            letterSpacing: '-0.02em',
           }}
         >
-          -EMPRUNT
+          -emprunt
         </span>
       </div>
       {withTagline && (
         <span
-          className="text-[10px] font-bold uppercase tracking-[0.18em] mt-1"
+          className="text-[9px] font-bold uppercase tracking-[0.2em] mt-1"
           style={{ color: '#06b6d4' }}
         >
-          MOINS CHER. PLUS SIMPLE.
+          Moins cher · Plus simple
         </span>
       )}
     </div>

@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 100 92" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48" fill="none">
   <defs>
-    <linearGradient id="t" x1="0" y1="92" x2="100" y2="0" gradientUnits="userSpaceOnUse">
+    <linearGradient id="t" x1="0" y1="48" x2="48" y2="0" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
     </linearGradient>
   </defs>
-  <polygon points="4,3 19,3 48,84 33,84" fill="#162058"/>
-  <polygon points="96,3 81,3 52,84 67,84" fill="#162058"/>
-  <polygon points="27,42 73,42 68,54 32,54" fill="#162058"/>
-  <polyline points="18,56 40,76 82,30" stroke="url(#t)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect width="48" height="48" rx="12" fill="#0f1f6b"/>
+  <path d="M11 34 L19 14 L24 26 L29 14 L37 34" stroke="white" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="15.5" y1="27" x2="32.5" y2="27" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+  <line x1="11" y1="38" x2="37" y2="38" stroke="url(#t)" stroke-width="3" stroke-linecap="round"/>
 </svg>
