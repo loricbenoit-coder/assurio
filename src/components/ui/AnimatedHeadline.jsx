@@ -6,19 +6,11 @@ const HEADLINES = [
     highlight: '-60%',
   },
   {
-    static: '2 minutes pour économiser en moyenne',
-    highlight: '15 000€',
-  },
-  {
     static: 'Résiliez et changez',
-    highlight: "sans rien faire",
+    highlight: 'sans rien faire',
   },
   {
-    static: 'Votre banque vous facture',
-    highlight: '3× trop cher',
-  },
-  {
-    static: "Rejoignez les 50 000 emprunteurs qui ont",
+    static: 'Rejoignez les 50 000 emprunteurs qui ont',
     highlight: 'déjà économisé',
   },
 ]
