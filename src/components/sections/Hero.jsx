@@ -1,10 +1,115 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ArrowRight, CheckCircle2, Star, Play } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { VideoModal } from '@/components/ui/VideoModal'
 import { useHeroContent } from '@/hooks/useContent'
 
 const openChatBot = () => window.dispatchEvent(new CustomEvent('openChat'))
+
+const REVIEWS = [
+  {
+    initials: 'MR', color: 'from-emerald-400 to-teal-500',
+    name: 'Marie R.', role: 'Propriétaire à Lyon',
+    saving: '8 400€',
+    text: 'Service impeccable et rapide ! Je recommande à tous.',
+  },
+  {
+    initials: 'TD', color: 'from-blue-400 to-indigo-500',
+    name: 'Thomas D.', role: 'Emprunteur à Paris',
+    saving: '11 200€',
+    text: 'Incroyablement simple. Tout a été géré pour moi.',
+  },
+  {
+    initials: 'SM', color: 'from-violet-400 to-purple-500',
+    name: 'Sophie M.', role: 'Cadre à Bordeaux',
+    saving: '7 800€',
+    text: 'En 20 min j\'avais un devis moins cher qu\'à ma banque.',
+  },
+  {
+    initials: 'LB', color: 'from-orange-400 to-rose-500',
+    name: 'Laurent B.', role: 'Entrepreneur à Nantes',
+    saving: '9 400€',
+    text: 'J\'économise 130€ par mois. Merci Assur-Emprunt !',
+  },
+  {
+    initials: 'CA', color: 'from-cyan-400 to-blue-500',
+    name: 'Claire A.', role: 'Enseignante à Toulouse',
+    saving: '6 200€',
+    text: 'Conseiller très professionnel, dossier monté en 2 jours.',
+  },
+]
+
+const FloatingReviews = () => {
+  const [index, setIndex] = useState(0)
+  const [visible, setVisible] = useState(true)
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setVisible(false)
+      setTimeout(() => {
+        setIndex((i) => (i + 1) % REVIEWS.length)
+        setVisible(true)
+      }, 350)
+    }, 3500)
+    return () => clearInterval(timer)
+  }, [])
+
+  const review = REVIEWS[index]
+
+  return (
+    <div className="hidden lg:block absolute right-12 bottom-20 max-w-[280px]">
+      {/* Dots indicateurs */}
+      <div className="flex justify-center gap-1.5 mb-3">
+        {REVIEWS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => { setVisible(false); setTimeout(() => { setIndex(i); setVisible(true) }, 200) }}
+            className="transition-all duration-300 rounded-full"
+            style={{
+              width: i === index ? '20px' : '6px',
+              height: '6px',
+              background: i === index ? '#10b981' : 'rgba(255,255,255,0.3)',
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Carte */}
+      <div
+        className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5"
+        style={{
+          transition: 'opacity 0.35s ease, transform 0.35s ease',
+          opacity: visible ? 1 : 0,
+          transform: visible ? 'translateY(0) scale(1)' : 'translateY(8px) scale(0.98)',
+        }}
+      >
+        <div className="flex items-center gap-3 mb-3">
+          <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center text-white font-bold text-sm flex-shrink-0`}>
+            {review.initials}
+          </div>
+          <div>
+            <div className="text-white font-semibold text-sm leading-tight">{review.name}</div>
+            <div className="text-white/40 text-xs">{review.role}</div>
+          </div>
+          <div className="ml-auto flex gap-0.5">
+            {Array.from({ length: 5 }).map((_, i) => (
+              <Star key={i} className="w-3 h-3 fill-[#10b981] text-[#10b981]" />
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 bg-white/10 rounded-xl px-3 py-1.5 mb-3">
+          <span className="text-xs text-white/60">Économies :</span>
+          <span className="text-sm font-bold text-[#10b981]">{review.saving}</span>
+        </div>
+
+        <p className="text-white/70 text-sm leading-relaxed italic">
+          &ldquo;{review.text}&rdquo;
+        </p>
+      </div>
+    </div>
+  )
+}
 
 const TRUST_ITEMS = [
   'Réponse en 2 minutes',
@@ -125,25 +230,8 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Floating review card */}
-      <div className="hidden lg:block absolute right-16 bottom-24 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 max-w-xs">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-500 flex items-center justify-center text-white font-bold text-sm">
-            MR
-          </div>
-          <div>
-            <div className="text-white font-semibold text-sm">Marie R.</div>
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-3 h-3 fill-[#10b981] text-[#10b981]" />
-              ))}
-            </div>
-          </div>
-        </div>
-        <p className="text-white/70 text-sm leading-relaxed">
-          &ldquo;Économisé <strong className="text-white">8 400€</strong> sur mon prêt. Service impeccable et rapide !&rdquo;
-        </p>
-      </div>
+      {/* Floating reviews carousel */}
+      <FloatingReviews />
     </section>
   )
 }
