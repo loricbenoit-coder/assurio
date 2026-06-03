@@ -1,11 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="110" height="110" viewBox="0 0 100 110" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="49" viewBox="0 0 44 49" fill="none">
   <defs>
-    <linearGradient id="tg" x1="20" y1="95" x2="85" y2="30" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0CB8B8"/>
-      <stop offset="100%" stop-color="#3DD9C5"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="44" y2="49" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a40cc"/>
+      <stop offset="100%" stop-color="#0a1340"/>
+    </linearGradient>
+    <linearGradient id="rf" x1="8" y1="28" x2="36" y2="16" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0cb8b8"/>
+      <stop offset="100%" stop-color="#3ddac5"/>
     </linearGradient>
   </defs>
-  <path d="M16 5 L52 98" stroke="#0D1F5C" stroke-width="20" stroke-linecap="round"/>
-  <path d="M84 5 L48 98" stroke="#0D1F5C" stroke-width="20" stroke-linecap="round"/>
-  <path d="M24 64 L48 90 L83 44" stroke="url(#tg)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M22 1L3 8.5V27C3 37.8 11.5 46 22 48.5C32.5 46 41 37.8 41 27V8.5L22 1Z" fill="url(#bg)"/>
+  <path d="M9 27.5L22 14.5L35 27.5Z" fill="url(#rf)"/>
+  <rect x="15.5" y="27" width="13" height="13.5" rx="1.5" fill="white"/>
+  <rect x="19.5" y="32" width="5" height="8.5" rx="1" fill="#0a1340"/>
 </svg>
