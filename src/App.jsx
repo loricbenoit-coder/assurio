@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
@@ -17,8 +17,29 @@ import { CGU } from '@/pages/CGU'
 import { PolitiqueConfidentialite } from '@/pages/PolitiqueConfidentialite'
 import { Contact } from '@/pages/Contact'
 
+// Scroll vers l'ancre après chaque navigation
+const ScrollToHash = () => {
+  const { hash } = useLocation()
+  useEffect(() => {
+    if (!hash) { window.scrollTo(0, 0); return }
+    // Attend que les sections soient montées dans le DOM
+    const id = hash.replace('#', '')
+    const attempt = (tries = 0) => {
+      const el = document.getElementById(id)
+      if (el) {
+        setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 80)
+      } else if (tries < 15) {
+        setTimeout(() => attempt(tries + 1), 80)
+      }
+    }
+    attempt()
+  }, [hash])
+  return null
+}
+
 const LandingPage = () => (
   <>
+    <ScrollToHash />
     <Navbar />
     <main>
       <Hero />
