@@ -9,10 +9,10 @@ import { cn } from '@/lib/utils'
 const PHONE = '06 XX XX XX XX'
 
 const NAV_LINKS = [
-  { label: 'Comment ça marche', href: '#comment-ca-marche' },
-  { label: 'Avantages', href: '#avantages' },
-  { label: 'Avis clients', href: '#avis' },
-  { label: 'FAQ', href: '#faq' },
+  { label: 'Comment ça marche', href: '/#comment-ca-marche' },
+  { label: 'Avantages', href: '/#avantages' },
+  { label: 'Avis clients', href: '/#avis' },
+  { label: 'FAQ', href: '/#faq' },
   { label: 'Contact', href: '/contact', isRoute: true },
 ]
 
@@ -60,7 +60,7 @@ export const Navbar = ({ scrolledOnly = false }) => {
             <Phone className="w-4 h-4" />
             {PHONE}
           </a>
-          <a href="#simulateur">
+          <a href="/#simulateur">
             <Button size="sm">Obtenir un devis</Button>
           </a>
         </div>
@@ -83,7 +83,7 @@ export const Navbar = ({ scrolledOnly = false }) => {
           <a href={`tel:${PHONE.replace(/\s/g, '')}`} className="flex items-center gap-2 text-sm font-semibold text-[#0a1340]">
             <Phone className="w-4 h-4 text-[#10b981]" /> {PHONE}
           </a>
-          <a href="#simulateur" onClick={() => setMenuOpen(false)}>
+          <a href="/#simulateur" onClick={() => setMenuOpen(false)}>
             <Button size="sm" className="w-full mt-1">Obtenir un devis</Button>
           </a>
         </div>

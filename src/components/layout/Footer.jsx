@@ -7,15 +7,15 @@ const PHONE = '06 XX XX XX XX'
 
 const LINKS = {
   Produit: [
-    { label: 'Comparateur', href: '#simulateur' },
-    { label: "Délégation d'assurance", href: '#comment-ca-marche' },
-    { label: 'Comment ça marche', href: '#comment-ca-marche' },
+    { label: 'Comparateur', href: '/#simulateur' },
+    { label: "Délégation d'assurance", href: '/#comment-ca-marche' },
+    { label: 'Comment ça marche', href: '/#comment-ca-marche' },
     { label: 'Nos avantages', href: '#avantages' },
   ],
   Contact: [
     { label: 'Formulaire de contact', href: '/contact', isRoute: true },
-    { label: 'Avis clients', href: '#avis' },
-    { label: 'FAQ', href: '#faq' },
+    { label: 'Avis clients', href: '/#avis' },
+    { label: 'FAQ', href: '/#faq' },
     { label: 'Blog', href: '#' },
   ],
   Légal: [
