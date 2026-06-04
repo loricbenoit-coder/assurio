@@ -167,7 +167,7 @@ export const Hero = () => {
           </div>
 
           {/* Headline fixe */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
             Votre assurance emprunteur à
             <br />
             <span
@@ -197,9 +197,9 @@ export const Hero = () => {
           </div>
 
           {/* CTA buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <a href="#simulateur">
-              <Button size="lg" className="group" data-sb-field-path="ctaPrimary">
+          <div className="flex flex-col sm:flex-row gap-3 mb-10 sm:mb-16">
+            <a href="#simulateur" className="w-full sm:w-auto">
+              <Button size="lg" className="group w-full sm:w-auto" data-sb-field-path="ctaPrimary">
                 {content.ctaPrimary}
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Button>
@@ -219,7 +219,7 @@ export const Hero = () => {
           <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-8 pt-8 border-t border-white/10">
+          <div className="grid grid-cols-3 gap-4 sm:gap-8 pt-8 border-t border-white/10">
             {STATS.map(({ value, label }) => (
               <div key={label}>
                 <div className="text-3xl font-bold text-white mb-1">{value}</div>

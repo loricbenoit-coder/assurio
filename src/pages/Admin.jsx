@@ -117,7 +117,7 @@ const Dashboard = ({ password, onLogout }) => {
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         {/* KPIs */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
             { label: 'Total leads', value: total, icon: TrendingDown, color: 'text-[#0f1f6b]', bg: 'bg-[#f0f4ff]' },
             { label: 'Nouveaux', value: nouveaux, icon: Calendar, color: 'text-blue-600', bg: 'bg-blue-50' },

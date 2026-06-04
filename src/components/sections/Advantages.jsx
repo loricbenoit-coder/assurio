@@ -49,12 +49,11 @@ const ADVANTAGES = [
 export const Advantages = () => (
   <section id="avantages" className="py-24 bg-slate-50">
     <div className="max-w-6xl mx-auto px-6">
-      {/* Header */}
       <div className="text-center mb-16">
         <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-4">
           Pourquoi Assur-Emprunt
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-[#0a1340] mb-4 tracking-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1340] mb-4 tracking-tight">
           Des avantages concrets
         </h2>
         <p className="text-lg text-slate-500 max-w-xl mx-auto">
@@ -62,12 +61,9 @@ export const Advantages = () => (
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {ADVANTAGES.map(({ icon: Icon, title, description, color, bg }) => (
-          <div
-            key={title}
-            className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
-          >
+          <div key={title} className="bg-white rounded-2xl p-7 border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group">
             <div className={`w-12 h-12 rounded-xl ${bg} flex items-center justify-center mb-5`}>
               <Icon className={`w-6 h-6 ${color}`} />
             </div>

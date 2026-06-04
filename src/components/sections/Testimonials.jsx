@@ -42,12 +42,11 @@ const StarRating = ({ count }) => (
 export const Testimonials = () => (
   <section id="avis" className="py-24 bg-white">
     <div className="max-w-6xl mx-auto px-6">
-      {/* Header */}
       <div className="text-center mb-16">
         <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-4">
           Avis vérifiés
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold text-[#0a1340] mb-4 tracking-tight">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1340] mb-4 tracking-tight">
           Ils ont fait confiance à Assur-Emprunt
         </h2>
         <div className="flex items-center justify-center gap-3 mt-4">
@@ -56,14 +55,10 @@ export const Testimonials = () => (
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {TESTIMONIALS.map(({ name, role, initials, color, savings, rating, text }) => (
-          <div
-            key={name}
-            className="relative bg-slate-50 rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-shadow duration-300"
-          >
+          <div key={name} className="relative bg-slate-50 rounded-2xl p-7 border border-slate-100 hover:shadow-lg transition-shadow duration-300">
             <Quote className="absolute top-6 right-6 w-8 h-8 text-slate-200" />
-            {/* Savings badge */}
             <div className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1.5 mb-5">
               <span className="text-xs font-semibold text-emerald-700">Économies : {savings}</span>
             </div>

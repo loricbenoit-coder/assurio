@@ -149,7 +149,7 @@ export const ChatWidget = () => {
       <button
         onClick={() => { setOpen(!open); setMinimized(false) }}
         className={cn(
-          'fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300',
+          'fixed bottom-5 right-4 sm:bottom-6 sm:right-6 z-50 w-13 h-13 sm:w-14 sm:h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300',
           open ? 'bg-slate-700' : 'bg-[#0f1f6b] hover:scale-110'
         )}
         aria-label="Ouvrir le chat"
@@ -170,8 +170,8 @@ export const ChatWidget = () => {
       {/* Chat window */}
       {open && !minimized && (
         <div
-          className="fixed bottom-24 right-6 z-50 w-[360px] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden"
-          style={{ maxHeight: '540px' }}
+          className="fixed bottom-20 right-2 left-2 sm:left-auto sm:right-6 sm:w-[360px] z-50 bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden"
+          style={{ maxHeight: '75vh' }}
         >
           {/* Header */}
           <div className="bg-[#0f1f6b] px-4 py-3.5 flex items-center justify-between flex-shrink-0">

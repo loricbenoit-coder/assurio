@@ -59,7 +59,7 @@ export const Contact = () => {
           <p className="text-slate-500">Notre équipe vous répond sous 24h ouvrées.</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Infos contact */}
           <div className="space-y-4">
             {[
