@@ -21,7 +21,7 @@ export const MentionsLegales = () => (
 
       <div className="bg-white rounded-2xl border border-slate-200 p-8">
         <Section title="1. Éditeur du site">
-          <p><strong>Dénomination :</strong> Assur-Emprunteur</p>
+          <p><strong>Dénomination :</strong> Assur Emprunteur</p>
           <p><strong>Forme juridique :</strong> [À compléter — EIRL / SASU / Auto-entrepreneur]</p>
           <p><strong>Adresse :</strong> [Votre adresse professionnelle]</p>
           <p><strong>Email :</strong> contact@assur-emprunteur.fr</p>
@@ -32,7 +32,7 @@ export const MentionsLegales = () => (
         </Section>
 
         <Section title="2. Activité réglementée">
-          <p>Assur-Emprunteur exerce l'activité de courtier en assurance, soumise à la réglementation française et européenne en matière d'intermédiation en assurance.</p>
+          <p>Assur Emprunteur exerce l'activité de courtier en assurance, soumise à la réglementation française et européenne en matière d'intermédiation en assurance.</p>
           <p>Immatriculé à l'ORIAS sous le numéro [À compléter], vérifiable sur <a href="https://www.orias.fr" target="_blank" rel="noopener noreferrer" className="text-[#10b981] hover:underline">www.orias.fr</a>.</p>
           <p><strong>Autorité de contrôle :</strong> Autorité de Contrôle Prudentiel et de Résolution (ACPR) — 4 place de Budapest, CS 92459, 75436 Paris Cedex 09.</p>
         </Section>
@@ -48,7 +48,7 @@ export const MentionsLegales = () => (
         </Section>
 
         <Section title="5. Responsabilité">
-          <p>Les informations présentes sur ce site sont fournies à titre indicatif. Assur-Emprunteur ne saurait être tenu responsable des erreurs ou omissions dans ces informations, ni de l'utilisation qui pourrait en être faite.</p>
+          <p>Les informations présentes sur ce site sont fournies à titre indicatif. Assur Emprunteur ne saurait être tenu responsable des erreurs ou omissions dans ces informations, ni de l'utilisation qui pourrait en être faite.</p>
           <p>Les tarifs présentés dans le simulateur sont des estimations basées sur les données du marché et n'ont pas valeur contractuelle.</p>
         </Section>
 

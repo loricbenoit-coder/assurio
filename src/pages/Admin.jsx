@@ -31,7 +31,7 @@ const LoginScreen = ({ onLogin }) => {
           </div>
           <div>
             <h1 className="font-extrabold text-[#0a1340] text-lg leading-tight">Admin</h1>
-            <p className="text-slate-400 text-xs">Assur-Emprunteur</p>
+            <p className="text-slate-400 text-xs">Assur Emprunteur</p>
           </div>
         </div>
         <form onSubmit={handleSubmit}>
@@ -91,7 +91,7 @@ const Dashboard = ({ password, onLogout }) => {
     const csv = rows.map(r => r.join(';')).join('\n')
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' })
     const url = URL.createObjectURL(blob)
-    const a = document.createElement('a'); a.href = url; a.download = `leads-Assur-Emprunteur-${new Date().toISOString().slice(0,10)}.csv`
+    const a = document.createElement('a'); a.href = url; a.download = `leads-Assur Emprunteur-${new Date().toISOString().slice(0,10)}.csv`
     a.click(); URL.revokeObjectURL(url)
   }
 
@@ -103,7 +103,7 @@ const Dashboard = ({ password, onLogout }) => {
           <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
             <Shield className="w-4 h-4 text-[#10b981]" />
           </div>
-          <span className="text-white font-bold">Tableau de bord — Assur-Emprunteur</span>
+          <span className="text-white font-bold">Tableau de bord — Assur Emprunteur</span>
         </div>
         <div className="flex items-center gap-3">
           <button onClick={loadLeads} className="flex items-center gap-1.5 text-white/60 hover:text-white text-sm transition-colors">

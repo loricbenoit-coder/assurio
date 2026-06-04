@@ -31,7 +31,7 @@ export const CookieBanner = () => {
               Nous utilisons des cookies 🍪
             </p>
             <p className="text-white/50 text-xs leading-relaxed">
-              Assur-Emprunteur utilise des cookies pour mesurer l'audience et améliorer votre expérience.
+              Assur Emprunteur utilise des cookies pour mesurer l'audience et améliorer votre expérience.
               Vos données ne sont jamais revendues. Consultez notre{' '}
               <a href="/politique-confidentialite" className="text-[#10b981] hover:underline">
                 politique de confidentialité

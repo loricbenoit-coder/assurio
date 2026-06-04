@@ -9,6 +9,6 @@ export const useHeroContent = () => ({
 })
 
 export const useSiteSettings = () => ({
-  siteTitle: "Assur-Emprunteur",
+  siteTitle: "Assur Emprunteur",
   tagline: "Assurance Emprunteur au meilleur prix",
 })

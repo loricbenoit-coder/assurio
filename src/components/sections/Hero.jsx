@@ -29,7 +29,7 @@ const REVIEWS = [
     initials: 'LB', color: 'from-orange-400 to-rose-500',
     name: 'Laurent B.', role: 'Entrepreneur à Nantes',
     saving: '9 400€',
-    text: 'J\'économise 130€ par mois. Merci Assur-Emprunteur !',
+    text: 'J\'économise 130€ par mois. Merci Assur Emprunteur !',
   },
   {
     initials: 'CA', color: 'from-cyan-400 to-blue-500',

@@ -34,7 +34,7 @@ export const Navbar = ({ scrolledOnly = false }) => {
     )}>
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
-        <a href="/" aria-label="Assur-Emprunteur - Accueil">
+        <a href="/" aria-label="Assur Emprunteur - Accueil">
           <Logo dark={scrolled} />
         </a>
 

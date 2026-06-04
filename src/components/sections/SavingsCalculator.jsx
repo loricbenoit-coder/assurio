@@ -162,7 +162,7 @@ export const SavingsCalculator = () => {
                 <div className="text-xs text-slate-400">par mois</div>
               </div>
               <div className="bg-emerald-50 rounded-2xl p-4 text-center">
-                <div className="text-xs text-slate-500 mb-1">Avec Assur-Emprunteur</div>
+                <div className="text-xs text-slate-500 mb-1">Avec Assur Emprunteur</div>
                 <div className="text-xl font-extrabold text-[#10b981]">{result.marketMonthly}€</div>
                 <div className="text-xs text-slate-400">par mois</div>
               </div>
@@ -222,7 +222,7 @@ export const SavingsCalculator = () => {
                 bg="#fee2e2"
               />
               <CompareBar
-                label="✅ Avec Assur-Emprunteur"
+                label="✅ Avec Assur Emprunteur"
                 value={result.totalMarket}
                 max={result.totalBank}
                 color="#10b981"
