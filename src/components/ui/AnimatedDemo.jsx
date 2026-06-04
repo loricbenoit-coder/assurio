@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import { Shield, CheckCircle2, TrendingDown, ArrowRight, Star, MessageCircle, ChevronRight } from 'lucide-react'
 
 const DURATION = 4000 // ms par écran
@@ -153,7 +153,7 @@ const ScreenChatbot = () => (
           <Shield className="w-4 h-4 text-[#10b981]" />
         </div>
         <div>
-          <p className="text-white font-semibold text-xs">Conseiller Assur-Emprunt</p>
+          <p className="text-white font-semibold text-xs">Conseiller Assur-Emprunteur</p>
           <div className="flex items-center gap-1">
             <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" />
             <span className="text-white/50 text-[10px]">En ligne</span>

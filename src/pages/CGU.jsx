@@ -21,12 +21,12 @@ export const CGU = () => (
 
       <div className="bg-white rounded-2xl border border-slate-200 p-8">
         <Section title="1. Objet">
-          <p>Les présentes CGU régissent l'accès et l'utilisation du site assur-emprunt.fr, exploité par Assur-Emprunt, courtier en assurance immatriculé à l'ORIAS.</p>
+          <p>Les présentes CGU régissent l'accès et l'utilisation du site Assur-Emprunteur.fr, exploité par Assur-Emprunteur, courtier en assurance immatriculé à l'ORIAS.</p>
           <p>En accédant au site, vous acceptez sans réserve les présentes conditions.</p>
         </Section>
 
         <Section title="2. Services proposés">
-          <p>Assur-Emprunt propose :</p>
+          <p>Assur-Emprunteur propose :</p>
           <ul className="list-disc pl-5 space-y-1">
             <li>Un simulateur de comparaison d'assurance emprunteur (à titre indicatif)</li>
             <li>Un service de courtage en assurance emprunteur</li>
@@ -38,7 +38,7 @@ export const CGU = () => (
 
         <Section title="3. Gratuité du service">
           <p>L'utilisation du simulateur et le conseil initial sont entièrement gratuits pour l'utilisateur.</p>
-          <p>Assur-Emprunt perçoit une rémunération de la part des compagnies d'assurance partenaires sous forme de commissions, sans impact sur le tarif proposé à l'assuré.</p>
+          <p>Assur-Emprunteur perçoit une rémunération de la part des compagnies d'assurance partenaires sous forme de commissions, sans impact sur le tarif proposé à l'assuré.</p>
           <p>Des frais de dossier peuvent être facturés pour la gestion complète du dossier de délégation. Ces frais vous seront communiqués avant toute souscription.</p>
         </Section>
 
@@ -64,7 +64,7 @@ export const CGU = () => (
         </Section>
 
         <Section title="8. Modification des CGU">
-          <p>Assur-Emprunt se réserve le droit de modifier les présentes CGU à tout moment. Les modifications prennent effet dès leur publication sur le site.</p>
+          <p>Assur-Emprunteur se réserve le droit de modifier les présentes CGU à tout moment. Les modifications prennent effet dès leur publication sur le site.</p>
         </Section>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import { Cookie, X, Check } from 'lucide-react'
 
 const COOKIE_KEY = 'ae_cookie_consent'
@@ -31,7 +31,7 @@ export const CookieBanner = () => {
               Nous utilisons des cookies 🍪
             </p>
             <p className="text-white/50 text-xs leading-relaxed">
-              Assur-Emprunt utilise des cookies pour mesurer l'audience et améliorer votre expérience.
+              Assur-Emprunteur utilise des cookies pour mesurer l'audience et améliorer votre expérience.
               Vos données ne sont jamais revendues. Consultez notre{' '}
               <a href="/politique-confidentialite" className="text-[#10b981] hover:underline">
                 politique de confidentialité

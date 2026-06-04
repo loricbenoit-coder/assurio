@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import { Menu, X, Phone } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/Button'
@@ -34,7 +34,7 @@ export const Navbar = ({ scrolledOnly = false }) => {
     )}>
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
-        <a href="/" aria-label="Assur-Emprunt - Accueil">
+        <a href="/" aria-label="Assur-Emprunteur - Accueil">
           <Logo dark={scrolled} />
         </a>
 

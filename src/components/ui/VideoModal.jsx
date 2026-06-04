@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+﻿import React, { useEffect } from 'react'
 import { X } from 'lucide-react'
 import { AnimatedDemo } from './AnimatedDemo'
 
@@ -30,7 +30,7 @@ export const VideoModal = ({ open, onClose }) => {
         {/* Header */}
         <div className="flex items-center justify-between mb-3 px-1">
           <div>
-            <h3 className="text-white font-bold text-lg">Démo Assur-Emprunt</h3>
+            <h3 className="text-white font-bold text-lg">Démo Assur-Emprunteur</h3>
             <p className="text-white/50 text-sm">Parcours complet en 6 étapes</p>
           </div>
           <button

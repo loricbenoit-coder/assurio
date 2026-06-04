@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+﻿import React, { useState, useEffect } from 'react'
 import { ArrowRight, CheckCircle2, Star, Play } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { VideoModal } from '@/components/ui/VideoModal'
@@ -29,7 +29,7 @@ const REVIEWS = [
     initials: 'LB', color: 'from-orange-400 to-rose-500',
     name: 'Laurent B.', role: 'Entrepreneur à Nantes',
     saving: '9 400€',
-    text: 'J\'économise 130€ par mois. Merci Assur-Emprunt !',
+    text: 'J\'économise 130€ par mois. Merci Assur-Emprunteur !',
   },
   {
     initials: 'CA', color: 'from-cyan-400 to-blue-500',

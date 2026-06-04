@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { ArrowRight, ShieldCheck, MessageCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
@@ -27,7 +27,7 @@ export const CTA = () => (
 
       <p className="text-xl text-white/60 mb-10 max-w-2xl mx-auto">
         Rejoignez 50 000 emprunteurs qui ont déjà optimisé leur assurance avec
-        <span className="text-white font-semibold"> Assur-Emprunt</span>.
+        <span className="text-white font-semibold"> Assur-Emprunteur</span>.
         Obtenez votre comparatif gratuit en 2 minutes.
       </p>
 

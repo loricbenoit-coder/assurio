@@ -1,8 +1,8 @@
-import React from 'react'
+﻿import React from 'react'
 import { cn } from '@/lib/utils'
 
 /**
- * Logo Assur-Emprunt — version finale
+ * Logo Assur-Emprunteur — version finale
  * Concept : bouclier (protection/assurance) + maison (prêt immobilier)
  * Toit teal = l'assurance qui couvre votre bien
  * Corps navy = solidité, confiance financière
@@ -104,7 +104,7 @@ export const LogoWordmark = ({ dark = false, withTagline = false, className }) =
             backgroundClip: 'text',
           }}
         >
-          -Emprunt
+          -Emprunteur
         </span>
       </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -20,8 +20,8 @@ const FAQ_ITEMS = [
     answer: "Depuis la loi Lemoine, les emprunteurs dont le crédit se termine avant leurs 60 ans et dont le capital assuré est inférieur à 200 000€ sont exonérés de questionnaire de santé.",
   },
   {
-    question: "Le service Assur-Emprunt est-il payant ?",
-    answer: "Non. Le service Assur-Emprunt de comparaison et d'accompagnement est totalement gratuit pour vous. Nous sommes rémunérés par les assureurs partenaires, sans que cela n'impacte le prix que vous payez.",
+    question: "Le service Assur-Emprunteur est-il payant ?",
+    answer: "Non. Le service Assur-Emprunteur de comparaison et d'accompagnement est totalement gratuit pour vous. Nous sommes rémunérés par les assureurs partenaires, sans que cela n'impacte le prix que vous payez.",
   },
 ]
 

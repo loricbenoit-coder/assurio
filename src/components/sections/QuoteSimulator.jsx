@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { ArrowRight, ArrowLeft, CheckCircle2, TrendingDown, Star, Phone, Shield, Info, Mail, Loader2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { computeQuotes } from '@/lib/quoteEngine'
@@ -349,7 +349,7 @@ export const QuoteSimulator = () => {
                   <input type="checkbox" className="mt-0.5 w-4 h-4 accent-[#0f1f6b]"
                     checked={contact.rgpd} onChange={(e) => setC('rgpd', e.target.checked)} />
                   <span className="text-xs text-slate-400 leading-relaxed">
-                    J'accepte d'être recontacté(e) par Assur-Emprunt. Données jamais revendues. Conformément au RGPD, je peux exercer mes droits à tout moment.
+                    J'accepte d'être recontacté(e) par Assur-Emprunteur. Données jamais revendues. Conformément au RGPD, je peux exercer mes droits à tout moment.
                   </span>
                 </label>
                 {error && <div className="bg-red-50 text-red-600 text-sm rounded-xl px-4 py-3 mb-4">{error}</div>}

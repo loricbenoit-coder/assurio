@@ -1,11 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react'
+﻿import React, { useState, useRef, useEffect } from 'react'
 import { MessageCircle, X, Send, Loader2, User, MinusCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { LogoIcon } from '@/components/ui/Logo'
 
 const WELCOME_MESSAGE = {
   role: 'assistant',
-  content: "Bonjour 👋 Je suis votre conseiller Assur-Emprunt ! Je suis là pour répondre à toutes vos questions sur l'assurance emprunteur et vous aider à économiser jusqu'à 60% sur votre contrat. Comment puis-je vous aider ?",
+  content: "Bonjour 👋 Je suis votre conseiller Assur-Emprunteur ! Je suis là pour répondre à toutes vos questions sur l'assurance emprunteur et vous aider à économiser jusqu'à 60% sur votre contrat. Comment puis-je vous aider ?",
 }
 
 const QUICK_QUESTIONS = [
@@ -180,7 +180,7 @@ export const ChatWidget = () => {
                 <LogoIcon size={20} />
               </div>
               <div>
-                <p className="text-white font-semibold text-sm">Conseiller Assur-Emprunt</p>
+                <p className="text-white font-semibold text-sm">Conseiller Assur-Emprunteur</p>
                 <div className="flex items-center gap-1.5">
                   <span className="w-2 h-2 rounded-full bg-[#10b981]" />
                   <span className="text-white/60 text-xs">En ligne · Répond en quelques secondes</span>

@@ -1,4 +1,4 @@
-// Contenu statique du site — modifier ici pour changer les textes
+﻿// Contenu statique du site — modifier ici pour changer les textes
 export const useHeroContent = () => ({
   badge: "N°1 de l'assurance emprunteur en France",
   headline: "Votre assurance emprunteur à",
@@ -9,6 +9,6 @@ export const useHeroContent = () => ({
 })
 
 export const useSiteSettings = () => ({
-  siteTitle: "Assur-Emprunt",
+  siteTitle: "Assur-Emprunteur",
   tagline: "Assurance Emprunteur au meilleur prix",
 })

@@ -65,7 +65,7 @@ export const Footer = () => (
       </div>
 
       <div className="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-        <span>© 2025 Assur-Emprunt. Tous droits réservés.</span>
+        <span>© 2025 Assur-Emprunteur. Tous droits réservés.</span>
         <span>Courtier en assurance enregistré à l'ORIAS — Lun–Ven 9h–18h</span>
       </div>
     </div>

@@ -21,7 +21,7 @@ export const PolitiqueConfidentialite = () => (
 
       <div className="bg-white rounded-2xl border border-slate-200 p-8">
         <Section title="1. Responsable du traitement">
-          <p><strong>Assur-Emprunt</strong> — [Adresse professionnelle]</p>
+          <p><strong>Assur-Emprunteur</strong> — [Adresse professionnelle]</p>
           <p>Email DPO : contact@assur-emprunteur.fr</p>
         </Section>
 

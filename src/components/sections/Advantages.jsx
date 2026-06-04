@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { TrendingDown, Clock, HeartHandshake, ShieldCheck, Zap, Users } from 'lucide-react'
 
 const ADVANTAGES = [
@@ -51,7 +51,7 @@ export const Advantages = () => (
     <div className="max-w-6xl mx-auto px-6">
       <div className="text-center mb-16">
         <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-4">
-          Pourquoi Assur-Emprunt
+          Pourquoi Assur-Emprunteur
         </span>
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0a1340] mb-4 tracking-tight">
           Des avantages concrets
