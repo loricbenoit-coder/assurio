@@ -6,6 +6,7 @@ import { Hero } from '@/components/sections/Hero'
 import { InsurersCarousel } from '@/components/sections/InsurersCarousel'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Advantages } from '@/components/sections/Advantages'
+import { SavingsCalculator } from '@/components/sections/SavingsCalculator'
 import { QuoteSimulator } from '@/components/sections/QuoteSimulator'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { FAQ } from '@/components/sections/FAQ'
@@ -47,6 +48,7 @@ const LandingPage = () => (
       <InsurersCarousel />
       <HowItWorks />
       <Advantages />
+      <SavingsCalculator />
       <QuoteSimulator />
       <Testimonials />
       <FAQ />
