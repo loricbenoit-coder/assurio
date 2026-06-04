@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { Link } from 'react-router-dom'
 import { Phone, Mail } from 'lucide-react'
 import { Logo } from '@/components/ui/Logo'
@@ -38,9 +38,9 @@ export const Footer = () => (
               className="flex items-center gap-2 text-sm font-semibold text-[#0a1340] hover:text-[#10b981] transition-colors">
               <Phone className="w-4 h-4 text-[#10b981]" /> {PHONE}
             </a>
-            <a href="mailto:contact@assur-emprunt.fr"
+            <a href="mailto:contact@assur-emprunteur.fr"
               className="flex items-center gap-2 text-sm text-slate-400 hover:text-[#0a1340] transition-colors">
-              <Mail className="w-4 h-4" /> contact@assur-emprunt.fr
+              <Mail className="w-4 h-4" /> contact@assur-emprunteur.fr
             </a>
           </div>
           <p className="text-xs text-slate-300 mt-4">ORIAS N° [À compléter]</p>

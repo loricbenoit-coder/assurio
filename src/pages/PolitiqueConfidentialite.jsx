@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
@@ -22,7 +22,7 @@ export const PolitiqueConfidentialite = () => (
       <div className="bg-white rounded-2xl border border-slate-200 p-8">
         <Section title="1. Responsable du traitement">
           <p><strong>Assur-Emprunt</strong> — [Adresse professionnelle]</p>
-          <p>Email DPO : contact@assur-emprunt.fr</p>
+          <p>Email DPO : contact@assur-emprunteur.fr</p>
         </Section>
 
         <Section title="2. Données collectées">
@@ -86,7 +86,7 @@ export const PolitiqueConfidentialite = () => (
             <li><strong>Opposition</strong> — vous opposer au traitement à des fins commerciales</li>
             <li><strong>Portabilité</strong> — recevoir vos données dans un format structuré</li>
           </ul>
-          <p className="mt-3">Pour exercer vos droits : <strong>contact@assur-emprunt.fr</strong></p>
+          <p className="mt-3">Pour exercer vos droits : <strong>contact@assur-emprunteur.fr</strong></p>
           <p>En cas de réclamation : <a href="https://www.cnil.fr" target="_blank" rel="noopener noreferrer" className="text-[#10b981] hover:underline">www.cnil.fr</a></p>
         </Section>
 

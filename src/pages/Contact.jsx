@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+﻿import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Phone, Mail, MessageCircle, Clock, Send, Loader2, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
@@ -64,7 +64,7 @@ export const Contact = () => {
           <div className="space-y-4">
             {[
               { icon: Phone, label: 'Téléphone', value: '06 XX XX XX XX', sub: 'Lun–Ven 9h–18h', action: null },
-              { icon: Mail, label: 'Email', value: 'contact@assur-emprunt.fr', sub: 'Réponse sous 24h', action: null },
+              { icon: Mail, label: 'Email', value: 'contact@assur-emprunteur.fr', sub: 'Réponse sous 24h', action: null },
               { icon: MessageCircle, label: 'Chat en ligne', value: 'Conseiller IA disponible', sub: '24h/24, 7j/7', action: openChatBot },
               { icon: Clock, label: 'Horaires', value: 'Lun–Ven : 9h–18h', sub: 'Sam : 9h–12h', action: null },
             ].map(({ icon: Icon, label, value, sub, action }) => (

@@ -1,4 +1,4 @@
-import { getStore } from '@netlify/blobs'
+﻿import { getStore } from '@netlify/blobs'
 
 const OWNER_EMAIL = 'loricbenoit@gmail.com'
 
@@ -93,7 +93,7 @@ const emailFollowup = ({ contact, quote, loanInfo, day }) => {
 <div><div style="font-size:12px;color:#64748b">Votre meilleure offre</div><div style="font-weight:700;color:#0a1340">${quote.insurer}</div></div>
 <div style="text-align:right"><div style="font-size:20px;font-weight:800;color:#0a1340">${quote.monthly}€/mois</div><div style="font-size:12px;color:#16a34a;font-weight:600">-${quote.savingsPct}% vs banque</div></div></div>
 <a href="https://assur-emprunt.netlify.app/#simulateur" class="cta">${m.cta} →</a>
-<p style="color:#94a3b8;font-size:12px;margin-top:16px">Pour ne plus recevoir nos emails : <a href="mailto:contact@assur-emprunt.fr?subject=Désinscription" style="color:#94a3b8">se désinscrire</a></p>
+<p style="color:#94a3b8;font-size:12px;margin-top:16px">Pour ne plus recevoir nos emails : <a href="mailto:contact@assur-emprunteur.fr?subject=Désinscription" style="color:#94a3b8">se désinscrire</a></p>
 <div class="footer"><strong>Assur-Emprunt</strong> · Courtier en assurance ORIAS</div>
 </div></body></html>`,
   }

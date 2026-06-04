@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
@@ -24,7 +24,7 @@ export const MentionsLegales = () => (
           <p><strong>Dénomination :</strong> Assur-Emprunt</p>
           <p><strong>Forme juridique :</strong> [À compléter — EIRL / SASU / Auto-entrepreneur]</p>
           <p><strong>Adresse :</strong> [Votre adresse professionnelle]</p>
-          <p><strong>Email :</strong> contact@assur-emprunt.fr</p>
+          <p><strong>Email :</strong> contact@assur-emprunteur.fr</p>
           <p><strong>Téléphone :</strong> [Votre numéro professionnel]</p>
           <p><strong>Numéro SIRET :</strong> [À compléter]</p>
           <p><strong>Numéro ORIAS :</strong> [À compléter après inscription]</p>
