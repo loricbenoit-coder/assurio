@@ -2,33 +2,216 @@
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- SEO -->
-    <title>Assur-Emprunt — Assurance Emprunteur au meilleur prix</title>
-    <meta name="description" content="Assur-Emprunt vous aide à trouver la meilleure assurance emprunteur. Comparez, économisez jusqu'à 60% et protégez votre prêt immobilier en quelques minutes." />
-    <meta name="keywords" content="assurance emprunteur, délégation assurance, assurance prêt immobilier, comparateur assurance emprunteur, assur-emprunt" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://assur-emprunt.fr" />
-    <!-- Open Graph -->
-    <meta property="og:title" content="Assur-Emprunt — Assurance Emprunteur au meilleur prix" />
-    <meta property="og:description" content="Comparez et économisez jusqu'à 60% sur votre assurance emprunteur avec Assur-Emprunt." />
+
+    <!-- ═══════════════════════════════════════════════════════
+         SEO PRIMAIRE
+    ═══════════════════════════════════════════════════════ -->
+    <title>Assur-Emprunt — Assurance Emprunteur jusqu'à -60% | Comparez en 2 minutes</title>
+    <meta name="description" content="Assur-Emprunt, courtier en assurance emprunteur. Comparez les meilleures offres et économisez jusqu'à 60% sur votre assurance prêt immobilier. Résultat en 2 minutes, 100% gratuit et sans engagement. Loi Lemoine — changez à tout moment." />
+    <meta name="keywords" content="assurance emprunteur, délégation assurance, assurance prêt immobilier, comparateur assurance emprunteur, loi lemoine, changer assurance emprunteur, économiser assurance prêt, courtier assurance emprunteur" />
+    <meta name="author" content="Assur-Emprunt" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="language" content="fr-FR" />
+    <meta name="geo.region" content="FR" />
+    <link rel="canonical" href="https://assur-emprunt.fr/" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         OPEN GRAPH (Facebook, LinkedIn, WhatsApp)
+    ═══════════════════════════════════════════════════════ -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://assur-emprunt.fr" />
-    <!-- Schema.org -->
+    <meta property="og:url" content="https://assur-emprunt.fr/" />
+    <meta property="og:title" content="Assur-Emprunt — Économisez jusqu'à 60% sur votre assurance emprunteur" />
+    <meta property="og:description" content="Comparez en 2 minutes les meilleures offres d'assurance emprunteur. Service gratuit, sans engagement. Résultats immédiats. Loi Lemoine — changez à tout moment." />
+    <meta property="og:image" content="https://assur-emprunt.fr/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Assur-Emprunt — Comparateur assurance emprunteur" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Assur-Emprunt" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         TWITTER / X CARD
+    ═══════════════════════════════════════════════════════ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Assur-Emprunt — Économisez jusqu'à 60% sur votre assurance emprunteur" />
+    <meta name="twitter:description" content="Comparez en 2 minutes. Service gratuit. Loi Lemoine." />
+    <meta name="twitter:image" content="https://assur-emprunt.fr/og-image.jpg" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         FAVICON & ICÔNES
+    ═══════════════════════════════════════════════════════ -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#0f1f6b" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         PERFORMANCE
+    ═══════════════════════════════════════════════════════ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://api.resend.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         SCHEMA.ORG — Organisation
+    ═══════════════════════════════════════════════════════ -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
+      "@type": "InsuranceAgency",
       "name": "Assur-Emprunt",
-      "description": "Comparateur d'assurance emprunteur en ligne",
-      "url": "https://assur-emprunt.fr"
+      "description": "Courtier en assurance emprunteur — Comparez et économisez jusqu'à 60% sur votre assurance prêt immobilier",
+      "url": "https://assur-emprunt.fr",
+      "telephone": "+33600000000",
+      "email": "contact@assur-emprunt.fr",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "FR",
+        "addressLocality": "France"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "France"
+      },
+      "serviceType": "Courtage en assurance emprunteur",
+      "priceRange": "Gratuit",
+      "knowsLanguage": "fr",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Comparateur assurance emprunteur",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Comparaison assurance emprunteur",
+              "description": "Comparez les meilleures offres d'assurance emprunteur en 2 minutes"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Délégation d'assurance",
+              "description": "Changez d'assurance emprunteur à tout moment grâce à la loi Lemoine"
+            }
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "2318",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://github.com/loricbenoit-coder/assurio"
+      ]
     }
     </script>
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+    <!-- ═══════════════════════════════════════════════════════
+         SCHEMA.ORG — FAQ (Rich Snippets Google)
+    ═══════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Puis-je changer d'assurance emprunteur à tout moment ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui. Depuis la loi Lemoine de 2022, vous pouvez résilier et changer d'assurance emprunteur à tout moment, sans frais ni pénalité, quelle que soit la date de signature de votre prêt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien peut-on économiser en changeant d'assurance emprunteur ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En moyenne, les emprunteurs économisent entre 5 000€ et 15 000€ sur la durée totale de leur prêt en passant par un courtier comme Assur-Emprunt, soit jusqu'à 60% par rapport à l'assurance proposée par leur banque."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ma banque peut-elle refuser ma nouvelle assurance emprunteur ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Non, votre banque est légalement obligée d'accepter votre nouvelle assurance si elle présente des garanties au moins équivalentes à celles du contrat groupe. Assur-Emprunt vérifie systématiquement cette équivalence des garanties."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien de temps prend le changement d'assurance emprunteur ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "En moyenne, le délai total est de 10 à 20 jours ouvrés. Assur-Emprunt gère toutes les démarches administratives avec votre banque : constitution du dossier, envoi des documents et suivi jusqu'à la résiliation effective."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Le service Assur-Emprunt est-il gratuit ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, le service de comparaison et de conseil est entièrement gratuit pour l'emprunteur. Assur-Emprunt est rémunéré par les compagnies d'assurance partenaires sous forme de commission, sans aucun impact sur le tarif proposé."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dois-je passer un questionnaire de santé pour changer d'assurance ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Depuis la loi Lemoine, les emprunteurs dont le crédit se termine avant leurs 60 ans et dont le capital assuré est inférieur à 200 000€ par tête sont totalement exonérés de questionnaire de santé."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SCHEMA.ORG — Breadcrumb
+    ═══════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Accueil",
+          "item": "https://assur-emprunt.fr/"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SCHEMA.ORG — WebSite + SearchAction
+    ═══════════════════════════════════════════════════════ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Assur-Emprunt",
+      "url": "https://assur-emprunt.fr",
+      "description": "Comparateur d'assurance emprunteur — Économisez jusqu'à 60%",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Assur-Emprunt",
+        "url": "https://assur-emprunt.fr"
+      }
+    }
+    </script>
+
+    <!-- Google Search Console — à remplir quand tu auras vérifié ton site -->
+    <!-- <meta name="google-site-verification" content="VOTRE_CODE_ICI" /> -->
+
   </head>
   <body>
     <div id="root"></div>

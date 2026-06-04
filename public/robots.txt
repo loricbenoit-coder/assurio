@@ -1,0 +1,22 @@
+# Assur-Emprunt — robots.txt
+# Courtier en assurance emprunteur
+
+User-agent: *
+Allow: /
+
+# Autoriser les bots principaux
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+# Bloquer les pages sans valeur SEO
+Disallow: /admin
+Disallow: /.netlify/
+
+# Sitemap
+Sitemap: https://assur-emprunt.fr/sitemap.xml
