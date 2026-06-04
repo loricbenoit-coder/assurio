@@ -1,4 +1,4 @@
-# Assur-Emprunt — robots.txt
+﻿# Assur-Emprunt — robots.txt
 # Courtier en assurance emprunteur
 
 User-agent: *
@@ -19,4 +19,4 @@ Disallow: /admin
 Disallow: /.netlify/
 
 # Sitemap
-Sitemap: https://assur-emprunt.fr/sitemap.xml
+Sitemap: https://assur-emprunteur.fr/sitemap.xml
