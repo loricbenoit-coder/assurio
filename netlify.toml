@@ -6,6 +6,19 @@
   directory = "netlify/functions"
   node_bundler = "esbuild"
 
+# ── Force HTTPS ───────────────────────────────────────────────
+[[redirects]]
+  from = "http://assur-emprunteur.fr/*"
+  to = "https://assur-emprunteur.fr/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.assur-emprunteur.fr/*"
+  to = "https://assur-emprunteur.fr/:splat"
+  status = 301
+  force = true
+
 # ── Redirections SPA ─────────────────────────────────────────
 [[redirects]]
   from = "/*"
