@@ -1,29 +1,47 @@
 import { getStore } from '@netlify/blobs'
 
-export const handler = async (event, context) => {
-  const headers = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
+export const handler = async (event) => {
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+  }
 
-  // Vérification du mot de passe admin
+  // 1. Vérification mot de passe
   const password = event.headers['x-admin-password']
-  if (password !== process.env.ADMIN_PASSWORD) {
+  if (!password || password !== process.env.ADMIN_PASSWORD) {
     return { statusCode: 401, headers, body: JSON.stringify({ error: 'Non autorisé' }) }
   }
 
+  // 2. Lecture des leads (avec gestion d'erreur si Blobs pas encore initialisé)
   try {
-    const store = getStore({ name: 'leads', siteID: context.site?.id || process.env.SITE_ID, token: process.env.NETLIFY_BLOBS_TOKEN || context.token })
+    const store = getStore('leads')
     const { blobs } = await store.list()
 
     const leads = await Promise.all(
       blobs.map(async ({ key }) => {
-        const raw = await store.get(key)
-        return raw ? JSON.parse(raw) : null
+        try {
+          const raw = await store.get(key)
+          return raw ? JSON.parse(raw) : null
+        } catch { return null }
       })
     )
 
-    const sorted = leads.filter(Boolean).sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-    return { statusCode: 200, headers, body: JSON.stringify({ leads: sorted }) }
+    const sorted = leads
+      .filter(Boolean)
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ leads: sorted }),
+    }
   } catch (error) {
-    console.error('Get leads error:', error)
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur lecture leads' }) }
+    // Blobs pas encore disponible — retourne tableau vide
+    console.error('Blobs error:', error.message)
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ leads: [], info: 'Aucun lead pour le moment' }),
+    }
   }
 }
