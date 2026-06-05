@@ -1,124 +1,75 @@
-﻿import React from 'react'
+import React from 'react'
 import { cn } from '@/lib/utils'
 
 /**
- * Logo Assur Emprunteur — version finale
- * Concept : bouclier (protection/assurance) + maison (prêt immobilier)
- * Toit teal = l'assurance qui couvre votre bien
- * Corps navy = solidité, confiance financière
+ * Logo Assur Emprunteur — version grand groupe
+ * Marque : carré navy + deux diagonales (dynamisme, précision, finance)
+ * Style : AXA / Allianz / Magnolia — épuré, institutionnel, confiant
  */
 
-export const LogoIcon = ({ size = 44, className }) => (
+export const LogoIcon = ({ size = 36, light = false, className }) => (
   <svg
     width={size}
-    height={Math.round(size * 1.12)}
-    viewBox="0 0 44 49"
+    height={size}
+    viewBox="0 0 40 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     className={className}
   >
-    <defs>
-      <linearGradient id="ae-bg" x1="0" y1="0" x2="44" y2="49" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#1a40cc" />
-        <stop offset="100%" stopColor="#0a1340" />
-      </linearGradient>
-      <linearGradient id="ae-roof" x1="8" y1="28" x2="36" y2="16" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#0cb8b8" />
-        <stop offset="100%" stopColor="#3ddac5" />
-      </linearGradient>
-    </defs>
-
-    {/* Bouclier — forme moderne arrondie */}
-    <path
-      d="M22 1L3 8.5V27C3 37.8 11.5 46 22 48.5C32.5 46 41 37.8 41 27V8.5L22 1Z"
-      fill="url(#ae-bg)"
+    {/* Fond carré arrondi */}
+    <rect
+      width="40"
+      height="40"
+      rx="8"
+      fill={light ? 'rgba(255,255,255,0.12)' : '#0f1f6b'}
     />
 
-    {/* Toit de maison — dégradé teal */}
-    <path
-      d="M9 27.5L22 14.5L35 27.5Z"
-      fill="url(#ae-roof)"
+    {/* Ligne 1 — blanche (diagonale principale) */}
+    <line
+      x1="9" y1="31"
+      x2="27" y2="9"
+      stroke={light ? 'white' : 'white'}
+      strokeWidth="3.8"
+      strokeLinecap="round"
     />
 
-    {/* Corps de la maison — blanc */}
-    <rect x="15.5" y="27" width="13" height="13.5" rx="1.5" fill="white" />
-
-    {/* Porte — navy */}
-    <rect x="19.5" y="32" width="5" height="8.5" rx="1" fill="#0a1340" />
-  </svg>
-)
-
-/* Version claire pour fond sombre (navbar non scrollée, footer dark) */
-const LogoIconDark = ({ size = 44, className }) => (
-  <svg
-    width={size}
-    height={Math.round(size * 1.12)}
-    viewBox="0 0 44 49"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-  >
-    <defs>
-      <linearGradient id="ae-bg-d" x1="0" y1="0" x2="44" y2="49" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="rgba(255,255,255,0.18)" />
-        <stop offset="100%" stopColor="rgba(255,255,255,0.08)" />
-      </linearGradient>
-      <linearGradient id="ae-roof-d" x1="8" y1="28" x2="36" y2="16" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#0cb8b8" />
-        <stop offset="100%" stopColor="#3ddac5" />
-      </linearGradient>
-    </defs>
-    <path d="M22 1L3 8.5V27C3 37.8 11.5 46 22 48.5C32.5 46 41 37.8 41 27V8.5L22 1Z" fill="url(#ae-bg-d)" />
-    <path d="M9 27.5L22 14.5L35 27.5Z" fill="url(#ae-roof-d)" />
-    <rect x="15.5" y="27" width="13" height="13.5" rx="1.5" fill="white" opacity="0.95" />
-    <rect x="19.5" y="32" width="5" height="8.5" rx="1" fill="#0a1340" />
+    {/* Ligne 2 — teal (accent couleur) */}
+    <line
+      x1="19" y1="33"
+      x2="37" y2="11"
+      stroke="#10b981"
+      strokeWidth="3.8"
+      strokeLinecap="round"
+    />
   </svg>
 )
 
 export const LogoWordmark = ({ dark = false, withTagline = false, className }) => (
   <div className={cn('inline-flex items-center gap-2.5 select-none', className)}>
-
-    {dark ? <LogoIcon size={40} /> : <LogoIconDark size={40} />}
-
-    <div className="flex flex-col justify-center">
-      {/* Nom principal */}
-      <div className="leading-none flex items-baseline gap-0">
-        <span
-          className="font-black tracking-tight"
-          style={{
-            fontSize: '19px',
-            color: dark ? '#0a1340' : '#ffffff',
-            letterSpacing: '-0.025em',
-          }}
-        >
-          Assur
-        </span>
-        <span
-          className="font-black tracking-tight"
-          style={{
-            fontSize: '19px',
-            letterSpacing: '-0.025em',
-            background: 'linear-gradient(135deg, #0cb8b8, #3ddac5)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
-          }}
-        >
- Emprunteur
-        </span>
+    <LogoIcon size={34} light={!dark} />
+    <div className="flex flex-col justify-center leading-none">
+      <div
+        className="font-black tracking-tight"
+        style={{
+          fontSize: '17px',
+          letterSpacing: '-0.03em',
+          color: dark ? '#0f1f6b' : '#ffffff',
+          lineHeight: 1,
+        }}
+      >
+        ASSUR{' '}
+        <span style={{ color: '#10b981' }}>EMPRUNTEUR</span>
       </div>
-
-      {/* Tagline optionnelle */}
       {withTagline && (
         <span
-          className="font-semibold uppercase mt-1"
+          className="font-medium uppercase mt-1.5"
           style={{
-            fontSize: '9px',
-            letterSpacing: '0.18em',
-            color: dark ? '#94a3b8' : 'rgba(255,255,255,0.38)',
+            fontSize: '8px',
+            letterSpacing: '0.2em',
+            color: dark ? '#94a3b8' : 'rgba(255,255,255,0.35)',
           }}
         >
-          Moins cher · Plus simple
+          Courtier en assurance
         </span>
       )}
     </div>
