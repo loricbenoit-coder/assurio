@@ -51,15 +51,104 @@ const LoginScreen = ({ onLogin }) => {
   )
 }
 
+const PLATFORMS = ['YouTube', 'Instagram', 'TikTok', 'Facebook', 'Twitter/X', 'LinkedIn', 'Autre']
+
+const STORAGE_KEY_AFFILIES = 'ae_affilies'
+
+const loadAffiliés = () => {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY_AFFILIES)
+    return saved ? JSON.parse(saved) : AFFILIES
+  } catch { return AFFILIES }
+}
+
+const saveAffiliés = (list) => {
+  localStorage.setItem(STORAGE_KEY_AFFILIES, JSON.stringify(list))
+}
+
 /* ─── Onglet Affiliés ────────────────────────────────────── */
-const TabAffilies = ({ leads }) => (
+const TabAffilies = ({ leads }) => {
+  const [affilies, setAffilies] = useState(loadAffiliés)
+  const [showModal, setShowModal] = useState(false)
+  const [form, setForm] = useState({ name: '', platform: 'YouTube' })
+
+  const handleAdd = () => {
+    if (!form.name.trim()) return
+    const id = form.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
+    const newAffilié = {
+      id,
+      name: form.name.trim(),
+      platform: form.platform,
+      link: `https://assur-emprunteur.fr?ref=${id}`,
+    }
+    const updated = [...affilies, newAffilié]
+    setAffilies(updated)
+    saveAffiliés(updated)
+    setForm({ name: '', platform: 'YouTube' })
+    setShowModal(false)
+  }
+
+  const handleDelete = (id) => {
+    const updated = affilies.filter(a => a.id !== id)
+    setAffilies(updated)
+    saveAffiliés(updated)
+  }
+
+  return (
   <div>
-    <div className="mb-6">
-      <h2 className="text-xl font-bold text-[#0a1340]">Vos affiliés</h2>
-      <p className="text-sm text-slate-400 mt-1">Partagez ces liens avec vos partenaires influenceurs</p>
+    <div className="flex items-center justify-between mb-6">
+      <div>
+        <h2 className="text-xl font-bold text-[#0a1340]">Vos affiliés</h2>
+        <p className="text-sm text-slate-400 mt-1">Partagez ces liens avec vos partenaires influenceurs</p>
+      </div>
+      <button onClick={() => setShowModal(true)}
+        className="flex items-center gap-2 bg-[#0f1f6b] text-white px-4 py-2.5 rounded-xl text-sm font-semibold hover:bg-[#172b88] transition-colors">
+        <Link className="w-4 h-4" /> Ajouter un affilié
+      </button>
     </div>
+
+    {showModal && (
+      <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4" onClick={() => setShowModal(false)}>
+        <div className="bg-white rounded-2xl p-6 w-full max-w-sm shadow-2xl" onClick={e => e.stopPropagation()}>
+          <h3 className="font-bold text-[#0a1340] text-lg mb-5">Ajouter un affilié</h3>
+          <div className="mb-4">
+            <label className="block text-xs font-semibold text-slate-500 mb-1.5">Nom de l'influenceur *</label>
+            <input type="text" placeholder="ex: Kevin Immo" value={form.name}
+              onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0f1f6b]"
+              autoFocus />
+          </div>
+          <div className="mb-5">
+            <label className="block text-xs font-semibold text-slate-500 mb-1.5">Plateforme</label>
+            <select value={form.platform} onChange={e => setForm(f => ({ ...f, platform: e.target.value }))}
+              className="w-full px-3 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0f1f6b]">
+              {PLATFORMS.map(p => <option key={p} value={p}>{p}</option>)}
+            </select>
+          </div>
+          {form.name && (
+            <div className="bg-slate-50 rounded-xl p-3 mb-5">
+              <p className="text-xs text-slate-400 mb-1">Lien qui sera généré :</p>
+              <p className="text-xs font-mono text-[#0f1f6b] break-all">
+                assur-emprunteur.fr?ref={form.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}
+              </p>
+            </div>
+          )}
+          <div className="flex gap-3">
+            <button onClick={() => setShowModal(false)}
+              className="flex-1 py-2.5 rounded-xl border border-slate-200 text-slate-600 text-sm font-medium hover:bg-slate-50">
+              Annuler
+            </button>
+            <button onClick={handleAdd} disabled={!form.name.trim()}
+              className="flex-1 py-2.5 rounded-xl bg-[#10b981] text-white text-sm font-semibold disabled:opacity-40 hover:bg-[#059669] transition-colors">
+              Créer le lien
+            </button>
+          </div>
+        </div>
+      </div>
+    )}
+
     <div className="grid md:grid-cols-3 gap-4 mb-8">
-      {AFFILIES.map(({ id, name, platform, link }) => {
+      {affilies.map(({ id, name, platform, link }) => {
         const affLeads = leads.filter(l => l.referral === id)
         const affSignes = affLeads.filter(l => l.status === 'signe')
         const affCA = affSignes.reduce((acc, l) => acc + (l.quote?.savings > 5000 ? 700 : 350), 0)
@@ -86,32 +175,40 @@ const TabAffilies = ({ leads }) => (
             </div>
             <div className="bg-slate-50 rounded-xl p-3 flex items-center justify-between gap-2">
               <span className="text-xs text-slate-500 truncate">{link}</span>
-              <button onClick={() => navigator.clipboard.writeText(link)}
-                className="text-xs bg-[#0f1f6b] text-white px-2.5 py-1 rounded-lg font-medium flex-shrink-0 hover:bg-[#172b88] transition-colors">
-                Copier
-              </button>
+              <div className="flex gap-1.5 flex-shrink-0">
+                <button onClick={() => navigator.clipboard.writeText(link)}
+                  className="text-xs bg-[#0f1f6b] text-white px-2.5 py-1 rounded-lg font-medium hover:bg-[#172b88] transition-colors">
+                  Copier
+                </button>
+                <button onClick={() => handleDelete(id)}
+                  className="text-xs bg-red-50 text-red-500 px-2 py-1 rounded-lg font-medium hover:bg-red-100 transition-colors">
+                  ✕
+                </button>
+              </div>
             </div>
           </div>
         )
       })}
-      <div className="bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 p-5 flex flex-col items-center justify-center text-center gap-2">
+      <button onClick={() => setShowModal(true)}
+        className="bg-slate-50 rounded-2xl border-2 border-dashed border-slate-200 p-5 flex flex-col items-center justify-center text-center gap-2 hover:border-[#0f1f6b]/40 hover:bg-[#f0f4ff] transition-all w-full">
         <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center">
           <Link className="w-5 h-5 text-slate-400" />
         </div>
-        <div className="text-sm font-semibold text-slate-500">Ajouter un affilié</div>
-        <div className="text-xs text-slate-400">Modifiez Admin.jsx → tableau AFFILIES</div>
-      </div>
+        <div className="text-sm font-semibold text-slate-500">+ Ajouter un affilié</div>
+        <div className="text-xs text-slate-400">Cliquez pour créer un nouveau lien</div>
+      </button>
     </div>
     <div className="bg-[#f0f4ff] rounded-2xl p-6 border border-[#0f1f6b]/10">
       <h3 className="font-bold text-[#0a1340] mb-3">💡 Comment ça marche</h3>
       <div className="grid md:grid-cols-3 gap-4 text-sm text-slate-600">
-        <div><strong className="text-[#0f1f6b]">1.</strong> Chaque affilié reçoit son lien unique</div>
-        <div><strong className="text-[#0f1f6b]">2.</strong> Chaque lead arrivé via ce lien est tracké automatiquement</div>
-        <div><strong className="text-[#0f1f6b]">3.</strong> Tu vois ici les leads et CA par affilié</div>
+        <div><strong className="text-[#0f1f6b]">1.</strong> Ajoute un affilié → lien unique généré</div>
+        <div><strong className="text-[#0f1f6b]">2.</strong> L'influenceur partage son lien → visites trackées</div>
+        <div><strong className="text-[#0f1f6b]">3.</strong> Tu vois les leads et CA par affilié ici</div>
       </div>
     </div>
   </div>
-)
+  )
+}
 
 /* ─── Onglet Leads ───────────────────────────────────────── */
 const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected }) => {
