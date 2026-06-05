@@ -168,13 +168,13 @@ export const Hero = () => {
 
           {/* Headline fixe */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.08] tracking-tight mb-6">
-            Votre assurance emprunteur à
+            Comparez et économisez
             <br />
             <span
               className="text-transparent bg-clip-text"
               style={{ backgroundImage: 'linear-gradient(135deg, #10b981, #34d399)' }}
             >
-              -60%
+              sur votre assurance de prêt immobilier
             </span>
           </h1>
 
