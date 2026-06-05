@@ -13,9 +13,9 @@ const LINKS = {
     { label: 'Nos avantages', href: '#avantages' },
   ],
   Contact: [
+    { label: 'À propos', href: '/a-propos', isRoute: true },
     { label: 'Formulaire de contact', href: '/contact', isRoute: true },
     { label: 'Avis clients', href: '/#avis' },
-    { label: 'FAQ', href: '/#faq' },
     { label: 'Conseils', href: '/blog', isRoute: true },
   ],
   Légal: [

@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils'
 const PHONE = '06 XX XX XX XX'
 
 const NAV_LINKS = [
+  { label: 'À propos', href: '/a-propos', isRoute: true },
   { label: 'Conseils', href: '/blog', isRoute: true },
   { label: 'Contact', href: '/contact', isRoute: true },
 ]
@@ -17,6 +18,7 @@ const MOBILE_LINKS = [
   { label: 'Avantages', href: '/#avantages' },
   { label: 'Avis clients', href: '/#avis' },
   { label: 'FAQ', href: '/#faq' },
+  { label: 'À propos', href: '/a-propos', isRoute: true },
   { label: 'Conseils', href: '/blog', isRoute: true },
   { label: 'Contact', href: '/contact', isRoute: true },
 ]

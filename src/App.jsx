@@ -19,6 +19,7 @@ import { CGU } from '@/pages/CGU'
 import { PolitiqueConfidentialite } from '@/pages/PolitiqueConfidentialite'
 import { Contact } from '@/pages/Contact'
 import { Admin } from '@/pages/Admin'
+import { APropos } from '@/pages/APropos'
 import { Blog } from '@/pages/Blog'
 import { Article } from '@/pages/Article'
 
@@ -84,6 +85,7 @@ const App = () => (
       <Route path="/politique-confidentialite" element={<LegalPage><PolitiqueConfidentialite /></LegalPage>} />
       <Route path="/contact" element={<LegalPage><Contact /></LegalPage>} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/a-propos" element={<LegalPage><APropos /></LegalPage>} />
       <Route path="/blog" element={<LegalPage><Blog /></LegalPage>} />
       <Route path="/blog/:slug" element={<LegalPage><Article /></LegalPage>} />
     </Routes>
