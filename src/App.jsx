@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { initReferral } from '@/hooks/useReferral'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { Hero } from '@/components/sections/Hero'
@@ -22,6 +23,12 @@ import { Blog } from '@/pages/Blog'
 import { Article } from '@/pages/Article'
 
 // Scroll vers l'ancre après chaque navigation
+// Initialise le tracking affilié dès l'arrivée sur le site
+const ReferralTracker = () => {
+  useEffect(() => { initReferral() }, [])
+  return null
+}
+
 const ScrollToHash = () => {
   const { hash } = useLocation()
   useEffect(() => {
@@ -80,6 +87,7 @@ const App = () => (
       <Route path="/blog" element={<LegalPage><Blog /></LegalPage>} />
       <Route path="/blog/:slug" element={<LegalPage><Article /></LegalPage>} />
     </Routes>
+    <ReferralTracker />
     <ChatWidget />
     <CookieBanner />
   </BrowserRouter>

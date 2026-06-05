@@ -125,7 +125,7 @@ export const handler = async (event, context) => {
 
   try {
     const payload = JSON.parse(event.body)
-    const { contact, quote, loanInfo, bankMonthly } = payload
+    const { contact, quote, loanInfo, bankMonthly, referral } = payload
     const RESEND_KEY = process.env.RESEND_API_KEY
     const now = new Date()
     const leadId = `lead_${now.getTime()}`
@@ -133,12 +133,13 @@ export const handler = async (event, context) => {
     // 1. Sauvegarder le lead dans Netlify Blobs
     try {
       const store = getStore('leads')
-      const leadData = { id: leadId, contact, quote, loanInfo, bankMonthly, createdAt: now.toISOString(), status: 'nouveau' }
+      const leadData = { id: leadId, contact, quote, loanInfo, bankMonthly, referral: referral || null, createdAt: now.toISOString(), status: 'nouveau' }
       await store.set(leadId, JSON.stringify(leadData))
     } catch (e) { console.error('Blob save error:', e.message) }
 
     // 2. Email immédiat au courtier
-    await sendEmail(RESEND_KEY, { to: [OWNER_EMAIL], subject: `🔔 Nouveau lead — ${contact.firstName} ${contact.lastName} · ${fmt(loanInfo.amount)}`, html: emailOwner({ contact, quote, loanInfo, bankMonthly }) })
+    const referralTag = referral ? ` · 🔗 via ${referral}` : ''
+    await sendEmail(RESEND_KEY, { to: [OWNER_EMAIL], subject: `🔔 Nouveau lead${referralTag} — ${contact.firstName} ${contact.lastName} · ${fmt(loanInfo.amount)}`, html: emailOwner({ contact, quote, loanInfo, bankMonthly, referral }) })
 
     // 3. Email de confirmation au client
     await sendEmail(RESEND_KEY, { to: [OWNER_EMAIL], subject: `Confirmation devis — ${contact.firstName} ${contact.lastName}`, html: emailClient({ contact, quote, loanInfo }) })

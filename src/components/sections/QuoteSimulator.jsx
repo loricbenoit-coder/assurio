@@ -3,6 +3,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2, TrendingDown, Star, Phone, Shield,
 import { Button } from '@/components/ui/Button'
 import { computeQuotes } from '@/lib/quoteEngine'
 import { cn } from '@/lib/utils'
+import { getReferral } from '@/hooks/useReferral'
 
 const STEPS = ['Votre prêt', 'Votre profil', 'Vos offres', 'Contact']
 
@@ -151,6 +152,7 @@ export const QuoteSimulator = () => {
           contact, quote: selectedQuote,
           loanInfo: { amount: form.amount, duration: form.duration, age: form.age, smoker: form.smoker, profession: form.profession },
           bankMonthly: results.bankMonthly,
+          referral: getReferral(),
         }),
       })
       if (!res.ok) throw new Error()
