@@ -1,31 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 100" fill="none">
-  <!-- Icône carrée centrée verticalement -->
-  <rect x="0" y="8" width="84" height="84" rx="14" fill="#0f1f6b"/>
-  <line x1="18" y1="76" x2="52" y2="22"
-        stroke="white" stroke-width="8" stroke-linecap="round"/>
-  <line x1="42" y1="80" x2="76" y2="26"
-        stroke="#10b981" stroke-width="8" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" fill="none">
+  <!-- Icône centrée en haut -->
+  <rect x="148" y="0" width="104" height="104" rx="16" fill="#0f1f6b"/>
+  <line x1="162" y1="90"  x2="202" y2="22" stroke="white"   stroke-width="9" stroke-linecap="round"/>
+  <line x1="186" y1="95"  x2="226" y2="27" stroke="#10b981" stroke-width="9" stroke-linecap="round"/>
+  <line x1="210" y1="100" x2="250" y2="32" stroke="#38bdf8" stroke-width="9" stroke-linecap="round"/>
 
-  <!-- Wordmark aligné verticalement au centre -->
-  <text x="104" y="46"
+  <!-- Nom de marque centré sous l'icône -->
+  <text x="200" y="148"
+        text-anchor="middle"
         font-family="Arial Black, Helvetica, sans-serif"
         font-weight="900"
-        font-size="30"
+        font-size="34"
         fill="#0f1f6b"
-        letter-spacing="-0.5">ASSUR</text>
-  <text x="104" y="46"
-        font-family="Arial Black, Helvetica, sans-serif"
-        font-weight="900"
-        font-size="30"
-        fill="#10b981"
-        letter-spacing="-0.5"
-        dx="112">EMPRUNTEUR</text>
+        letter-spacing="-0.5">
+    ASSUR EMPRUNTEUR
+  </text>
 
   <!-- Tagline -->
-  <text x="106" y="70"
+  <text x="200" y="185"
+        text-anchor="middle"
         font-family="Arial, Helvetica, sans-serif"
         font-weight="400"
-        font-size="12"
+        font-size="13"
         fill="#94a3b8"
-        letter-spacing="2.5">COURTIER EN ASSURANCE</text>
+        letter-spacing="3.5">
+    COURTIER EN ASSURANCE
+  </text>
+
+  <!-- Séparateur décoratif -->
+  <line x1="140" y1="200" x2="260" y2="200" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Slogan -->
+  <text x="200" y="230"
+        text-anchor="middle"
+        font-family="Arial, Helvetica, sans-serif"
+        font-weight="600"
+        font-size="13"
+        fill="#10b981"
+        letter-spacing="1">
+    Comparez · Économisez · Simplifiez
+  </text>
 </svg>

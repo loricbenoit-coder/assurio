@@ -1,23 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
-  <!-- Fond -->
   <rect width="400" height="400" rx="48" fill="#0f1f6b"/>
-
-  <!-- Lignes diagonales centrées (groupe centré sur 200,185) -->
-  <!-- Ligne 1 — blanche -->
-  <line x1="80" y1="305" x2="215" y2="80"
-        stroke="white" stroke-width="28" stroke-linecap="round"/>
-  <!-- Ligne 2 — teal -->
-  <line x1="185" y1="315" x2="320" y2="90"
-        stroke="#10b981" stroke-width="28" stroke-linecap="round"/>
-
-  <!-- Texte centré en bas -->
-  <text x="200" y="368"
+  <!-- 3 bandes diagonales rapprochées et centrées -->
+  <line x1="55"  y1="295" x2="185" y2="90" stroke="white"   stroke-width="26" stroke-linecap="round"/>
+  <line x1="120" y1="308" x2="250" y2="103" stroke="#10b981" stroke-width="26" stroke-linecap="round"/>
+  <line x1="185" y1="321" x2="315" y2="116" stroke="#38bdf8" stroke-width="26" stroke-linecap="round"/>
+  <!-- Texte centré -->
+  <text x="200" y="372"
         text-anchor="middle"
         font-family="Arial Black, Helvetica, sans-serif"
         font-weight="900"
-        font-size="28"
+        font-size="26"
         fill="white"
-        letter-spacing="1.5">
+        letter-spacing="1">
     ASSUR EMPRUNTEUR
   </text>
 </svg>

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
-  <!-- Fond -->
-  <rect width="200" height="200" rx="40" fill="#0f1f6b"/>
-  <!-- Lignes diagonales centrées -->
-  <line x1="40" y1="155" x2="120" y2="45" stroke="white" stroke-width="18" stroke-linecap="round"/>
-  <line x1="90" y1="162" x2="170" y2="52" stroke="#10b981" stroke-width="18" stroke-linecap="round"/>
+  <rect width="200" height="200" rx="38" fill="#0f1f6b"/>
+  <!-- 3 bandes diagonales rapprochées -->
+  <line x1="28"  y1="158" x2="105" y2="40" stroke="white"   stroke-width="18" stroke-linecap="round"/>
+  <line x1="68"  y1="165" x2="145" y2="47" stroke="#10b981" stroke-width="18" stroke-linecap="round"/>
+  <line x1="108" y1="172" x2="185" y2="54" stroke="#38bdf8" stroke-width="18" stroke-linecap="round"/>
 </svg>
