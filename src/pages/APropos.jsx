@@ -56,42 +56,63 @@ export const APropos = () => (
         <Link to="/" className="inline-flex items-center gap-2 text-white/50 hover:text-white text-sm mb-10 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Retour à l'accueil
         </Link>
-        <div className="flex items-center gap-4 mb-6">
-          {/* Avatar initial */}
-          <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-[#10b981] to-[#06b6d4] flex items-center justify-center flex-shrink-0">
-            <span className="text-white font-black text-3xl">L</span>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-white mb-8">
+          L'équipe fondatrice
+        </h1>
+
+        {/* Les 2 fondateurs */}
+        <div className="flex flex-col sm:flex-row gap-6 mb-8">
+          {/* Benoit */}
+          <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-5 py-4">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#10b981] to-[#06b6d4] flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-black text-2xl">B</span>
+            </div>
+            <div>
+              <p className="text-white font-bold text-lg">Benoit</p>
+              <p className="text-[#10b981] text-sm font-semibold">Co-fondateur</p>
+              <p className="text-white/50 text-xs mt-0.5">Courtier · 10+ ans d'expérience</p>
+            </div>
           </div>
-          <div>
-            <p className="text-[#10b981] font-semibold text-sm uppercase tracking-widest mb-1">Fondateur</p>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-white">Loric Benoit</h1>
-            <p className="text-white/60 mt-1">Courtier en assurance emprunteur · 10+ ans d'expérience</p>
+
+          {/* Maxime */}
+          <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-5 py-4">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#2a55e8] to-[#0f1f6b] flex items-center justify-center flex-shrink-0">
+              <span className="text-white font-black text-2xl">M</span>
+            </div>
+            <div>
+              <p className="text-white font-bold text-lg">Maxime</p>
+              <p className="text-[#10b981] text-sm font-semibold">Co-fondateur</p>
+              <p className="text-white/50 text-xs mt-0.5">Développement & stratégie</p>
+            </div>
           </div>
         </div>
+
         <p className="text-xl text-white/70 leading-relaxed max-w-2xl">
-          J'ai passé 10 ans à voir des emprunteurs payer trop cher leur assurance sans le savoir.
-          J'ai créé <strong className="text-white">Assur Emprunteur</strong> pour changer ça.
+          Après 10 ans dans le courtage en assurance, nous avons créé{' '}
+          <strong className="text-white">Assur Emprunteur</strong> avec une conviction commune :
+          chaque emprunteur mérite de payer son assurance au juste prix.
         </p>
       </div>
     </div>
 
     <div className="max-w-4xl mx-auto px-6 py-16">
 
-      {/* Mon histoire */}
+      {/* Notre histoire */}
       <div className="mb-16">
-        <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-4">Mon histoire</span>
-        <h2 className="text-3xl font-extrabold text-[#0a1340] mb-6">Pourquoi j'ai créé Assur Emprunteur</h2>
+        <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-4">Notre histoire</span>
+        <h2 className="text-3xl font-extrabold text-[#0a1340] mb-6">Pourquoi nous avons créé Assur Emprunteur</h2>
         <div className="prose-custom space-y-4 text-slate-600 leading-relaxed text-lg">
           <p>
-            Après plus de <strong className="text-[#0a1340]">10 ans passés au sein d'une grande société de courtage</strong>, j'ai vu des milliers de dossiers d'assurance emprunteur défiler sur mon bureau. Et à chaque fois, le même constat : la grande majorité des emprunteurs payaient leur assurance <strong className="text-[#0a1340]">2 à 3 fois trop cher</strong>, simplement parce qu'ils ne savaient pas qu'ils pouvaient faire autrement.
+            Après plus de <strong className="text-[#0a1340]">10 ans passés au sein d'une grande société de courtage</strong>, Benoit a vu des milliers de dossiers d'assurance emprunteur défiler. Et à chaque fois, le même constat : la grande majorité des emprunteurs payaient leur assurance <strong className="text-[#0a1340]">2 à 3 fois trop cher</strong>, simplement parce qu'ils ne savaient pas qu'ils pouvaient faire autrement.
           </p>
           <p>
             Les banques ne font pas de publicité pour vous dire que vous pouvez changer d'assurance. C'est normal — ce n'est pas dans leur intérêt. Mais c'est dans le vôtre.
           </p>
           <p>
-            J'ai créé <strong className="text-[#0a1340]">Assur Emprunteur</strong> avec une conviction simple : <em>chaque emprunteur mérite de bénéficier du même niveau d'expertise que les grandes entreprises</em>, de manière simple, transparente et gratuite.
+            C'est avec Maxime que nous avons décidé de construire <strong className="text-[#0a1340]">Assur Emprunteur</strong> : unir l'expertise terrain du courtage et la technologie pour rendre ce service accessible à tous, simplement, gratuitement et en toute transparence.
           </p>
           <p>
-            Mon expérience terrain me permet de connaître les subtilités de chaque contrat, les assureurs les plus réactifs, les négociations qui font vraiment la différence. Ce savoir-faire, je le mets entièrement à votre service.
+            Notre expérience combinée nous permet de connaître les subtilités de chaque contrat, les assureurs les plus réactifs, et les négociations qui font vraiment la différence. Ce savoir-faire, nous le mettons entièrement à votre service.
           </p>
         </div>
       </div>
