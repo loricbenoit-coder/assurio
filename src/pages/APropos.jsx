@@ -24,7 +24,7 @@ const VALEURS = [
   },
   {
     icon: Award,
-    title: 'Accompagnement jusqu'au bout',
+    title: "Accompagnement jusqu'au bout",
     description: "Je ne disparais pas après la signature. Je reste disponible pendant toute la durée de votre prêt pour toute question ou modification.",
     color: 'bg-purple-50 text-purple-600',
   },
