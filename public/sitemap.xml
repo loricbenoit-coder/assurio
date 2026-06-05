@@ -1,44 +1,19 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-
-  <!-- Page d'accueil — priorité maximale -->
-  <url>
-    <loc>https://assur-emprunteur.fr/</loc>
-    <lastmod>2025-06-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://assur-emprunteur.fr/"/>
-  </url>
-
-  <!-- Page contact -->
-  <url>
-    <loc>https://assur-emprunteur.fr/contact</loc>
-    <lastmod>2025-06-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Pages légales -->
-  <url>
-    <loc>https://assur-emprunteur.fr/mentions-legales</loc>
-    <lastmod>2025-06-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://assur-emprunteur.fr/cgu</loc>
-    <lastmod>2025-06-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://assur-emprunteur.fr/politique-confidentialite</loc>
-    <lastmod>2025-06-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://assur-emprunteur.fr/</loc><lastmod>2025-06-20</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog</loc><lastmod>2025-06-20</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://assur-emprunteur.fr/contact</loc><lastmod>2025-06-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/loi-lemoine-assurance-emprunteur</loc><lastmod>2025-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/comment-changer-assurance-emprunteur</loc><lastmod>2025-05-20</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/garanties-assurance-emprunteur</loc><lastmod>2025-05-25</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/assurance-emprunteur-fumeur</loc><lastmod>2025-06-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/delegation-assurance-emprunteur</loc><lastmod>2025-06-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/taea-assurance-emprunteur</loc><lastmod>2025-06-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/convention-aeras-assurance-emprunteur</loc><lastmod>2025-06-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/comparatif-banque-courtier-assurance</loc><lastmod>2025-06-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/economiser-assurance-pret-immobilier</loc><lastmod>2025-06-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/blog/questionnaire-sante-assurance-emprunteur</loc><lastmod>2025-06-20</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://assur-emprunteur.fr/mentions-legales</loc><lastmod>2025-06-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://assur-emprunteur.fr/cgu</loc><lastmod>2025-06-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://assur-emprunteur.fr/politique-confidentialite</loc><lastmod>2025-06-20</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

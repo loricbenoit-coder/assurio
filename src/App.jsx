@@ -18,6 +18,8 @@ import { CGU } from '@/pages/CGU'
 import { PolitiqueConfidentialite } from '@/pages/PolitiqueConfidentialite'
 import { Contact } from '@/pages/Contact'
 import { Admin } from '@/pages/Admin'
+import { Blog } from '@/pages/Blog'
+import { Article } from '@/pages/Article'
 
 // Scroll vers l'ancre après chaque navigation
 const ScrollToHash = () => {
@@ -75,6 +77,8 @@ const App = () => (
       <Route path="/politique-confidentialite" element={<LegalPage><PolitiqueConfidentialite /></LegalPage>} />
       <Route path="/contact" element={<LegalPage><Contact /></LegalPage>} />
       <Route path="/admin" element={<Admin />} />
+      <Route path="/blog" element={<LegalPage><Blog /></LegalPage>} />
+      <Route path="/blog/:slug" element={<LegalPage><Article /></LegalPage>} />
     </Routes>
     <ChatWidget />
     <CookieBanner />

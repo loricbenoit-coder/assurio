@@ -13,6 +13,7 @@ const NAV_LINKS = [
   { label: 'Avantages', href: '/#avantages' },
   { label: 'Avis clients', href: '/#avis' },
   { label: 'FAQ', href: '/#faq' },
+  { label: 'Blog', href: '/blog', isRoute: true },
   { label: 'Contact', href: '/contact', isRoute: true },
 ]
 
