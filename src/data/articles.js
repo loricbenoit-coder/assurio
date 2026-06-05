@@ -1,6 +1,8 @@
-export const ARTICLES = [
+﻿export const ARTICLES = [
   {
     slug: 'loi-lemoine-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Signature contrat assurance emprunteur loi Lemoine',
     title: 'Loi Lemoine : tout ce qui change pour votre assurance emprunteur',
     description: 'Depuis 2022, la loi Lemoine révolutionne l\'assurance emprunteur. Résiliation à tout moment, suppression du questionnaire de santé... Découvrez tous vos nouveaux droits.',
     category: 'Législation',
@@ -55,6 +57,8 @@ La loi Lemoine est une opportunité en or pour tous les emprunteurs. Si vous n'a
   },
   {
     slug: 'comment-changer-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Clés maison changement assurance emprunteur',
     title: 'Comment changer d\'assurance emprunteur en 2025 : le guide complet',
     description: 'Changer d\'assurance emprunteur est plus simple qu\'on ne le croit. Suivez notre guide étape par étape pour économiser des milliers d\'euros sur votre prêt immobilier.',
     category: 'Guide pratique',
@@ -116,6 +120,8 @@ Changer d'assurance emprunteur est simple, rapide et sans risque. La seule quest
   },
   {
     slug: 'garanties-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Protection garanties assurance emprunteur DC PTIA ITT',
     title: 'Les garanties de l\'assurance emprunteur expliquées simplement',
     description: 'DC, PTIA, ITT, IPT, IPP... Les garanties de l\'assurance emprunteur sont souvent obscures. Notre guide les explique clairement pour que vous fassiez le bon choix.',
     category: 'Guide pratique',
@@ -188,6 +194,8 @@ Comprendre les garanties de votre assurance emprunteur vous permet de faire des 
   },
   {
     slug: 'assurance-emprunteur-fumeur',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Assurance emprunteur tarif fumeur santé',
     title: 'Assurance emprunteur fumeur : comment payer moins cher ?',
     description: 'Fumeur, votre assurance emprunteur coûte plus cher. Mais des solutions existent pour réduire la facture. Nos conseils pour économiser malgré le surcoût tabac.',
     category: 'Conseils',
@@ -245,6 +253,8 @@ Même fumeur, passer par un courtier vous fait économiser **plus de 8 000€** 
   },
   {
     slug: 'delegation-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Délégation assurance emprunteur contrat courtier',
     title: 'Délégation d\'assurance emprunteur : tout comprendre en 5 minutes',
     description: 'La délégation d\'assurance vous permet de choisir librement votre assurance emprunteur plutôt que celle de votre banque. Mode d\'emploi complet.',
     category: 'Guide pratique',
@@ -302,6 +312,8 @@ La délégation d'assurance emprunteur est votre droit, et l'exercer peut vous f
   },
   {
     slug: 'taea-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'TAEA taux annuel effectif assurance comparer',
     title: 'TAEA : comment comparer les assurances emprunteur efficacement',
     description: 'Le TAEA (Taux Annuel Effectif d\'Assurance) est l\'indicateur clé pour comparer les assurances emprunteur. Apprenez à l\'utiliser pour faire le meilleur choix.',
     category: 'Comprendre',
@@ -363,6 +375,8 @@ Le TAEA est votre meilleur allié pour comparer les assurances emprunteur. Mais 
   },
   {
     slug: 'convention-aeras-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Convention AERAS assurance emprunteur maladie risque aggravé',
     title: 'Convention AERAS : l\'assurance emprunteur pour les personnes malades',
     description: 'La convention AERAS facilite l\'accès à l\'assurance emprunteur pour les personnes ayant ou ayant eu un problème de santé grave. Tout ce qu\'il faut savoir.',
     category: 'Cas particuliers',
@@ -417,6 +431,8 @@ La convention AERAS est un filet de sécurité important pour les personnes dont
   },
   {
     slug: 'comparatif-banque-courtier-assurance',
+    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Comparatif banque courtier assurance emprunteur économies',
     title: 'Assurance emprunteur : banque vs courtier, qui gagne ?',
     description: 'Faut-il prendre l\'assurance de sa banque ou passer par un courtier ? Comparatif objectif pour vous aider à faire le meilleur choix.',
     category: 'Comparatif',
@@ -491,6 +507,8 @@ Dans la grande majorité des cas, passer par un courtier vous fait économiser d
   },
   {
     slug: 'economiser-assurance-pret-immobilier',
+    image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Économiser assurance prêt immobilier conseils',
     title: '10 conseils pour économiser sur votre assurance prêt immobilier',
     description: 'Découvrez nos 10 conseils d\'experts pour réduire le coût de votre assurance emprunteur et économiser plusieurs milliers d\'euros.',
     category: 'Conseils',
@@ -549,6 +567,8 @@ L'optimisation de votre assurance emprunteur est l'une des actions à plus fort 
   },
   {
     slug: 'questionnaire-sante-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Questionnaire santé assurance emprunteur déclaration',
     title: 'Questionnaire de santé assurance emprunteur : ce qu\'il faut déclarer',
     description: 'Le questionnaire de santé de l\'assurance emprunteur est souvent source d\'inquiétude. Notre guide vous explique ce que vous devez déclarer et comment optimiser votre dossier.',
     category: 'Guide pratique',

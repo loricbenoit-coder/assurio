@@ -75,8 +75,21 @@ export const Article = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header article */}
-      <div className="bg-gradient-to-br from-[#0f1f6b] to-[#0a1340] py-16">
+      {/* Image hero de l'article */}
+      {article.image && (
+        <div className="relative h-64 md:h-80 overflow-hidden">
+          <img
+            src={article.image}
+            alt={article.imageAlt}
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1340]/90 via-[#0a1340]/40 to-transparent" />
+        </div>
+      )}
+
+    {/* Header article */}
+      <div className={`bg-gradient-to-br from-[#0f1f6b] to-[#0a1340] ${article.image ? 'py-10' : 'py-16'}`}>
         <div className="max-w-3xl mx-auto px-6">
           <Link to="/blog" className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-8 transition-colors">
             <ArrowLeft className="w-4 h-4" /> Retour au blog
