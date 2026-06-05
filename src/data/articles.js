@@ -633,4 +633,735 @@ Si votre questionnaire de santé entraîne un refus ou une surprime jugée exces
 Le questionnaire de santé ne doit pas être une barrière. Grâce à la loi Lemoine et au droit à l'oubli, de nombreux emprunteurs peuvent aujourd'hui accéder à une assurance sans contrainte médicale. Nos conseillers Assur Emprunteur sont là pour vous guider dans cette démarche.
     `,
   },
+  // ── Nouveaux articles ─────────────────────────────────────
+  {
+    slug: 'assurance-emprunteur-senior',
+    image: 'https://images.unsplash.com/photo-1447014421976-7fec21d26d86?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Senior assurance emprunteur prêt immobilier après 60 ans',
+    title: "Assurance emprunteur senior : comment s'assurer après 60 ans",
+    description: "Emprunter après 60 ans est possible mais l'assurance emprunteur est plus chère. Découvrez nos conseils pour trouver la meilleure couverture au meilleur prix.",
+    category: 'Cas particuliers',
+    readTime: '6 min',
+    date: '2025-06-22',
+    keywords: 'assurance emprunteur senior, assurance prêt immobilier 60 ans, assurance emprunteur personnes âgées',
+    content: `
+## Peut-on emprunter après 60 ans ?
+
+Oui, absolument. Il n'existe aucune limite d'âge légale pour contracter un prêt immobilier en France. Cependant, les banques et assureurs appliquent des conditions plus strictes après 60 ans, notamment en ce qui concerne l'assurance emprunteur.
+
+## Pourquoi l'assurance emprunteur coûte-t-elle plus cher après 60 ans ?
+
+L'assurance emprunteur est calculée en fonction du **risque statistique**. Après 60 ans, les risques de décès, d'invalidité et de maladie augmentent statistiquement, ce qui se traduit par des primes plus élevées.
+
+En moyenne, un emprunteur de 65 ans paie **3 à 4 fois plus** qu'un emprunteur de 35 ans pour les mêmes garanties.
+
+## Les spécificités après 60 ans
+
+### Le questionnaire de santé devient incontournable
+
+Depuis la loi Lemoine, l'exonération du questionnaire de santé ne s'applique que pour les prêts se terminant **avant le 60ème anniversaire** de l'emprunteur. Au-delà, le questionnaire est obligatoire.
+
+### Les garanties disponibles évoluent
+
+Certaines garanties comme l'**ITT (Incapacité Temporaire de Travail)** peuvent être limitées ou indisponibles après 65 ans (souvent remplacée par une garantie incapacité adaptée aux retraités).
+
+### La durée du prêt est souvent limitée
+
+La plupart des assureurs fixent une **limite d'âge maximum** à la fin du contrat, généralement entre 75 et 90 ans selon les compagnies.
+
+## Comment optimiser son assurance emprunteur en tant que senior ?
+
+### 1. Comparez impérativement les offres
+
+Les écarts de tarifs entre assureurs sont encore plus importants pour les seniors. Certains assureurs sont spécialisés dans ce profil et proposent des tarifs bien plus compétitifs.
+
+### 2. Soignez votre dossier médical
+
+Avant de remplir le questionnaire de santé, faites un bilan médical complet. Un bon bilan de santé peut réduire significativement votre prime.
+
+### 3. Négociez les exclusions
+
+Certaines pathologies courantes chez les seniors (problèmes dorsaux, diabète modéré) peuvent être exclues des garanties. Négociez pour les inclure ou vérifiez l'impact sur le tarif.
+
+### 4. Pensez à la convention AERAS
+
+Si votre état de santé complique l'accès à l'assurance, la **convention AERAS** (s'Assurer et Emprunter avec un Risque Aggravé de Santé) vous garantit un accès à l'assurance malgré vos antécédents médicaux.
+
+### 5. Optez pour une assurance sur le capital restant dû
+
+Certains assureurs proposent une prime calculée sur le capital restant dû plutôt que sur le capital initial. Cette option peut être avantageuse pour les seniors dont le prêt est déjà partiellement remboursé.
+
+## Quel est le coût moyen pour un senior ?
+
+**Exemple pour un prêt de 150 000€ sur 10 ans :**
+
+| Âge | Assurance banque | Meilleure offre marché | Économies |
+|-----|-----------------|----------------------|-----------|
+| 60 ans | 180€/mois | 95€/mois | 10 200€ |
+| 65 ans | 230€/mois | 130€/mois | 12 000€ |
+| 70 ans | 280€/mois | 165€/mois | 13 800€ |
+
+## Conclusion
+
+Même après 60 ans, il est largement possible et rentable de changer d'assurance emprunteur. Les économies peuvent être considérables. Chez Assur Emprunteur, nous avons des partenaires spécialisés dans les profils seniors qui proposent des tarifs compétitifs avec des garanties adaptées.
+    `,
+  },
+  {
+    slug: 'pret-immobilier-sans-assurance',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Prêt immobilier sans assurance emprunteur immeuble',
+    title: "Prêt immobilier sans assurance : est-ce possible ?",
+    description: "L'assurance emprunteur est-elle obligatoire ? Peut-on obtenir un prêt immobilier sans s'assurer ? Réponses claires et alternatives légales.",
+    category: 'Guide pratique',
+    readTime: '4 min',
+    date: '2025-06-23',
+    keywords: "prêt immobilier sans assurance, assurance emprunteur obligatoire, alternative assurance prêt",
+    content: `
+## L'assurance emprunteur est-elle légalement obligatoire ?
+
+**Non, légalement, l'assurance emprunteur n'est pas obligatoire.** Aucune loi française n'impose à un emprunteur de souscrire une assurance pour obtenir un prêt immobilier.
+
+Cependant, en pratique, la quasi-totalité des banques **exigent** une assurance emprunteur comme condition d'octroi du prêt. Sans assurance, votre demande de prêt sera très probablement refusée.
+
+## Pourquoi les banques exigent-elles une assurance ?
+
+L'assurance emprunteur protège **la banque** (et non pas vous en premier lieu) contre le risque de non-remboursement du prêt en cas de :
+- Décès de l'emprunteur
+- Invalidité totale et permanente
+- Incapacité temporaire de travail prolongée
+
+Sans cette garantie, la banque prend un risque financier qu'elle refuse généralement d'assumer.
+
+## Les rares cas où un prêt sans assurance est possible
+
+### 1. Nantissement d'actifs financiers
+
+Si vous disposez d'un patrimoine financier important (assurance-vie, portefeuille boursier), certaines banques peuvent accepter de **nantir ces actifs** en garantie à la place d'une assurance. La banque dispose alors d'une garantie sur votre capital.
+
+### 2. Hypothèque renforcée
+
+Dans certains cas, une **hypothèque sur un bien déjà possédé** peut remplacer l'assurance emprunteur. La banque dispose alors d'une garantie immobilière.
+
+### 3. Caution solidaire
+
+Un proche (parent, conjoint) peut se porter **caution solidaire** pour compenser l'absence d'assurance. Cette solution reste rare et risquée pour le cautionnaire.
+
+## Que faire si vous ne pouvez pas obtenir d'assurance ?
+
+### La convention AERAS
+
+Si votre état de santé vous empêche d'obtenir une assurance classique, la **convention AERAS** garantit l'accès à l'assurance pour les personnes présentant des risques aggravés de santé.
+
+### Les assureurs spécialisés
+
+Certains assureurs se spécialisent dans les profils difficiles (maladies chroniques, antécédents médicaux). Un courtier comme Assur Emprunteur peut vous orienter vers les partenaires les plus adaptés.
+
+### La loi Lemoine et l'exonération du questionnaire
+
+Depuis 2022, si votre prêt se termine avant vos 60 ans et que le capital assuré est inférieur à 200 000€, vous êtes **exonéré de questionnaire de santé**. Cette mesure facilite l'accès à l'assurance pour beaucoup d'emprunteurs.
+
+## Conclusion
+
+Un prêt immobilier sans assurance est théoriquement possible mais pratiquement très difficile à obtenir. La meilleure stratégie est de trouver la bonne assurance au meilleur prix plutôt que de chercher à s'en passer. Notre comparateur gratuit vous aide à identifier les offres les plus adaptées à votre situation.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-couple-quotite',
+    image: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Assurance emprunteur couple quotité répartition prêt immobilier',
+    title: "Assurance emprunteur en couple : comment optimiser la quotité ?",
+    description: "La quotité d'assurance en couple est souvent mal configurée. Une bonne répartition peut vous faire économiser des milliers d'euros. Nos conseils d'experts.",
+    category: 'Conseils',
+    readTime: '5 min',
+    date: '2025-06-24',
+    keywords: "quotité assurance emprunteur couple, répartition assurance prêt immobilier, assurance emprunteur 50 50",
+    content: `
+## Qu'est-ce que la quotité en assurance emprunteur ?
+
+La **quotité** représente la part du capital emprunté couverte par l'assurance pour chaque co-emprunteur. Elle s'exprime en pourcentage et doit atteindre **au minimum 100% au total** pour les deux emprunteurs.
+
+**Exemple :** Pour un couple, une quotité de 50/50 signifie que chaque emprunteur est assuré à 50% du capital. En cas de décès de l'un, la banque est remboursée à 50% et le survivant continue à rembourser l'autre moitié.
+
+## Les différentes répartitions possibles
+
+### 50% / 50% — La plus courante
+
+C'est la répartition standard proposée par défaut. Elle est équitable mais pas toujours optimale.
+
+**Avantage :** Prime identique pour les deux emprunteurs.
+**Inconvénient :** En cas de décès, le survivant doit continuer à rembourser 50% du prêt.
+
+### 100% / 100% — La protection maximale
+
+Chaque emprunteur est assuré à 100%. En cas de décès de l'un, le prêt est intégralement remboursé.
+
+**Avantage :** Protection totale pour le survivant.
+**Inconvénient :** Prime plus élevée (vous payez pour 200% de couverture au total).
+
+### 70% / 30% ou 80% / 20% — La répartition optimisée
+
+C'est souvent la meilleure solution. L'emprunteur qui gagne le plus est assuré à un pourcentage plus élevé.
+
+## Comment choisir la bonne quotité ?
+
+### En fonction des revenus
+
+Si l'un des deux co-emprunteurs gagne significativement plus que l'autre, il est logique de l'assurer à un pourcentage plus élevé. En cas de décès, le prêt sera remboursé en proportion de sa contribution aux revenus du foyer.
+
+**Exemple :** Revenus de 4 000€/3 000€ → quotité 60/40
+
+### En fonction de la situation familiale
+
+**Avec enfants à charge :** Optez pour une quotité élevée (100/100 si possible) pour protéger au maximum le survivant et les enfants.
+
+**Sans enfants :** Une quotité 50/50 ou 70/30 peut suffire si chaque emprunteur peut assumer seul le remboursement.
+
+### En fonction du profil de santé
+
+Si l'un des co-emprunteurs présente un profil de santé plus risqué (fumeur, antécédents médicaux), augmentez sa quotité pour maximiser la protection à son égard.
+
+## Impact sur le prix
+
+La quotité influence directement le coût de l'assurance. Plus la quotité totale est élevée, plus la prime est importante.
+
+**Exemple pour un prêt de 300 000€ sur 20 ans :**
+
+| Quotité | Prime mensuelle totale |
+|---------|----------------------|
+| 50/50 (100%) | 76€ |
+| 70/30 (100%) | Identique |
+| 100/50 (150%) | 114€ |
+| 100/100 (200%) | 152€ |
+
+## Peut-on modifier la quotité en cours de prêt ?
+
+Grâce à la **loi Lemoine**, vous pouvez changer d'assurance à tout moment et donc modifier la quotité en choisissant un nouveau contrat avec une répartition différente.
+
+## Conclusion
+
+La quotité d'assurance emprunteur est un paramètre souvent négligé mais qui peut avoir un impact significatif sur votre protection et votre budget. Chez Assur Emprunteur, nos conseillers analysent votre situation pour vous recommander la quotité optimale.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-auto-entrepreneur',
+    image: 'https://images.unsplash.com/photo-1664575599736-c5197c684128?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Auto-entrepreneur assurance emprunteur prêt immobilier indépendant',
+    title: "Assurance emprunteur auto-entrepreneur : nos conseils",
+    description: "Les auto-entrepreneurs font face à des obstacles spécifiques pour l'assurance emprunteur. Revenus variables, statut atypique... voici comment obtenir la meilleure couverture.",
+    category: 'Cas particuliers',
+    readTime: '5 min',
+    date: '2025-06-25',
+    keywords: "assurance emprunteur auto-entrepreneur, assurance prêt immobilier indépendant, assurance emprunteur freelance",
+    content: `
+## Les défis spécifiques des auto-entrepreneurs
+
+Obtenir un prêt immobilier et une assurance emprunteur en tant qu'auto-entrepreneur est plus complexe qu'en tant que salarié. Les principaux obstacles sont :
+
+- **Revenus variables** : les assureurs et les banques préfèrent les revenus stables et prévisibles
+- **Pas de fiche de paie** : les justificatifs de revenus sont différents (bilans, déclarations fiscales)
+- **Risque perçu plus élevé** : en cas d'arrêt d'activité, pas d'indemnités chômage classiques
+
+## Comment les assureurs évaluent-ils le profil auto-entrepreneur ?
+
+Les assureurs analysent plusieurs éléments :
+
+### 1. L'ancienneté de l'activité
+La plupart des assureurs exigent **minimum 2 à 3 ans d'activité** pour considérer les revenus comme stables. En dessous, le dossier est plus difficile à monter.
+
+### 2. La stabilité des revenus
+Vos **3 dernières déclarations fiscales** sont analysées. Si vos revenus sont croissants et stables, votre dossier sera bien accueilli.
+
+### 3. Le secteur d'activité
+Certains secteurs (informatique, conseil, santé) sont perçus comme plus stables que d'autres (BTP, restauration).
+
+## La garantie ITT : attention aux définitions !
+
+La garantie **ITT (Incapacité Temporaire Totale de travail)** est particulièrement importante à bien vérifier pour les auto-entrepreneurs.
+
+Il existe deux définitions :
+
+**Définition restrictive :** vous êtes indemnisé uniquement si vous ne pouvez exercer **aucune profession**. Cette définition est défavorable.
+
+**Définition favorable :** vous êtes indemnisé si vous ne pouvez pas exercer **votre propre profession**. C'est cette définition qu'il faut rechercher en tant qu'auto-entrepreneur.
+
+## Conseils pratiques pour obtenir la meilleure assurance
+
+### Constituez un dossier solide
+- **3 derniers avis d'imposition** avec des revenus stables ou croissants
+- **Bilan comptable** si vous avez un expert-comptable
+- **Relevés bancaires** montrant une activité régulière
+- Tout document attestant de **contrats en cours** ou de clients réguliers
+
+### Passez par un courtier spécialisé
+Un courtier comme Assur Emprunteur connaît les assureurs les plus favorables aux indépendants et peut présenter votre dossier de la meilleure façon possible.
+
+### Choisissez bien vos garanties
+En tant qu'auto-entrepreneur, assurez-vous que :
+- La définition de l'ITT correspond à **votre profession spécifique**
+- La garantie **IPT (Invalidité Permanente Totale)** est bien incluse
+- Le délai de franchise de l'ITT est adapté (90 jours standard)
+
+## Et si je suis en portage salarial ?
+
+Si vous avez opté pour le portage salarial, votre situation est plus favorable car vous avez techniquement le statut de salarié. Les assureurs vous traiteront comme un salarié classique.
+
+## Conclusion
+
+Être auto-entrepreneur n'est pas un obstacle insurmontable pour obtenir une assurance emprunteur de qualité. Avec un dossier bien préparé et le bon courtier, vous pouvez accéder aux meilleures offres du marché. N'hésitez pas à utiliser notre simulateur pour obtenir une première estimation.
+    `,
+  },
+  {
+    slug: 'lettre-resiliation-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Lettre résiliation assurance emprunteur modèle gratuit',
+    title: "Lettre de résiliation assurance emprunteur : modèle gratuit 2025",
+    description: "Téléchargez gratuitement notre modèle de lettre de résiliation d'assurance emprunteur conforme à la loi Lemoine. Résiliez facilement et économisez immédiatement.",
+    category: 'Guide pratique',
+    readTime: '4 min',
+    date: '2025-06-26',
+    keywords: "lettre résiliation assurance emprunteur, modèle résiliation assurance prêt, résiliation loi lemoine courrier",
+    content: `
+## Pourquoi résilier votre assurance emprunteur ?
+
+Grâce à la **loi Lemoine (2022)**, vous pouvez résilier votre assurance emprunteur à tout moment, sans frais ni pénalité. En passant par un assureur indépendant, vous pouvez économiser **jusqu'à 60%** sur le coût de votre assurance.
+
+## La procédure de résiliation
+
+### Étape 1 : Trouvez une nouvelle assurance
+Avant de résilier, vous devez avoir souscrit un nouveau contrat avec des garanties au moins équivalentes à celles de votre banque.
+
+### Étape 2 : Obtenez l'attestation d'équivalence des garanties
+Votre nouvel assureur vous remet une attestation prouvant que les garanties sont bien équivalentes.
+
+### Étape 3 : Envoyez votre lettre de résiliation
+Vous devez informer votre banque par **lettre recommandée avec accusé de réception** (LRAR), en joignant votre nouveau contrat et l'attestation d'équivalence.
+
+### Étape 4 : Attendez la réponse de votre banque
+Votre banque dispose de **10 jours ouvrés** pour accepter ou refuser. En cas de refus, elle doit motiver sa décision par écrit.
+
+## Modèle de lettre de résiliation
+
+---
+
+**[Votre Prénom NOM]**
+[Votre adresse]
+[Code postal] [Ville]
+[Votre email]
+[Votre téléphone]
+
+[Ville], le [Date]
+
+**[Nom de la banque]**
+[Adresse de la banque]
+[Code postal] [Ville de la banque]
+
+**Lettre recommandée avec accusé de réception**
+
+**Objet : Résiliation de mon contrat d'assurance emprunteur — Prêt n°[NUMÉRO DE VOTRE PRÊT]**
+
+Madame, Monsieur,
+
+Je soussigné(e) [Prénom NOM], titulaire du prêt immobilier n°[NUMÉRO], vous informe de ma décision de résilier le contrat d'assurance groupe associé à ce prêt, conformément à la loi n°2022-270 du 28 février 2022 (loi Lemoine) et à l'article L.113-12-2 du Code des assurances.
+
+J'ai souscrit une nouvelle assurance individuelle auprès de [NOM DU NOUVEL ASSUREUR], contrat n°[NUMÉRO], dont les garanties sont au moins équivalentes à celles du contrat groupe actuel, conformément à la fiche personnalisée standardisée d'information qui m'a été remise.
+
+Vous trouverez en pièces jointes :
+- La copie de mon nouveau contrat d'assurance
+- L'attestation d'équivalence des garanties
+
+Je vous demande de bien vouloir prendre acte de cette résiliation et de me confirmer la date de prise d'effet du nouveau contrat dans le délai légal de 10 jours ouvrés.
+
+Dans l'attente de votre réponse, je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées.
+
+**[Signature]**
+[Prénom NOM]
+
+*Pièces jointes : Nouveau contrat d'assurance / Attestation d'équivalence des garanties*
+
+---
+
+## Points importants à vérifier
+
+✅ **Envoyez en LRAR** — la lettre simple n'a pas de valeur probante
+✅ **Joignez toujours** le nouveau contrat et l'attestation d'équivalence
+✅ **Conservez** l'accusé de réception
+✅ **Votre banque a 10 jours** pour répondre — relancez si besoin
+
+## Votre banque peut-elle refuser ?
+
+Votre banque peut refuser **uniquement** si les garanties de la nouvelle assurance ne sont pas équivalentes aux siennes. Elle doit alors vous indiquer **par écrit** quelles garanties sont insuffisantes.
+
+Si elle refuse abusivement, vous pouvez :
+1. Contacter le **médiateur bancaire** de votre banque
+2. Saisir l'**ACPR** (Autorité de Contrôle Prudentiel et de Résolution)
+3. Faire appel à un courtier qui gérera le litige pour vous
+
+## Conclusion
+
+La résiliation d'assurance emprunteur est un droit et une démarche simple. Chez Assur Emprunteur, nous gérons l'intégralité de cette procédure à votre place, de la rédaction de la lettre jusqu'à la confirmation de résiliation. Commencez par notre simulateur pour voir combien vous pouvez économiser.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-arret-maladie',
+    image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Assurance emprunteur arrêt maladie couverture garantie ITT',
+    title: "Assurance emprunteur et arrêt maladie : êtes-vous bien couvert ?",
+    description: "Que se passe-t-il pour votre prêt en cas d'arrêt maladie ? Comment fonctionne la garantie ITT ? Tout ce que vous devez savoir pour être bien protégé.",
+    category: 'Comprendre',
+    readTime: '5 min',
+    date: '2025-06-27',
+    keywords: "assurance emprunteur arrêt maladie, garantie ITT arrêt travail, assurance prêt incapacité",
+    content: `
+## Que couvre l'assurance emprunteur en cas d'arrêt maladie ?
+
+En cas d'arrêt maladie, c'est la garantie **ITT (Incapacité Temporaire Totale de travail)** qui entre en jeu. Cette garantie prend en charge le remboursement de vos mensualités de prêt si vous êtes dans l'impossibilité totale et temporaire d'exercer votre activité professionnelle.
+
+## Comment fonctionne la garantie ITT ?
+
+### Le délai de franchise
+
+La garantie ITT comporte toujours un **délai de franchise** avant que les remboursements commencent. Les délais les plus courants sont :
+
+- **90 jours** : le plus fréquent
+- **180 jours** : certains contrats low-cost
+- **30 jours** : rares, réservés aux professions libérales
+
+**Attention :** Pendant ce délai de franchise, c'est vous (ou vos indemnités journalières de la Sécurité sociale) qui continuez à rembourser.
+
+### La prise en charge
+
+Après le délai de franchise, l'assureur prend en charge vos mensualités selon deux modes :
+
+**Indemnitaire :** L'assureur complète vos revenus jusqu'au montant de votre mensualité. Si vous touchez des indemnités journalières, l'assureur ne verse que la différence.
+
+**Forfaitaire :** L'assureur verse l'intégralité de la mensualité, peu importe vos autres revenus. Cette option est plus avantageuse.
+
+## Les définitions de l'ITT : un point crucial
+
+La définition retenue par l'assureur pour caractériser l'ITT est déterminante.
+
+### Définition stricte (à éviter)
+Vous êtes couvert uniquement si vous ne pouvez **exercer aucune activité professionnelle**, même différente de la vôtre. Un chirurgien qui ne peut plus opérer mais pourrait faire de la consultation n'est pas couvert.
+
+### Définition favorable (à privilégier)
+Vous êtes couvert si vous ne pouvez pas exercer **votre propre profession**. Le chirurgien ci-dessus serait couvert même s'il peut faire de la consultation.
+
+## Les exclusions fréquentes
+
+Certains arrêts maladie peuvent être exclus des garanties :
+
+- **Maladies psychiatriques** : dépression, burn-out (souvent exclues ou limitées)
+- **Problèmes de dos** : lombalgies chroniques (souvent exclues sans hospitalisation)
+- **Maladies antérieures** : pathologies connues avant la souscription
+
+## Comment vérifier votre couverture actuelle ?
+
+1. Retrouvez votre **contrat d'assurance emprunteur**
+2. Lisez attentivement la section "Définitions" et "Exclusions"
+3. Vérifiez le **délai de franchise** et le mode de prise en charge (indemnitaire ou forfaitaire)
+4. Identifiez les maladies ou situations **exclues**
+
+## Que faire si votre couverture est insuffisante ?
+
+Grâce à la **loi Lemoine**, vous pouvez changer d'assurance à tout moment. Si votre contrat actuel présente des lacunes (délai de franchise trop long, définition restrictive de l'ITT, exclusions trop nombreuses), changez pour un contrat mieux adapté.
+
+Chez Assur Emprunteur, nous analysons votre contrat actuel et vous proposons des alternatives avec de meilleures garanties, souvent moins chères.
+
+## Conclusion
+
+La garantie ITT de votre assurance emprunteur est votre filet de sécurité en cas d'arrêt maladie. Assurez-vous qu'elle est bien configurée avec une définition favorable et un délai de franchise adapté. N'hésitez pas à nous contacter pour analyser votre contrat gratuitement.
+    `,
+  },
+  {
+    slug: 'remboursement-anticipe-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1633158829875-e5316a358c6f?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Remboursement anticipé prêt immobilier assurance emprunteur impact',
+    title: "Remboursement anticipé et assurance emprunteur : ce qui change",
+    description: "Vous remboursez votre prêt par anticipation ? Votre assurance emprunteur est impactée. Découvrez vos droits et comment récupérer le trop-perçu.",
+    category: 'Guide pratique',
+    readTime: '4 min',
+    date: '2025-06-28',
+    keywords: "remboursement anticipé assurance emprunteur, résiliation assurance prêt soldé, récupérer prime assurance",
+    content: `
+## Qu'est-ce que le remboursement anticipé ?
+
+Le remboursement anticipé consiste à rembourser tout ou partie de votre prêt immobilier avant son terme prévu. Il peut être **partiel** (vous réduisez le capital restant dû) ou **total** (vous soldez intégralement votre prêt).
+
+## Impact sur l'assurance emprunteur
+
+### Remboursement anticipé total
+
+Si vous remboursez intégralement votre prêt, votre assurance emprunteur **prend fin automatiquement**. Vous n'avez plus de prêt à assurer, donc plus besoin d'assurance.
+
+**Récupérez les primes non consommées :**
+Si vous avez payé votre prime d'assurance en une seule fois en début de prêt (prime unique), vous avez droit au remboursement des primes correspondant à la période non écoulée.
+
+### Remboursement anticipé partiel
+
+Si vous effectuez un remboursement partiel, votre capital assuré diminue. Selon votre contrat :
+- **Capital initial :** La prime reste la même car calculée sur le montant initial
+- **Capital restant dû :** La prime diminue proportionnellement au capital remboursé
+
+## Comment résilier son assurance après remboursement total
+
+### La procédure
+
+Après le remboursement total de votre prêt, informez votre assureur par **lettre recommandée** en joignant :
+- L'attestation de remboursement total délivrée par votre banque
+- Une demande explicite de résiliation
+
+La résiliation prend effet à la date de réception de la demande (ou à la date de remboursement du prêt si elle est antérieure).
+
+### Récupérer le trop-perçu
+
+Si vous aviez payé votre prime d'assurance en avance (annuellement ou en prime unique), l'assureur doit vous rembourser la part correspondant à la période non couverte.
+
+**Exemple :** Vous payez votre assurance annuellement (renouvellement le 1er janvier) et vous remboursez votre prêt le 1er juillet. L'assureur doit vous rembourser 6 mois de prime.
+
+## Et si je vends mon bien ?
+
+La vente de votre bien immobilier entraîne généralement le remboursement total du prêt. La procédure est identique : résiliez votre assurance dès que le prêt est soldé.
+
+**Attention :** Si vous contractez un nouveau prêt pour un autre bien, vous devrez souscrire une nouvelle assurance. C'est l'occasion de comparer les offres du marché et d'optimiser votre couverture.
+
+## Renégociation de prêt et assurance emprunteur
+
+Si vous renégociez votre prêt (nouveau taux, nouvelle durée), votre contrat d'assurance peut être impacté. Profitez de cette occasion pour :
+1. Vérifier que votre assurance est toujours adaptée
+2. Comparer les offres du marché
+3. Changer d'assurance si une meilleure offre existe
+
+## Conclusion
+
+Remboursement anticipé, renégociation, vente... chaque changement dans votre prêt immobilier est l'occasion de faire le point sur votre assurance emprunteur. Chez Assur Emprunteur, nous vous accompagnons dans toutes ces transitions pour vous assurer d'être toujours bien couvert au meilleur prix.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-investissement-locatif',
+    image: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Investissement locatif assurance emprunteur immeuble appartement',
+    title: "Investissement locatif : quelle assurance emprunteur choisir ?",
+    description: "L'assurance emprunteur pour un investissement locatif a ses spécificités. Garanties adaptées, fiscalité, optimisation... notre guide complet pour les investisseurs.",
+    category: 'Conseils',
+    readTime: '5 min',
+    date: '2025-06-29',
+    keywords: "assurance emprunteur investissement locatif, assurance prêt immobilier locatif, garanties assurance bailleur",
+    content: `
+## Investissement locatif : faut-il la même assurance qu'une résidence principale ?
+
+Pas nécessairement. Si le prêt immobilier pour un investissement locatif est similaire à celui d'une résidence principale, les besoins en termes d'assurance peuvent être différents.
+
+## Les particularités de l'investissement locatif
+
+### Le risque financier est différent
+
+Pour une résidence principale, le non-remboursement du prêt vous prive de votre logement. Pour un investissement locatif, vous avez généralement d'autres ressources (salaire, revenus locatifs d'autres biens) pour faire face.
+
+### Les loyers assurent une partie du remboursement
+
+Dans la plupart des investissements locatifs bien calculés, les **loyers couvrent tout ou partie des mensualités**. En cas d'arrêt de travail temporaire, les loyers continuent à tomber.
+
+## Quelles garanties pour un investissement locatif ?
+
+### Les garanties indispensables
+
+**DC (Décès) :** Toujours indispensable. En cas de décès, vos héritiers ne doivent pas se retrouver avec une dette importante.
+
+**PTIA (Perte Totale et Irréversible d'Autonomie) :** Indispensable, exigée par toutes les banques.
+
+### Les garanties à évaluer
+
+**ITT (Incapacité Temporaire de Travail) :** Moins critique que pour une résidence principale, car les loyers continuent d'être perçus. Peut être envisagée avec un délai de franchise plus long (180 jours au lieu de 90) pour réduire la prime.
+
+**IPT/IPP :** À évaluer selon votre situation patrimoniale globale.
+
+**Perte d'emploi :** Rarement pertinente pour un investissement locatif.
+
+## Optimisation fiscale de l'assurance emprunteur
+
+### En régime réel (revenus fonciers)
+
+Si vous déclarez vos revenus locatifs au **régime réel**, les primes d'assurance emprunteur sont **déductibles de vos revenus fonciers**. Cette déductibilité peut réduire significativement le coût réel de votre assurance.
+
+**Exemple :** Prime annuelle de 1 200€. Si vous êtes à 30% de TMI, la déduction fiscale représente 360€, soit un coût réel de 840€.
+
+### En SCI
+
+Si vous investissez via une **SCI (Société Civile Immobilière)**, les modalités d'assurance peuvent être différentes. Il est recommandé de consulter un conseiller fiscal.
+
+## Comment optimiser l'assurance pour un investissement locatif ?
+
+**1. Réduisez la quotité si possible**
+Si vous avez d'autres revenus confortables, une quotité à 100% (au lieu de 100/100 pour un couple) peut suffire.
+
+**2. Augmentez le délai de franchise de l'ITT**
+Passer de 90 à 180 jours peut réduire la prime de 15 à 25%, sans impact majeur grâce aux loyers perçus.
+
+**3. Optez pour un contrat sur le capital restant dû**
+La prime diminue avec le capital, ce qui est logique pour un investissement.
+
+**4. Comparez impérativement**
+Les offres varient énormément pour les investissements locatifs. Utilisez notre simulateur pour identifier les meilleures offres.
+
+## Conclusion
+
+L'assurance emprunteur pour un investissement locatif mérite une réflexion approfondie sur les garanties réellement nécessaires. Une couverture bien calibrée peut vous faire économiser plusieurs milliers d'euros sur la durée du prêt, tout en optimisant votre fiscalité. Nos conseillers Assur Emprunteur sont spécialisés dans les investisseurs et peuvent vous aider à trouver la solution idéale.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-changement-situation',
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Changement situation professionnelle assurance emprunteur adaptation',
+    title: "Changement de situation professionnelle et assurance emprunteur",
+    description: "Vous changez d'emploi, devenez indépendant ou partez à la retraite ? Votre assurance emprunteur doit évoluer avec vous. Tout ce qu'il faut savoir.",
+    category: 'Conseils',
+    readTime: '5 min',
+    date: '2025-06-30',
+    keywords: "changement emploi assurance emprunteur, retraite assurance prêt, indépendant assurance emprunteur",
+    content: `
+## Pourquoi un changement de situation professionnelle impacte votre assurance ?
+
+Votre assurance emprunteur a été souscrite en fonction de votre situation au moment de la signature. Si cette situation évolue (nouveau travail, reconversion, retraite, arrêt d'activité), vos garanties peuvent ne plus être adaptées à votre nouvelle réalité.
+
+La bonne nouvelle : grâce à la **loi Lemoine**, vous pouvez adapter votre assurance à tout moment.
+
+## Les principaux changements de situation
+
+### De salarié à indépendant/auto-entrepreneur
+
+C'est l'un des changements les plus impactants. En devenant indépendant :
+
+- La **définition de l'ITT** de votre ancien contrat peut ne plus vous convenir (souvent liée au statut salarié)
+- Votre profil de risque change aux yeux des assureurs
+- Vous n'avez plus les mêmes protections sociales (indemnités journalières différentes)
+
+**Action recommandée :** Changez de contrat avec une définition de l'ITT adaptée aux indépendants.
+
+### Promotion ou augmentation de salaire
+
+Bonne nouvelle ! Si vos revenus augmentent significativement, vous pourrez peut-être renégocier votre prêt (et donc votre assurance). C'est aussi l'occasion de vérifier que vos garanties sont toujours adaptées.
+
+### Perte d'emploi
+
+Si vous perdez votre emploi, vérifiez :
+- Si votre contrat inclut une **garantie perte d'emploi** (PE)
+- Les conditions d'activation de cette garantie (délai de carence, durée maximum)
+
+**Attention :** La garantie PE couvre généralement uniquement le licenciement économique, pas la démission ni la rupture conventionnelle.
+
+### Départ à la retraite
+
+Le passage à la retraite change plusieurs paramètres :
+- La garantie **ITT** n'est plus pertinente (vous ne travaillez plus)
+- Votre revenu diminue souvent → vérifiez que vous pouvez toujours assumer les mensualités
+- Certains contrats prévoient une adaptation automatique des garanties à la retraite
+
+**Action recommandée :** Renégociez votre assurance pour supprimer la garantie ITT (souvent inutile à la retraite) et réduire la prime.
+
+### Reconversion professionnelle
+
+Si vous changez de secteur d'activité (notamment vers une profession à risque), vérifiez que votre nouveau métier est bien couvert par votre assurance. Certaines professions peuvent générer des surprimes ou des exclusions.
+
+## Comment adapter son assurance à sa nouvelle situation ?
+
+### Étape 1 : Analysez votre contrat actuel
+
+Lisez attentivement les clauses de votre contrat concernant votre profession et vos garanties. Identifiez ce qui ne correspond plus à votre nouvelle situation.
+
+### Étape 2 : Comparez les offres du marché
+
+Utilisez un comparateur comme Assur Emprunteur pour obtenir des devis adaptés à votre nouvelle situation professionnelle.
+
+### Étape 3 : Résiliez et changez
+
+Grâce à la loi Lemoine, la résiliation est possible à tout moment. Votre courtier gère toutes les démarches.
+
+## Points de vigilance
+
+**Ne résiliez jamais avant d'avoir un nouveau contrat en place.** Il est impératif d'avoir une continuité de couverture pour votre prêt.
+
+**Vérifiez le traitement fiscal.** Selon votre nouvelle situation, les primes d'assurance peuvent être déductibles (revenus fonciers, charges professionnelles pour les indépendants).
+
+## Conclusion
+
+Votre situation professionnelle évolue, votre assurance emprunteur doit évoluer avec elle. Chaque changement est aussi une opportunité d'optimiser votre couverture et de réaliser des économies. Nos conseillers Assur Emprunteur vous accompagnent dans cette transition gratuitement.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-credit-consommation',
+    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80&auto=format&fit=crop',
+    imageAlt: 'Assurance emprunteur crédit consommation prêt personnel',
+    title: "Assurance emprunteur et crédit à la consommation : ce qu'il faut savoir",
+    description: "L'assurance emprunteur concerne-t-elle aussi les crédits à la consommation ? Quelles protections, quels droits ? Le point complet sur un sujet souvent méconnu.",
+    category: 'Comprendre',
+    readTime: '4 min',
+    date: '2025-07-01',
+    keywords: "assurance emprunteur crédit consommation, assurance prêt personnel, protection crédit auto",
+    content: `
+## L'assurance emprunteur ne concerne pas que l'immobilier
+
+Quand on parle d'assurance emprunteur, on pense immédiatement au prêt immobilier. Mais une assurance peut aussi être proposée (voire imposée) pour :
+- Les **crédits à la consommation** (crédit auto, crédit travaux, crédit personnel)
+- Les **prêts étudiants**
+- Le **rachat de crédits**
+
+## Les spécificités du crédit à la consommation
+
+### L'assurance est-elle obligatoire pour un crédit conso ?
+
+Contrairement au prêt immobilier, la banque ne peut pas légalement **imposer** une assurance comme condition d'octroi d'un crédit à la consommation. Cependant, elle peut la proposer et même la recommander.
+
+### Les garanties proposées
+
+Pour un crédit conso, les garanties proposées sont généralement plus limitées que pour un prêt immobilier :
+- **DC (Décès)** : le prêt est remboursé en cas de décès
+- **PTIA** : parfois incluse
+- **ITT** : souvent proposée en option
+- **Perte d'emploi** : rare pour les crédits conso
+
+### Le coût : souvent disproportionné
+
+Les assurances proposées par les organismes de crédit à la consommation (Cetelem, Cofidis, Sofinco, etc.) sont souvent **très chères** par rapport aux garanties offertes. Le taux peut atteindre 0,5 à 1% du capital par mois.
+
+## Vos droits pour un crédit à la consommation
+
+### La loi Lagarde et le libre choix
+
+Même pour un crédit conso, vous avez le droit de **choisir votre assureur**. La banque ne peut pas vous imposer son propre contrat.
+
+### La loi Lemoine s'applique-t-elle ?
+
+La loi Lemoine s'applique uniquement aux **prêts immobiliers**. Pour les crédits à la consommation, les règles sont différentes et la résiliation à tout moment n'est pas garantie de la même façon.
+
+### Le droit de renonciation
+
+Vous disposez généralement d'un délai de **14 jours** pour renoncer à l'assurance après sa souscription (délai de rétractation légal pour les contrats à distance).
+
+## Faut-il assurer son crédit à la consommation ?
+
+La réponse dépend de votre situation :
+
+**Oui, si :**
+- Le montant est élevé (au-delà de 10 000€)
+- Vous avez peu d'épargne de précaution
+- Vous êtes le seul apporteur de revenus dans votre foyer
+- Votre situation professionnelle est fragile
+
+**Non ou avec prudence, si :**
+- Le montant est faible (quelques milliers d'euros)
+- Vous disposez d'une épargne suffisante pour absorber le remboursement
+- La prime est excessivement élevée par rapport au risque
+
+## Comment trouver la meilleure assurance pour un crédit conso ?
+
+1. **Refusez l'assurance du prêteur** si elle vous semble trop chère
+2. **Comparez** avec des assureurs indépendants
+3. **Vérifiez** que les garanties correspondent à vos besoins réels
+4. **Lisez les exclusions** attentivement (délai de franchise, plafond d'indemnisation)
+
+## Conclusion
+
+L'assurance pour un crédit à la consommation mérite la même attention que pour un prêt immobilier. Ne vous laissez pas imposer une assurance coûteuse sans avoir comparé. Chez Assur Emprunteur, nous pouvons vous conseiller sur l'ensemble de vos besoins en assurance emprunteur, qu'il s'agisse d'un prêt immobilier ou d'un crédit à la consommation.
+    `,
+  },
 ]
