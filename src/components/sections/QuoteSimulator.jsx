@@ -9,7 +9,7 @@ import { computeQuotes } from '@/lib/quoteEngine'
 import { cn } from '@/lib/utils'
 import { getReferral } from '@/hooks/useReferral'
 
-const STEPS = ['Votre prêt', 'Votre profil', 'Vos garanties', 'Vos offres', 'Contact']
+const STEPS = ['Votre prêt', 'Votre profil', 'Vos garanties', 'Contact', 'Vos offres']
 
 const PROFESSIONS = [
   { value: 'cadre',         label: 'Cadre / Ingénieur' },
@@ -428,6 +428,7 @@ export const QuoteSimulator = () => {
   const [sending, setSending]             = useState(false)
   const [sent, setSent]                   = useState(false)
   const [error, setError]                 = useState(null)
+  const [leadId, setLeadId]               = useState(null)
 
   const [pretStatus, setPretStatus] = useState(null)
   const [pretFields, setPretFields] = useState([])
@@ -525,9 +526,34 @@ export const QuoteSimulator = () => {
         }),
       })
       if (!res.ok) throw new Error()
-      setSent(true)
+      const json = await res.json()
+      setLeadId(json.leadId || null)
+      setStep(4)
     } catch { setError('Une erreur est survenue. Veuillez réessayer ou nous appeler.') }
     finally { setSending(false) }
+  }
+
+  // Met à jour l'offre choisie sur un lead déjà enregistré
+  const handleSelectQuote = (q) => {
+    setSelectedQuote(q)
+    if (leadId) {
+      fetch('/.netlify/functions/select-quote', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ leadId, quote: q }),
+      }).catch(() => {})
+    }
+  }
+
+  const handleConfirmQuote = async () => {
+    if (leadId && selectedQuote) {
+      try {
+        await fetch('/.netlify/functions/select-quote', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ leadId, quote: selectedQuote }),
+        })
+      } catch {}
+    }
+    setSent(true)
   }
 
   const switchMode = (mode) => setInputMode(mode)
@@ -847,58 +873,25 @@ export const QuoteSimulator = () => {
               </div>
             )}
 
-            {/* ══ Étape 3 — Résultats ══ */}
-            {step === 3 && results && (
+            {/* ══ Étape 3 — Coordonnées (avant les résultats) ══ */}
+            {step === 3 && !sent && (
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-xl font-bold text-[#0a1340]">Vos meilleures offres</h3>
-                  <button onClick={() => { setStep(0); setResults(null) }}
-                    className="text-xs text-slate-400 hover:text-[#0a1340] underline">Modifier</button>
-                </div>
-                <div className="bg-slate-50 rounded-2xl p-4 mb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
-                  <div className="text-sm text-slate-500">
-                    Assurance banque : <strong className="text-slate-700">{results.bankMonthly}€/mois</strong>
-                  </div>
-                  <div className="text-sm font-bold text-[#10b981] flex items-center gap-1">
-                    <TrendingDown className="w-4 h-4" />
-                    Jusqu'à {results.quotes[0].savingsPct}% d'économies
-                  </div>
-                </div>
-                <p className="text-xs text-slate-400 mb-4 flex items-center gap-1">
-                  <Info className="w-3.5 h-3.5" /> Cliquez sur une offre pour la sélectionner
+                <h3 className="text-xl font-bold text-[#0a1340] mb-1">Vos coordonnées</h3>
+                <p className="text-sm text-slate-400 mb-4">
+                  Renseignez vos coordonnées pour découvrir vos offres personnalisées et être recontacté(e) par un conseiller.
                 </p>
-                <div className="flex flex-col gap-4 mb-6">
-                  {results.quotes.slice(0, 3).map((quote, i) => (
-                    <QuoteCard key={quote.insurer} quote={quote} rank={i}
-                      selected={selectedQuote?.insurer === quote.insurer}
-                      onSelect={setSelectedQuote} />
-                  ))}
-                </div>
-                <Button className="w-full" size="lg" onClick={() => setStep(4)}>
-                  Être recontacté pour cette offre <ArrowRight className="w-5 h-5" />
-                </Button>
-                <p className="text-xs text-slate-400 text-center mt-3">
-                  Simulation indicative · Tarifs définitifs après étude personnalisée
-                </p>
-              </div>
-            )}
-
-            {/* ══ Étape 4 — Coordonnées ══ */}
-            {step === 4 && !sent && (
-              <div>
-                <h3 className="text-xl font-bold text-[#0a1340] mb-4">Vos coordonnées</h3>
-                {selectedQuote && (
+                {results && (
                   <div className="bg-[#f0f4ff] rounded-2xl p-4 mb-6 flex items-center justify-between">
                     <div>
-                      <p className="text-xs text-slate-500 mb-0.5">Offre sélectionnée</p>
+                      <p className="text-xs text-slate-500 mb-0.5">Économie estimée</p>
                       <div className="flex items-center gap-2">
-                        <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: selectedQuote.color }} />
-                        <span className="font-bold text-sm text-[#0a1340]">{selectedQuote.insurer}</span>
+                        <TrendingDown className="w-4 h-4 text-[#10b981]" />
+                        <span className="font-bold text-sm text-[#0a1340]">Jusqu'à {results.quotes[0].savingsPct}% vs assurance bancaire</span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-xl font-extrabold text-[#0a1340]">{selectedQuote.monthly}€<span className="text-sm font-normal text-slate-400">/mois</span></div>
-                      <div className="text-xs text-emerald-600 font-semibold">-{selectedQuote.savingsPct}% vs banque</div>
+                      <div className="text-xl font-extrabold text-[#0a1340]">{results.quotes[0].monthly}€<span className="text-sm font-normal text-slate-400">/mois</span></div>
+                      <div className="text-xs text-slate-400">dès</div>
                     </div>
                   </div>
                 )}
@@ -935,13 +928,45 @@ export const QuoteSimulator = () => {
                 </label>
                 {error && <div className="bg-red-50 text-red-600 text-sm rounded-xl px-4 py-3 mb-4">{error}</div>}
                 <div className="flex gap-3">
-                  <Button variant="outline" className="flex-shrink-0" onClick={() => setStep(3)}>
+                  <Button variant="outline" className="flex-shrink-0" onClick={() => setStep(2)}>
                     <ArrowLeft className="w-4 h-4" />
                   </Button>
                   <Button className="flex-1" disabled={!canSubmit || sending} onClick={handleSubmitLead}>
-                    {sending ? <><Loader2 className="w-4 h-4 animate-spin" /> Envoi…</> : <>Recevoir mon devis <ArrowRight className="w-4 h-4" /></>}
+                    {sending ? <><Loader2 className="w-4 h-4 animate-spin" /> Envoi…</> : <>Voir mes offres <ArrowRight className="w-4 h-4" /></>}
                   </Button>
                 </div>
+              </div>
+            )}
+
+            {/* ══ Étape 4 — Résultats ══ */}
+            {step === 4 && results && !sent && (
+              <div>
+                <h3 className="text-xl font-bold text-[#0a1340] mb-4">Vos meilleures offres, {contact.firstName}</h3>
+                <div className="bg-slate-50 rounded-2xl p-4 mb-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                  <div className="text-sm text-slate-500">
+                    Assurance banque : <strong className="text-slate-700">{results.bankMonthly}€/mois</strong>
+                  </div>
+                  <div className="text-sm font-bold text-[#10b981] flex items-center gap-1">
+                    <TrendingDown className="w-4 h-4" />
+                    Jusqu'à {results.quotes[0].savingsPct}% d'économies
+                  </div>
+                </div>
+                <p className="text-xs text-slate-400 mb-4 flex items-center gap-1">
+                  <Info className="w-3.5 h-3.5" /> Cliquez sur une offre pour la sélectionner
+                </p>
+                <div className="flex flex-col gap-4 mb-6">
+                  {results.quotes.slice(0, 3).map((quote, i) => (
+                    <QuoteCard key={quote.insurer} quote={quote} rank={i}
+                      selected={selectedQuote?.insurer === quote.insurer}
+                      onSelect={handleSelectQuote} />
+                  ))}
+                </div>
+                <Button className="w-full" size="lg" onClick={handleConfirmQuote}>
+                  Confirmer cette offre <ArrowRight className="w-5 h-5" />
+                </Button>
+                <p className="text-xs text-slate-400 text-center mt-3">
+                  Simulation indicative · Tarifs définitifs après étude personnalisée · Un conseiller vous recontacte sous 24h
+                </p>
               </div>
             )}
 
@@ -955,7 +980,7 @@ export const QuoteSimulator = () => {
                 <p className="text-slate-500 text-sm mb-2">Un conseiller vous contacte dans les <strong>24h</strong>.</p>
                 <p className="text-slate-400 text-xs mb-6">Récapitulatif envoyé à <strong>{contact.email}</strong></p>
                 <button onClick={() => {
-                  setSent(false); setStep(0); setResults(null)
+                  setSent(false); setStep(0); setResults(null); setSelectedQuote(null); setLeadId(null)
                   setContact({ firstName: '', lastName: '', email: '', phone: '', rgpd: false })
                   setCoEmprunteur(false); setBorrowers([emptyBorrower(100)])
                 }} className="text-sm text-slate-400 hover:text-slate-600 underline">
