@@ -310,23 +310,31 @@ const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected, p
                   <tr key={lead.id || i} className="border-b border-slate-100 hover:bg-slate-50 transition-colors cursor-pointer" onClick={() => setSelected(lead)}>
                     <td className="px-4 py-4 text-xs text-slate-500 whitespace-nowrap">{fmtDate(lead.createdAt)}</td>
                     <td className="px-4 py-4">
-                      <div className="font-semibold text-[#0a1340] text-sm">{lead.contact.firstName} {lead.contact.lastName}</div>
-                      <div className="text-xs text-slate-400">{lead.contact.email}</div>
+                      <div className="font-semibold text-[#0a1340] text-sm">{lead.contact?.firstName} {lead.contact?.lastName}</div>
+                      <div className="text-xs text-slate-400">{lead.contact?.email}</div>
                     </td>
                     <td className="px-4 py-4">
-                      <div className="text-sm font-semibold text-[#0a1340]">{Number(lead.loanInfo.amount).toLocaleString('fr-FR')}€</div>
-                      <div className="text-xs text-slate-400">{lead.loanInfo.duration} ans · {lead.loanInfo.age} ans</div>
+                      <div className="text-sm font-semibold text-[#0a1340]">{lead.loanInfo?.amount ? Number(lead.loanInfo.amount).toLocaleString('fr-FR') + '€' : '—'}</div>
+                      <div className="text-xs text-slate-400">{lead.loanInfo?.duration} ans · {lead.loanInfo?.age} ans</div>
                     </td>
                     <td className="px-4 py-4">
-                      <div className="flex items-center gap-1.5">
-                        <div className="w-2 h-2 rounded-full" style={{ backgroundColor: lead.quote.color }} />
-                        <span className="text-sm text-[#0a1340] font-medium">{lead.quote.insurer}</span>
-                      </div>
-                      <div className="text-xs text-slate-400">{lead.quote.monthly}€/mois</div>
+                      {lead.quote ? (
+                        <>
+                          <div className="flex items-center gap-1.5">
+                            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: lead.quote.color }} />
+                            <span className="text-sm text-[#0a1340] font-medium">{lead.quote.insurer}</span>
+                          </div>
+                          <div className="text-xs text-slate-400">{lead.quote.monthly}€/mois</div>
+                        </>
+                      ) : <span className="text-xs text-slate-400">—</span>}
                     </td>
                     <td className="px-4 py-4">
-                      <span className="text-sm font-bold text-emerald-600">{Number(lead.quote.savings).toLocaleString('fr-FR')}€</span>
-                      <div className="text-xs text-slate-400">-{lead.quote.savingsPct}%</div>
+                      {lead.quote ? (
+                        <>
+                          <span className="text-sm font-bold text-emerald-600">{Number(lead.quote.savings).toLocaleString('fr-FR')}€</span>
+                          <div className="text-xs text-slate-400">-{lead.quote.savingsPct}%</div>
+                        </>
+                      ) : <span className="text-xs text-slate-400">—</span>}
                     </td>
                     <td className="px-4 py-4">
                       {lead.referral ? (
@@ -386,8 +394,8 @@ const Dashboard = ({ password, onLogout }) => {
   const exportCSV = () => {
     const rows = [['Date', 'Prénom', 'Nom', 'Email', 'Téléphone', 'Montant', 'Durée', 'Offre', 'Économies', 'Source', 'Statut']]
     leads.forEach(l => {
-      rows.push([fmtDate(l.createdAt), l.contact.firstName, l.contact.lastName, l.contact.email, l.contact.phone,
-        l.loanInfo.amount, l.loanInfo.duration + ' ans', l.quote.insurer, l.quote.savings + '€', l.referral || 'Direct', l.status])
+      rows.push([fmtDate(l.createdAt), l.contact?.firstName, l.contact?.lastName, l.contact?.email, l.contact?.phone,
+        l.loanInfo?.amount, (l.loanInfo?.duration || '') + ' ans', l.quote?.insurer || '', l.quote ? l.quote.savings + '€' : '', l.referral || 'Direct', l.status])
     })
     const csv = rows.map(r => r.join(';')).join('\n')
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8' })
@@ -450,19 +458,24 @@ const Dashboard = ({ password, onLogout }) => {
         <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4" onClick={() => setSelected(null)}>
           <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-5">
-              <h3 className="font-bold text-[#0a1340] text-lg">{selected.contact.firstName} {selected.contact.lastName}</h3>
+              <h3 className="font-bold text-[#0a1340] text-lg">{selected.contact?.firstName} {selected.contact?.lastName}</h3>
               <button onClick={() => setSelected(null)} className="text-slate-400 hover:text-slate-700 text-xl">×</button>
             </div>
             {[
               ['📅 Date', fmtDate(selected.createdAt)],
-              ['📧 Email', selected.contact.email],
-              ['📞 Téléphone', selected.contact.phone],
-              ['💰 Montant prêt', fmt(selected.loanInfo.amount)],
-              ['⏱ Durée', `${selected.loanInfo.duration} ans`],
-              ['👤 Âge', `${selected.loanInfo.age} ans`],
-              ['🏆 Offre choisie', selected.quote.insurer],
-              ['💵 Prime mensuelle', `${selected.quote.monthly}€/mois`],
-              ['💚 Économies', `${Number(selected.quote.savings).toLocaleString('fr-FR')}€ (-${selected.quote.savingsPct}%)`],
+              ['📧 Email', selected.contact?.email],
+              ['📞 Téléphone', selected.contact?.phone],
+              ['💰 Montant prêt', selected.loanInfo?.amount ? fmt(selected.loanInfo.amount) : '—'],
+              ['⏱ Durée', selected.loanInfo?.duration ? `${selected.loanInfo.duration} ans` : '—'],
+              ['👤 Âge', selected.loanInfo?.age ? `${selected.loanInfo.age} ans` : '—'],
+              ...(selected.loanInfo?.coEmprunteur && selected.loanInfo?.borrowers?.[1]
+                ? [['👥 Co-emprunteur', `${selected.loanInfo.borrowers[1].age} ans · ${selected.loanInfo.borrowers[1].quotite}% de quotité`]]
+                : []),
+              ...(selected.quote ? [
+                ['🏆 Offre choisie', selected.quote.insurer],
+                ['💵 Prime mensuelle', `${selected.quote.monthly}€/mois`],
+                ['💚 Économies', `${Number(selected.quote.savings).toLocaleString('fr-FR')}€ (-${selected.quote.savingsPct}%)`],
+              ] : []),
               ['🔗 Source', selected.referral || 'Direct'],
             ].map(([k, v]) => (
               <div key={k} className="flex justify-between py-2.5 border-b border-slate-100 text-sm last:border-0">

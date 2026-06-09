@@ -149,10 +149,13 @@ export const handler = async (event, context) => {
 
     // 1. Sauvegarder le lead dans Netlify Blobs
     try {
-      const store = getStore('leads')
+      const store = getStore('leads', { consistency: 'strong' })
       const leadData = { id: leadId, contact, quote, loanInfo, bankMonthly, referral: referral || null, createdAt: now.toISOString(), status: 'nouveau' }
       await store.set(leadId, JSON.stringify(leadData))
-    } catch (e) { console.error('Blob save error:', e.message) }
+    } catch (e) {
+      console.error('Blob save error:', e)
+      return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur enregistrement du lead' }) }
+    }
 
     // 2. Email immédiat au courtier
     const referralTag = referral ? ` · 🔗 via ${referral}` : ''

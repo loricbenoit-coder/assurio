@@ -11,7 +11,7 @@ export const handler = async (event) => {
       return { statusCode: 400, headers, body: JSON.stringify({ error: 'Paramètres manquants' }) }
     }
 
-    const store = getStore('leads')
+    const store = getStore('leads', { consistency: 'strong' })
     const raw = await store.get(leadId)
     if (!raw) return { statusCode: 404, headers, body: JSON.stringify({ error: 'Lead introuvable' }) }
 
