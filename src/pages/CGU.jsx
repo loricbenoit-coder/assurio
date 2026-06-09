@@ -1,6 +1,7 @@
 ﻿import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
+import { SEO } from '@/components/ui/SEO'
 
 const Section = ({ title, children }) => (
   <div className="mb-8">
@@ -11,6 +12,15 @@ const Section = ({ title, children }) => (
 
 export const CGU = () => (
   <div className="min-h-screen bg-slate-50">
+    <SEO
+      title="Conditions générales d'utilisation"
+      description="Conditions générales d'utilisation du service Assur Emprunteur. Accès au site, responsabilités, propriété intellectuelle et droit applicable."
+      canonical="https://assur-emprunteur.fr/cgu"
+      breadcrumbs={[
+        { name: 'Accueil', url: 'https://assur-emprunteur.fr/' },
+        { name: 'CGU', url: 'https://assur-emprunteur.fr/cgu' },
+      ]}
+    />
     <div className="max-w-3xl mx-auto px-6 py-16">
       <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#0a1340] mb-8 transition-colors">
         <ArrowLeft className="w-4 h-4" /> Retour à l'accueil

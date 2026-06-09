@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Shield, Award, Heart, Target, CheckCircle2, TrendingDown, Users, Star, FileCheck, Building2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { SEO } from '@/components/ui/SEO'
 
 const CHIFFRES = [
   { value: '10+', label: "ans d'expertise", icon: Award },
@@ -42,6 +43,15 @@ const PROCESS = [
 
 export const APropos = () => (
   <div className="min-h-screen bg-white">
+    <SEO
+      title="À propos — Votre courtier en assurance emprunteur"
+      description="Découvrez Assur Emprunteur : courtier spécialisé en assurance de prêt immobilier. Plus de 10 ans d'expertise, 50 000 clients accompagnés, économies jusqu'à 60%."
+      canonical="https://assur-emprunteur.fr/a-propos"
+      breadcrumbs={[
+        { name: 'Accueil', url: 'https://assur-emprunteur.fr/' },
+        { name: 'À propos', url: 'https://assur-emprunteur.fr/a-propos' },
+      ]}
+    />
 
     {/* Hero institutionnel */}
     <div className="bg-gradient-to-br from-[#0f1f6b] to-[#0a1340] py-24 relative overflow-hidden">
