@@ -1,7 +1,7 @@
 ﻿export const ARTICLES = [
   {
     slug: 'loi-lemoine-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Signature contrat assurance emprunteur loi Lemoine',
     title: 'Loi Lemoine : tout ce qui change pour votre assurance emprunteur',
     description: 'Depuis 2022, la loi Lemoine révolutionne l\'assurance emprunteur. Résiliation à tout moment, suppression du questionnaire de santé... Découvrez tous vos nouveaux droits.',
@@ -57,7 +57,7 @@ La loi Lemoine est une opportunité en or pour tous les emprunteurs. Si vous n'a
   },
   {
     slug: 'comment-changer-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Clés maison changement assurance emprunteur',
     title: 'Comment changer d\'assurance emprunteur en 2025 : le guide complet',
     description: 'Changer d\'assurance emprunteur est plus simple qu\'on ne le croit. Suivez notre guide étape par étape pour économiser des milliers d\'euros sur votre prêt immobilier.',
@@ -120,7 +120,7 @@ Changer d'assurance emprunteur est simple, rapide et sans risque. La seule quest
   },
   {
     slug: 'garanties-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Protection garanties assurance emprunteur DC PTIA ITT',
     title: 'Les garanties de l\'assurance emprunteur expliquées simplement',
     description: 'DC, PTIA, ITT, IPT, IPP... Les garanties de l\'assurance emprunteur sont souvent obscures. Notre guide les explique clairement pour que vous fassiez le bon choix.',
@@ -194,7 +194,7 @@ Comprendre les garanties de votre assurance emprunteur vous permet de faire des 
   },
   {
     slug: 'assurance-emprunteur-fumeur',
-    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Assurance emprunteur tarif fumeur santé',
     title: 'Assurance emprunteur fumeur : comment payer moins cher ?',
     description: 'Fumeur, votre assurance emprunteur coûte plus cher. Mais des solutions existent pour réduire la facture. Nos conseils pour économiser malgré le surcoût tabac.',
@@ -253,7 +253,7 @@ Même fumeur, passer par un courtier vous fait économiser **plus de 8 000€** 
   },
   {
     slug: 'delegation-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Délégation assurance emprunteur contrat courtier',
     title: 'Délégation d\'assurance emprunteur : tout comprendre en 5 minutes',
     description: 'La délégation d\'assurance vous permet de choisir librement votre assurance emprunteur plutôt que celle de votre banque. Mode d\'emploi complet.',
@@ -312,7 +312,7 @@ La délégation d'assurance emprunteur est votre droit, et l'exercer peut vous f
   },
   {
     slug: 'taea-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'TAEA taux annuel effectif assurance comparer',
     title: 'TAEA : comment comparer les assurances emprunteur efficacement',
     description: 'Le TAEA (Taux Annuel Effectif d\'Assurance) est l\'indicateur clé pour comparer les assurances emprunteur. Apprenez à l\'utiliser pour faire le meilleur choix.',
@@ -375,7 +375,7 @@ Le TAEA est votre meilleur allié pour comparer les assurances emprunteur. Mais 
   },
   {
     slug: 'convention-aeras-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Convention AERAS assurance emprunteur maladie risque aggravé',
     title: 'Convention AERAS : l\'assurance emprunteur pour les personnes malades',
     description: 'La convention AERAS facilite l\'accès à l\'assurance emprunteur pour les personnes ayant ou ayant eu un problème de santé grave. Tout ce qu\'il faut savoir.',
@@ -431,7 +431,7 @@ La convention AERAS est un filet de sécurité important pour les personnes dont
   },
   {
     slug: 'comparatif-banque-courtier-assurance',
-    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Comparatif banque courtier assurance emprunteur économies',
     title: 'Assurance emprunteur : banque vs courtier, qui gagne ?',
     description: 'Faut-il prendre l\'assurance de sa banque ou passer par un courtier ? Comparatif objectif pour vous aider à faire le meilleur choix.',
@@ -507,7 +507,7 @@ Dans la grande majorité des cas, passer par un courtier vous fait économiser d
   },
   {
     slug: 'economiser-assurance-pret-immobilier',
-    image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Économiser assurance prêt immobilier conseils',
     title: '10 conseils pour économiser sur votre assurance prêt immobilier',
     description: 'Découvrez nos 10 conseils d\'experts pour réduire le coût de votre assurance emprunteur et économiser plusieurs milliers d\'euros.',
@@ -567,7 +567,7 @@ L'optimisation de votre assurance emprunteur est l'une des actions à plus fort 
   },
   {
     slug: 'questionnaire-sante-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Questionnaire santé assurance emprunteur déclaration',
     title: 'Questionnaire de santé assurance emprunteur : ce qu\'il faut déclarer',
     description: 'Le questionnaire de santé de l\'assurance emprunteur est souvent source d\'inquiétude. Notre guide vous explique ce que vous devez déclarer et comment optimiser votre dossier.',
@@ -636,7 +636,7 @@ Le questionnaire de santé ne doit pas être une barrière. Grâce à la loi Lem
   // ── Nouveaux articles ─────────────────────────────────────
   {
     slug: 'assurance-emprunteur-senior',
-    image: 'https://images.unsplash.com/photo-1447014421976-7fec21d26d86?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1447014421976-7fec21d26d86?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Senior assurance emprunteur prêt immobilier après 60 ans',
     title: "Assurance emprunteur senior : comment s'assurer après 60 ans",
     description: "Emprunter après 60 ans est possible mais l'assurance emprunteur est plus chère. Découvrez nos conseils pour trouver la meilleure couverture au meilleur prix.",
@@ -708,7 +708,7 @@ Même après 60 ans, il est largement possible et rentable de changer d'assuranc
   },
   {
     slug: 'pret-immobilier-sans-assurance',
-    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Prêt immobilier sans assurance emprunteur immeuble',
     title: "Prêt immobilier sans assurance : est-ce possible ?",
     description: "L'assurance emprunteur est-elle obligatoire ? Peut-on obtenir un prêt immobilier sans s'assurer ? Réponses claires et alternatives légales.",
@@ -767,7 +767,7 @@ Un prêt immobilier sans assurance est théoriquement possible mais pratiquement
   },
   {
     slug: 'assurance-emprunteur-couple-quotite',
-    image: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Assurance emprunteur couple quotité répartition prêt immobilier',
     title: "Assurance emprunteur en couple : comment optimiser la quotité ?",
     description: "La quotité d'assurance en couple est souvent mal configurée. Une bonne répartition peut vous faire économiser des milliers d'euros. Nos conseils d'experts.",
@@ -844,7 +844,7 @@ La quotité d'assurance emprunteur est un paramètre souvent négligé mais qui 
   },
   {
     slug: 'assurance-emprunteur-auto-entrepreneur',
-    image: 'https://images.unsplash.com/photo-1664575599736-c5197c684128?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1664575599736-c5197c684128?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Auto-entrepreneur assurance emprunteur prêt immobilier indépendant',
     title: "Assurance emprunteur auto-entrepreneur : nos conseils",
     description: "Les auto-entrepreneurs font face à des obstacles spécifiques pour l'assurance emprunteur. Revenus variables, statut atypique... voici comment obtenir la meilleure couverture.",
@@ -912,7 +912,7 @@ Si vous avez opté pour le portage salarial, votre situation est plus favorable 
   },
   {
     slug: 'lettre-resiliation-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Lettre résiliation assurance emprunteur modèle gratuit',
     title: "Lettre de résiliation assurance emprunteur : modèle gratuit 2025",
     description: "Téléchargez gratuitement notre modèle de lettre de résiliation d'assurance emprunteur conforme à la loi Lemoine. Résiliez facilement et économisez immédiatement.",
@@ -1003,7 +1003,7 @@ La résiliation d'assurance emprunteur est un droit et une démarche simple. Che
   },
   {
     slug: 'assurance-emprunteur-arret-maladie',
-    image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Assurance emprunteur arrêt maladie couverture garantie ITT',
     title: "Assurance emprunteur et arrêt maladie : êtes-vous bien couvert ?",
     description: "Que se passe-t-il pour votre prêt en cas d'arrêt maladie ? Comment fonctionne la garantie ITT ? Tout ce que vous devez savoir pour être bien protégé.",
@@ -1074,7 +1074,7 @@ La garantie ITT de votre assurance emprunteur est votre filet de sécurité en c
   },
   {
     slug: 'remboursement-anticipe-assurance-emprunteur',
-    image: 'https://images.unsplash.com/photo-1633158829875-e5316a358c6f?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1633158829875-e5316a358c6f?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Remboursement anticipé prêt immobilier assurance emprunteur impact',
     title: "Remboursement anticipé et assurance emprunteur : ce qui change",
     description: "Vous remboursez votre prêt par anticipation ? Votre assurance emprunteur est impactée. Découvrez vos droits et comment récupérer le trop-perçu.",
@@ -1138,7 +1138,7 @@ Remboursement anticipé, renégociation, vente... chaque changement dans votre p
   },
   {
     slug: 'assurance-emprunteur-investissement-locatif',
-    image: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Investissement locatif assurance emprunteur immeuble appartement',
     title: "Investissement locatif : quelle assurance emprunteur choisir ?",
     description: "L'assurance emprunteur pour un investissement locatif a ses spécificités. Garanties adaptées, fiscalité, optimisation... notre guide complet pour les investisseurs.",
@@ -1210,7 +1210,7 @@ L'assurance emprunteur pour un investissement locatif mérite une réflexion app
   },
   {
     slug: 'assurance-emprunteur-changement-situation',
-    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Changement situation professionnelle assurance emprunteur adaptation',
     title: "Changement de situation professionnelle et assurance emprunteur",
     description: "Vous changez d'emploi, devenez indépendant ou partez à la retraite ? Votre assurance emprunteur doit évoluer avec vous. Tout ce qu'il faut savoir.",
@@ -1289,7 +1289,7 @@ Votre situation professionnelle évolue, votre assurance emprunteur doit évolue
   },
   {
     slug: 'assurance-emprunteur-credit-consommation',
-    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=80&auto=format&fit=crop',
+    image: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1200&q=75&fm=webp&fit=crop',
     imageAlt: 'Assurance emprunteur crédit consommation prêt personnel',
     title: "Assurance emprunteur et crédit à la consommation : ce qu'il faut savoir",
     description: "L'assurance emprunteur concerne-t-elle aussi les crédits à la consommation ? Quelles protections, quels droits ? Le point complet sur un sujet souvent méconnu.",

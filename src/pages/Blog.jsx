@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowLeft, Clock, ArrowRight } from 'lucide-react'
 import { ARTICLES } from '@/data/articles'
 import { SEO } from '@/components/ui/SEO'
+import { ArticleImage } from '@/components/ui/ArticleImage'
 
 const CATEGORY_COLORS = {
   'Législation':    'bg-blue-50 text-blue-700',
@@ -51,11 +52,11 @@ export const Blog = () => (
           {/* Image hero */}
           {ARTICLES[0].image && (
             <div className="relative h-56 md:h-72 overflow-hidden">
-              <img
+              <ArticleImage
                 src={ARTICLES[0].image}
                 alt={ARTICLES[0].imageAlt}
+                eager
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-6 left-8">
@@ -89,11 +90,10 @@ export const Blog = () => (
             {/* Miniature */}
             {article.image && (
               <div className="h-40 overflow-hidden">
-                <img
+                <ArticleImage
                   src={article.image}
                   alt={article.imageAlt}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
                 />
               </div>
             )}

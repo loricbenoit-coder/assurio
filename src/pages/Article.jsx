@@ -4,6 +4,7 @@ import { ArrowLeft, Clock, ArrowRight } from 'lucide-react'
 import { ARTICLES } from '@/data/articles'
 import { Button } from '@/components/ui/Button'
 import { SEO } from '@/components/ui/SEO'
+import { ArticleImage } from '@/components/ui/ArticleImage'
 
 const CATEGORY_COLORS = {
   'Législation':    'bg-blue-50 text-blue-700',
@@ -122,11 +123,11 @@ export const Article = () => {
       {/* Image hero de l'article */}
       {article.image && (
         <div className="relative h-64 md:h-80 overflow-hidden">
-          <img
+          <ArticleImage
             src={article.image}
             alt={article.imageAlt}
+            eager
             className="w-full h-full object-cover"
-            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0a1340]/90 via-[#0a1340]/40 to-transparent" />
         </div>
