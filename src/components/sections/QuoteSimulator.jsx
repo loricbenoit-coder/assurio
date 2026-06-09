@@ -1,5 +1,5 @@
-﻿import React, { useState } from 'react'
-import { ArrowRight, ArrowLeft, CheckCircle2, TrendingDown, Star, Phone, Shield, Info, Mail, Loader2 } from 'lucide-react'
+import React, { useState, useRef } from 'react'
+import { ArrowRight, ArrowLeft, CheckCircle2, TrendingDown, Star, Phone, Shield, Info, Mail, Loader2, Upload, FileText, CreditCard, X, Sparkles, AlertCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { computeQuotes } from '@/lib/quoteEngine'
 import { cn } from '@/lib/utils'
@@ -8,12 +8,12 @@ import { getReferral } from '@/hooks/useReferral'
 const STEPS = ['Votre prêt', 'Votre profil', 'Vos offres', 'Contact']
 
 const PROFESSIONS = [
-  { value: 'cadre', label: 'Cadre / Ingénieur' },
-  { value: 'employe', label: 'Employé / Ouvrier' },
+  { value: 'cadre',        label: 'Cadre / Ingénieur' },
+  { value: 'employe',      label: 'Employé / Ouvrier' },
   { value: 'fonctionnaire', label: 'Fonctionnaire' },
-  { value: 'liberal', label: 'Profession libérale' },
-  { value: 'artisan', label: 'Artisan / Commerçant' },
-  { value: 'autre', label: 'Autre' },
+  { value: 'liberal',      label: 'Profession libérale' },
+  { value: 'artisan',      label: 'Artisan / Commerçant' },
+  { value: 'autre',        label: 'Autre' },
 ]
 
 const GUARANTEE_LABELS = {
@@ -21,6 +21,7 @@ const GUARANTEE_LABELS = {
   IPT: 'Invalidité permanente', IPP: 'Invalidité partielle', PE: 'Perte emploi',
 }
 
+/* ─── Step indicator ─────────────────────────────────────────── */
 const StepIndicator = ({ current }) => (
   <div className="flex items-center justify-center gap-1 sm:gap-2 mb-8">
     {STEPS.map((label, i) => (
@@ -54,6 +55,7 @@ const InputField = ({ label, hint, children }) => (
 
 const inputClass = 'w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0f1f6b] focus:ring-1 focus:ring-[#0f1f6b]/20 bg-white'
 
+/* ─── QuoteCard ──────────────────────────────────────────────── */
 const QuoteCard = ({ quote, rank, selected, onSelect }) => (
   <div
     className={cn(
@@ -113,22 +115,151 @@ const QuoteCard = ({ quote, rank, selected, onSelect }) => (
   </div>
 )
 
+/* ─── Composant upload d'un document ────────────────────────── */
+const DocUpload = ({ icon: Icon, title, subtitle, status, onFile, onClear, autoFilled }) => {
+  const inputRef = useRef(null)
+  const [dragging, setDragging] = useState(false)
+
+  const handleDrop = (e) => {
+    e.preventDefault()
+    setDragging(false)
+    const file = e.dataTransfer.files[0]
+    if (file) onFile(file)
+  }
+
+  return (
+    <div
+      className={cn(
+        'relative rounded-2xl border-2 border-dashed p-5 transition-all',
+        dragging ? 'border-[#0f1f6b] bg-blue-50' :
+        status === 'done' ? 'border-[#10b981] bg-emerald-50' :
+        status === 'error' ? 'border-red-300 bg-red-50' :
+        status === 'loading' ? 'border-[#0f1f6b]/40 bg-blue-50/40' :
+        'border-slate-200 hover:border-[#0f1f6b]/40 cursor-pointer bg-slate-50'
+      )}
+      onClick={() => !status && inputRef.current?.click()}
+      onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
+      onDragLeave={() => setDragging(false)}
+      onDrop={handleDrop}
+    >
+      <input ref={inputRef} type="file" className="hidden"
+        accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
+        onChange={(e) => e.target.files[0] && onFile(e.target.files[0])} />
+
+      <div className="flex items-center gap-4">
+        <div className={cn('w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0',
+          status === 'done' ? 'bg-emerald-100' : status === 'error' ? 'bg-red-100' : 'bg-white border border-slate-200'
+        )}>
+          {status === 'loading' ? <Loader2 className="w-5 h-5 text-[#0f1f6b] animate-spin" /> :
+           status === 'done'    ? <CheckCircle2 className="w-5 h-5 text-[#10b981]" /> :
+           status === 'error'   ? <AlertCircle className="w-5 h-5 text-red-500" /> :
+           <Icon className="w-5 h-5 text-slate-400" />}
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <p className="font-semibold text-sm text-[#0a1340]">{title}</p>
+          <p className="text-xs text-slate-400 mt-0.5">{
+            status === 'loading' ? 'Analyse en cours par IA…' :
+            status === 'done'    ? subtitle :
+            status === 'error'   ? 'Impossible de lire le document. Réessayez.' :
+            'Cliquez ou déposez votre fichier'
+          }</p>
+          {status === 'done' && autoFilled && (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {autoFilled.map(f => (
+                <span key={f} className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+                  <Sparkles className="w-2.5 h-2.5" /> {f}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {(status === 'done' || status === 'error') && (
+          <button onClick={(e) => { e.stopPropagation(); onClear() }}
+            className="w-6 h-6 rounded-full bg-slate-200 hover:bg-slate-300 flex items-center justify-center flex-shrink-0 transition-colors">
+            <X className="w-3 h-3 text-slate-600" />
+          </button>
+        )}
+
+        {!status && (
+          <Upload className="w-4 h-4 text-slate-300 flex-shrink-0" />
+        )}
+      </div>
+    </div>
+  )
+}
+
+/* ─── Simulateur principal ───────────────────────────────────── */
 export const QuoteSimulator = () => {
-  const [step, setStep] = useState(0)
-  const [form, setForm] = useState({ amount: '', duration: '', age: '', smoker: false, profession: 'cadre' })
+  const [step, setStep]       = useState(0)
+  const [inputMode, setInputMode] = useState('manual') // 'manual' | 'upload'
+  const [form, setForm]       = useState({ amount: '', duration: '', age: '', smoker: false, profession: 'cadre' })
   const [contact, setContact] = useState({ firstName: '', lastName: '', email: '', phone: '', rgpd: false })
   const [results, setResults] = useState(null)
   const [selectedQuote, setSelectedQuote] = useState(null)
   const [sending, setSending] = useState(false)
-  const [sent, setSent] = useState(false)
-  const [error, setError] = useState(null)
+  const [sent, setSent]       = useState(false)
+  const [error, setError]     = useState(null)
 
-  const set = (key, val) => setForm((f) => ({ ...f, [key]: val }))
+  // États upload
+  const [cniStatus,  setCniStatus]  = useState(null) // null | 'loading' | 'done' | 'error'
+  const [pretStatus, setPretStatus] = useState(null)
+  const [cniFields,  setCniFields]  = useState([])
+  const [pretFields, setPretFields] = useState([])
+
+  const set  = (key, val) => setForm((f) => ({ ...f, [key]: val }))
   const setC = (key, val) => setContact((c) => ({ ...c, [key]: val }))
 
   const canNextStep0 = form.amount >= 50000 && form.amount <= 1000000 && form.duration >= 5 && form.duration <= 30
   const canNextStep1 = form.age >= 18 && form.age <= 70
-  const canSubmit = contact.firstName && contact.lastName && contact.email && contact.phone && contact.rgpd
+  const canSubmit    = contact.firstName && contact.lastName && contact.email && contact.phone && contact.rgpd
+
+  /* Conversion fichier → base64 */
+  const toBase64 = (file) => new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(reader.result.split(',')[1])
+    reader.onerror = reject
+    reader.readAsDataURL(file)
+  })
+
+  const getMediaType = (file) => {
+    const map = { 'image/jpeg': 'image/jpeg', 'image/png': 'image/png', 'image/webp': 'image/webp', 'image/heic': 'image/jpeg', 'application/pdf': 'application/pdf' }
+    return map[file.type] || 'image/jpeg'
+  }
+
+  /* Appel API extraction */
+  const extractDoc = async (file, docType, setStatus, setAutoFilled) => {
+    setStatus('loading')
+    try {
+      const imageBase64 = await toBase64(file)
+      const mediaType   = getMediaType(file)
+      const res = await fetch('/.netlify/functions/extract-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ imageBase64, mediaType, docType }),
+      })
+      const json = await res.json()
+      if (!res.ok || !json.success) throw new Error(json.error)
+
+      const d = json.data
+      const filled = []
+
+      if (docType === 'cni') {
+        if (d.age)    { set('age', d.age);           filled.push(`Âge : ${d.age} ans`) }
+        if (d.prenom) { setC('firstName', d.prenom); filled.push(`Prénom : ${d.prenom}`) }
+        if (d.nom)    { setC('lastName', d.nom);     filled.push(`Nom : ${d.nom}`) }
+      } else {
+        if (d.montant)       { set('amount', d.montant);          filled.push(`Montant : ${d.montant.toLocaleString('fr-FR')}€`) }
+        if (d.duree_annees)  { set('duration', d.duree_annees);   filled.push(`Durée : ${d.duree_annees} ans`) }
+      }
+
+      setAutoFilled(filled)
+      setStatus(filled.length > 0 ? 'done' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
 
   const handleCompute = () => {
     const r = computeQuotes({
@@ -158,9 +289,17 @@ export const QuoteSimulator = () => {
       if (!res.ok) throw new Error()
       setSent(true)
     } catch {
-      setError("Une erreur est survenue. Veuillez réessayer ou nous appeler directement.")
+      setError('Une erreur est survenue. Veuillez réessayer ou nous appeler.')
     } finally {
       setSending(false)
+    }
+  }
+
+  const switchMode = (mode) => {
+    setInputMode(mode)
+    if (mode === 'manual') {
+      setCniStatus(null); setPretStatus(null)
+      setCniFields([]); setPretFields([])
     }
   }
 
@@ -177,18 +316,98 @@ export const QuoteSimulator = () => {
           <p className="text-lg text-slate-500 max-w-xl mx-auto">
             Obtenez une estimation personnalisée et découvrez combien vous pouvez économiser.
           </p>
-          <div className="inline-flex items-center gap-2 mt-3 text-xs text-slate-400">
-            <Info className="w-3.5 h-3.5" />
-            Simulation basée sur les tarifs du marché — résultats indicatifs
-          </div>
         </div>
 
         <div className="max-w-2xl mx-auto">
           <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8">
             <StepIndicator current={step} />
 
-            {/* Étape 0 : Prêt */}
-            {step === 0 && (
+            {/* ── Étapes 0 & 1 : toggle manuel/upload ── */}
+            {(step === 0 || step === 1) && (
+              <div className="flex gap-2 mb-6 p-1 bg-slate-100 rounded-2xl">
+                <button
+                  onClick={() => switchMode('manual')}
+                  className={cn('flex-1 py-2.5 text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-2',
+                    inputMode === 'manual' ? 'bg-white text-[#0a1340] shadow-sm' : 'text-slate-400 hover:text-slate-600'
+                  )}>
+                  <FileText className="w-4 h-4" /> Saisir manuellement
+                </button>
+                <button
+                  onClick={() => switchMode('upload')}
+                  className={cn('flex-1 py-2.5 text-sm font-semibold rounded-xl transition-all flex items-center justify-center gap-2',
+                    inputMode === 'upload' ? 'bg-white text-[#0a1340] shadow-sm' : 'text-slate-400 hover:text-slate-600'
+                  )}>
+                  <Sparkles className="w-4 h-4 text-[#10b981]" /> Analyser mes documents
+                </button>
+              </div>
+            )}
+
+            {/* ── Mode upload ── */}
+            {(step === 0 || step === 1) && inputMode === 'upload' && (
+              <div>
+                <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 mb-5 flex items-start gap-3">
+                  <Shield className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <p className="text-xs text-amber-700 leading-relaxed">
+                    <strong>Vos documents sont analysés en temps réel par IA et ne sont jamais stockés.</strong> Seules les données extraites (âge, montant, durée) sont conservées pour la simulation.
+                  </p>
+                </div>
+
+                <div className="space-y-4 mb-6">
+                  <DocUpload
+                    icon={CreditCard}
+                    title="Carte nationale d'identité"
+                    subtitle="Prénom, nom et âge extraits automatiquement"
+                    status={cniStatus}
+                    autoFilled={cniFields}
+                    onFile={(f) => extractDoc(f, 'cni', setCniStatus, setCniFields)}
+                    onClear={() => { setCniStatus(null); setCniFields([]) }}
+                  />
+                  <DocUpload
+                    icon={FileText}
+                    title="Offre de prêt immobilier"
+                    subtitle="Montant et durée extraits automatiquement"
+                    status={pretStatus}
+                    autoFilled={pretFields}
+                    onFile={(f) => extractDoc(f, 'pret', setPretStatus, setPretFields)}
+                    onClear={() => { setPretStatus(null); setPretFields([]) }}
+                  />
+                </div>
+
+                {(cniStatus === 'done' || pretStatus === 'done') && (
+                  <div className="bg-[#f0f4ff] rounded-2xl p-4 mb-5">
+                    <p className="text-xs font-semibold text-[#0f1f6b] mb-3 flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5" /> Données extraites — vérifiez et complétez si nécessaire
+                    </p>
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        { label: 'Montant (€)', key: 'amount', type: 'number', placeholder: '250000' },
+                        { label: 'Durée (ans)', key: 'duration', type: 'number', placeholder: '20' },
+                        { label: 'Âge', key: 'age', type: 'number', placeholder: '35' },
+                      ].map(({ label, key, type, placeholder }) => (
+                        <div key={key} className={key === 'amount' ? 'col-span-2' : ''}>
+                          <label className="block text-xs font-semibold text-slate-500 mb-1">{label}</label>
+                          <input type={type} className={cn(inputClass, 'bg-white text-sm py-2')}
+                            placeholder={placeholder} value={form[key]}
+                            onChange={(e) => set(key, e.target.value)} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <Button className="w-full" size="lg"
+                  disabled={!canNextStep0 || !canNextStep1}
+                  onClick={handleCompute}>
+                  Voir mes résultats <ArrowRight className="w-5 h-5" />
+                </Button>
+                <p className="text-xs text-slate-400 text-center mt-2">
+                  Formats acceptés : JPG, PNG, WebP, HEIC
+                </p>
+              </div>
+            )}
+
+            {/* ── Mode manuel — Étape 0 : Prêt ── */}
+            {step === 0 && inputMode === 'manual' && (
               <div>
                 <h3 className="text-xl font-bold text-[#0a1340] mb-6">Votre prêt immobilier</h3>
                 <InputField label="Montant du prêt" hint="Entre 50 000€ et 1 000 000€">
@@ -223,8 +442,8 @@ export const QuoteSimulator = () => {
               </div>
             )}
 
-            {/* Étape 1 : Profil */}
-            {step === 1 && (
+            {/* ── Mode manuel — Étape 1 : Profil ── */}
+            {step === 1 && inputMode === 'manual' && (
               <div>
                 <h3 className="text-xl font-bold text-[#0a1340] mb-6">Votre profil</h3>
                 <InputField label="Votre âge">
@@ -266,7 +485,7 @@ export const QuoteSimulator = () => {
               </div>
             )}
 
-            {/* Étape 2 : Résultats */}
+            {/* ── Étape 2 : Résultats ── */}
             {step === 2 && results && (
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -302,7 +521,7 @@ export const QuoteSimulator = () => {
               </div>
             )}
 
-            {/* Étape 3 : Coordonnées */}
+            {/* ── Étape 3 : Coordonnées ── */}
             {step === 3 && !sent && (
               <div>
                 <h3 className="text-xl font-bold text-[#0a1340] mb-4">Vos coordonnées</h3>
@@ -368,7 +587,7 @@ export const QuoteSimulator = () => {
               </div>
             )}
 
-            {/* Confirmation */}
+            {/* ── Confirmation ── */}
             {sent && (
               <div className="text-center py-8">
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
