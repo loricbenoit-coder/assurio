@@ -210,8 +210,41 @@ const TabAffilies = ({ leads }) => {
   )
 }
 
+/* ─── Sélecteur de statut inline ────────────────────────── */
+const StatusSelector = ({ lead, password, onUpdate }) => {
+  const [saving, setSaving] = useState(false)
+
+  const handleChange = async (e) => {
+    const newStatus = e.target.value
+    setSaving(true)
+    try {
+      const res = await fetch('/.netlify/functions/update-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+        body: JSON.stringify({ leadId: lead.id, status: newStatus }),
+      })
+      if (res.ok) onUpdate(lead.id, { status: newStatus })
+    } catch (err) { console.error(err) }
+    finally { setSaving(false) }
+  }
+
+  return (
+    <select
+      value={lead.status || 'nouveau'}
+      onChange={handleChange}
+      disabled={saving}
+      onClick={e => e.stopPropagation()}
+      className={`text-xs font-semibold px-2.5 py-1.5 rounded-xl border-0 cursor-pointer transition-all outline-none ${STATUS_CONFIG[lead.status]?.color || 'bg-slate-100 text-slate-600'} ${saving ? 'opacity-50' : ''}`}
+    >
+      {Object.entries(STATUS_CONFIG).map(([key, { label }]) => (
+        <option key={key} value={key}>{label}</option>
+      ))}
+    </select>
+  )
+}
+
 /* ─── Onglet Leads ───────────────────────────────────────── */
-const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected }) => {
+const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected, password, onLeadUpdate }) => {
   const total = leads.length
   const signes = leads.filter(l => l.status === 'signe').length
   const ca = leads.filter(l => l.status === 'signe').reduce((acc, l) => acc + (l.quote?.savings > 5000 ? 700 : 350), 0)
@@ -305,9 +338,7 @@ const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected })
                       )}
                     </td>
                     <td className="px-4 py-4">
-                      <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_CONFIG[lead.status]?.color || 'bg-slate-100 text-slate-600'}`}>
-                        {STATUS_CONFIG[lead.status]?.label || lead.status}
-                      </span>
+                      <StatusSelector lead={lead} password={password} onUpdate={onLeadUpdate} />
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex gap-2">
@@ -345,6 +376,12 @@ const Dashboard = ({ password, onLogout }) => {
   }
 
   useEffect(() => { loadLeads() }, [])
+
+  // Met à jour un lead dans le state local sans recharger tout
+  const handleLeadUpdate = (leadId, changes) => {
+    setLeads(prev => prev.map(l => l.id === leadId ? { ...l, ...changes } : l))
+    setSelected(prev => prev?.id === leadId ? { ...prev, ...changes } : prev)
+  }
 
   const exportCSV = () => {
     const rows = [['Date', 'Prénom', 'Nom', 'Email', 'Téléphone', 'Montant', 'Durée', 'Offre', 'Économies', 'Source', 'Statut']]
@@ -403,6 +440,8 @@ const Dashboard = ({ password, onLogout }) => {
             setFilter={setFilter}
             exportCSV={exportCSV}
             setSelected={setSelected}
+            password={password}
+            onLeadUpdate={handleLeadUpdate}
           />
         )}
       </div>
