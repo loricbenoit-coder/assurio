@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { ArrowLeft, Clock, Tag, ArrowRight, Share2 } from 'lucide-react'
+import { ArrowLeft, Clock, ArrowRight } from 'lucide-react'
 import { ARTICLES } from '@/data/articles'
 import { Button } from '@/components/ui/Button'
+import { SEO } from '@/components/ui/SEO'
 
 const CATEGORY_COLORS = {
   'Législation':    'bg-blue-50 text-blue-700',
@@ -64,7 +65,14 @@ export const Article = () => {
   const { slug } = useParams()
   const navigate = useNavigate()
   const article = ARTICLES.find(a => a.slug === slug)
-  const others = ARTICLES.filter(a => a.slug !== slug).slice(0, 3)
+
+  // Articles liés : même catégorie en priorité
+  const related = ARTICLES
+    .filter(a => a.slug !== slug)
+    .sort((a, b) => (b.category === article?.category ? 1 : 0) - (a.category === article?.category ? 1 : 0))
+    .slice(0, 3)
+
+  const others = related
 
   useEffect(() => {
     if (!article) navigate('/blog')
@@ -73,8 +81,44 @@ export const Article = () => {
 
   if (!article) return null
 
+  const canonicalUrl = `https://assur-emprunteur.fr/blog/${article.slug}`
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.description,
+    image: article.image || 'https://assur-emprunteur.fr/logo-carre.svg',
+    datePublished: article.date,
+    dateModified: article.date,
+    author: { '@type': 'Organization', name: 'Assur Emprunteur', url: 'https://assur-emprunteur.fr' },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Assur Emprunteur',
+      logo: { '@type': 'ImageObject', url: 'https://assur-emprunteur.fr/logo-icone.svg' },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': canonicalUrl },
+    keywords: article.keywords,
+    articleSection: article.category,
+    inLanguage: 'fr-FR',
+  }
+
   return (
     <div className="min-h-screen bg-white">
+      <SEO
+        title={article.title}
+        description={article.description}
+        canonical={canonicalUrl}
+        image={article.image || 'https://assur-emprunteur.fr/logo-carre.svg'}
+        type="article"
+        schema={articleSchema}
+        article={{ publishedTime: article.date, section: article.category }}
+        breadcrumbs={[
+          { name: 'Accueil', url: 'https://assur-emprunteur.fr/' },
+          { name: 'Conseils', url: 'https://assur-emprunteur.fr/conseils' },
+          { name: article.title, url: canonicalUrl },
+        ]}
+      />
       {/* Image hero de l'article */}
       {article.image && (
         <div className="relative h-64 md:h-80 overflow-hidden">
@@ -131,10 +175,11 @@ export const Article = () => {
           </a>
         </div>
 
-        {/* Articles similaires */}
+        {/* Articles similaires — maillage interne SEO */}
         {others.length > 0 && (
           <div className="mt-12">
-            <h3 className="text-xl font-bold text-[#0a1340] mb-6">À lire aussi</h3>
+            <h3 className="text-xl font-bold text-[#0a1340] mb-2">Articles liés</h3>
+            <p className="text-sm text-slate-400 mb-6">Pour aller plus loin sur ce sujet</p>
             <div className="grid md:grid-cols-3 gap-4">
               {others.map(a => (
                 <Link key={a.slug} to={`/blog/${a.slug}`}

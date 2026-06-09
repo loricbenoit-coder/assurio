@@ -2,6 +2,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Phone, Mail, MessageCircle, Clock, Send, Loader2, CheckCircle2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { SEO } from '@/components/ui/SEO'
 
 const openChatBot = () => window.dispatchEvent(new CustomEvent('openChat'))
 
@@ -48,6 +49,15 @@ export const Contact = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <SEO
+        title="Contacter un conseiller en assurance emprunteur"
+        description="Contactez notre équipe de courtiers en assurance emprunteur. Réponse sous 24h. Service gratuit et sans engagement. Formulaire, téléphone ou chat disponibles."
+        canonical="https://assur-emprunteur.fr/contact"
+        breadcrumbs={[
+          { name: 'Accueil', url: 'https://assur-emprunteur.fr/' },
+          { name: 'Contact', url: 'https://assur-emprunteur.fr/contact' },
+        ]}
+      />
       <div className="max-w-5xl mx-auto px-6 py-16">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#0a1340] mb-8 transition-colors">
           <ArrowLeft className="w-4 h-4" /> Retour à l'accueil

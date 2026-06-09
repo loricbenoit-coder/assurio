@@ -1,7 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, Clock, Tag, ArrowRight } from 'lucide-react'
+import { ArrowLeft, Clock, ArrowRight } from 'lucide-react'
 import { ARTICLES } from '@/data/articles'
+import { SEO } from '@/components/ui/SEO'
 
 const CATEGORY_COLORS = {
   'Législation':    'bg-blue-50 text-blue-700',
@@ -17,6 +18,15 @@ const formatDate = (d) =>
 
 export const Blog = () => (
   <div className="min-h-screen bg-slate-50">
+    <SEO
+      title="Conseils & guides assurance emprunteur"
+      description="Tous nos conseils d'experts sur l'assurance emprunteur : loi Lemoine, délégation, garanties, économies... Guides pratiques gratuits pour payer moins cher."
+      canonical="https://assur-emprunteur.fr/conseils"
+      breadcrumbs={[
+        { name: 'Accueil', url: 'https://assur-emprunteur.fr/' },
+        { name: 'Conseils', url: 'https://assur-emprunteur.fr/conseils' },
+      ]}
+    />
     <div className="max-w-5xl mx-auto px-6 py-16">
       <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-[#0a1340] mb-8 transition-colors">
         <ArrowLeft className="w-4 h-4" /> Retour à l'accueil
