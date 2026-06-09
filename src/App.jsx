@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { initReferral } from '@/hooks/useReferral'
 import { Navbar } from '@/components/layout/Navbar'
@@ -7,21 +7,26 @@ import { Hero } from '@/components/sections/Hero'
 import { InsurersCarousel } from '@/components/sections/InsurersCarousel'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Advantages } from '@/components/sections/Advantages'
-import { SavingsCalculator } from '@/components/sections/SavingsCalculator'
-import { QuoteSimulator } from '@/components/sections/QuoteSimulator'
-import { Testimonials } from '@/components/sections/Testimonials'
-import { FAQ } from '@/components/sections/FAQ'
-import { CTA } from '@/components/sections/CTA'
 import { ChatWidget } from '@/components/chatbot/ChatWidget'
 import { CookieBanner } from '@/components/ui/CookieBanner'
-import { MentionsLegales } from '@/pages/MentionsLegales'
-import { CGU } from '@/pages/CGU'
-import { PolitiqueConfidentialite } from '@/pages/PolitiqueConfidentialite'
-import { Contact } from '@/pages/Contact'
-import { Admin } from '@/pages/Admin'
-import { APropos } from '@/pages/APropos'
-import { Blog } from '@/pages/Blog'
-import { Article } from '@/pages/Article'
+import { LazySection } from '@/components/ui/LazySection'
+
+// Sections lourdes — chargées uniquement en approchant du viewport
+const SavingsCalculator   = lazy(() => import('@/components/sections/SavingsCalculator').then(m => ({ default: m.SavingsCalculator })))
+const QuoteSimulator      = lazy(() => import('@/components/sections/QuoteSimulator').then(m => ({ default: m.QuoteSimulator })))
+const Testimonials        = lazy(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
+const FAQ                 = lazy(() => import('@/components/sections/FAQ').then(m => ({ default: m.FAQ })))
+const CTA                 = lazy(() => import('@/components/sections/CTA').then(m => ({ default: m.CTA })))
+
+// Pages — lazy aussi pour réduire le bundle initial
+const MentionsLegales         = lazy(() => import('@/pages/MentionsLegales').then(m => ({ default: m.MentionsLegales })))
+const CGU                     = lazy(() => import('@/pages/CGU').then(m => ({ default: m.CGU })))
+const PolitiqueConfidentialite = lazy(() => import('@/pages/PolitiqueConfidentialite').then(m => ({ default: m.PolitiqueConfidentialite })))
+const Contact                 = lazy(() => import('@/pages/Contact').then(m => ({ default: m.Contact })))
+const Admin                   = lazy(() => import('@/pages/Admin').then(m => ({ default: m.Admin })))
+const APropos                 = lazy(() => import('@/pages/APropos').then(m => ({ default: m.APropos })))
+const Blog                    = lazy(() => import('@/pages/Blog').then(m => ({ default: m.Blog })))
+const Article                 = lazy(() => import('@/pages/Article').then(m => ({ default: m.Article })))
 
 // Scroll vers l'ancre après chaque navigation
 // Initialise le tracking affilié dès l'arrivée sur le site
@@ -58,11 +63,21 @@ const LandingPage = () => (
       <InsurersCarousel />
       <HowItWorks />
       <Advantages />
-      <SavingsCalculator />
-      <QuoteSimulator />
-      <Testimonials />
-      <FAQ />
-      <CTA />
+      <LazySection minHeight={600}>
+        <SavingsCalculator />
+      </LazySection>
+      <LazySection id="simulateur" minHeight={700}>
+        <QuoteSimulator />
+      </LazySection>
+      <LazySection minHeight={500}>
+        <Testimonials />
+      </LazySection>
+      <LazySection minHeight={400}>
+        <FAQ />
+      </LazySection>
+      <LazySection minHeight={300}>
+        <CTA />
+      </LazySection>
     </main>
     <Footer />
   </>
@@ -71,7 +86,9 @@ const LandingPage = () => (
 const LegalPage = ({ children }) => (
   <>
     <Navbar scrolledOnly />
-    {children}
+    <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
+      {children}
+    </Suspense>
     <Footer />
   </>
 )
