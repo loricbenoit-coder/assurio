@@ -1,8 +1,9 @@
-import { getStore } from '@netlify/blobs'
+import { getStore, connectLambda } from '@netlify/blobs'
 
 // Permet au visiteur de mettre à jour l'offre choisie sur son lead déjà enregistré
 export const handler = async (event) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' }
+  connectLambda(event)
   const headers = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
 
   try {

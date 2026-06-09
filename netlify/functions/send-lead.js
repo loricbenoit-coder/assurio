@@ -1,4 +1,4 @@
-﻿import { getStore } from '@netlify/blobs'
+﻿import { getStore, connectLambda } from '@netlify/blobs'
 
 const OWNER_EMAIL = 'loricbenoit@gmail.com'
 
@@ -138,6 +138,7 @@ const sendScheduled = async (key, { to, subject, html, scheduledAt }) => {
 /* ─── Handler principal ───────────────────────────────────── */
 export const handler = async (event, context) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' }
+  connectLambda(event)
   const headers = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
 
   try {
@@ -154,7 +155,7 @@ export const handler = async (event, context) => {
       await store.set(leadId, JSON.stringify(leadData))
     } catch (e) {
       console.error('Blob save error:', e)
-      return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur enregistrement du lead', detail: e.message, stack: e.stack }) }
+      return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur enregistrement du lead' }) }
     }
 
     // 2. Email immédiat au courtier
@@ -179,6 +180,6 @@ export const handler = async (event, context) => {
     return { statusCode: 200, headers, body: JSON.stringify({ success: true, leadId }) }
   } catch (error) {
     console.error('Send lead error:', error)
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur envoi', detail: error.message, stack: error.stack }) }
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur envoi' }) }
   }
 }

@@ -1,6 +1,7 @@
-import { getStore } from '@netlify/blobs'
+import { getStore, connectLambda } from '@netlify/blobs'
 
 export const handler = async (event) => {
+  connectLambda(event)
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',

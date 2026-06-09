@@ -1,7 +1,8 @@
-import { getStore } from '@netlify/blobs'
+import { getStore, connectLambda } from '@netlify/blobs'
 
 export const handler = async (event) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' }
+  connectLambda(event)
 
   const headers = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
 
