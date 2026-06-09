@@ -15,7 +15,7 @@ export const handler = async (event) => {
 
   // 2. Lecture des leads (avec gestion d'erreur si Blobs pas encore initialisé)
   try {
-    const store = getStore('leads', { consistency: 'strong' })
+    const store = getStore('leads')
     const { blobs } = await store.list()
 
     const leads = await Promise.all(

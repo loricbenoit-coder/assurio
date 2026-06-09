@@ -150,7 +150,7 @@ export const handler = async (event, context) => {
 
     // 1. Sauvegarder le lead dans Netlify Blobs
     try {
-      const store = getStore('leads', { consistency: 'strong' })
+      const store = getStore('leads')
       const leadData = { id: leadId, contact, quote, loanInfo, bankMonthly, referral: referral || null, createdAt: now.toISOString(), status: 'nouveau' }
       await store.set(leadId, JSON.stringify(leadData))
     } catch (e) {
