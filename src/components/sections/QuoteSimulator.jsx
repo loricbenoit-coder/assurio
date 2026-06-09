@@ -525,11 +525,11 @@ export const QuoteSimulator = () => {
           referral: getReferral(),
         }),
       })
-      if (!res.ok) throw new Error()
       const json = await res.json()
+      if (!res.ok) throw new Error(json.detail || json.error || 'Erreur inconnue')
       setLeadId(json.leadId || null)
       setStep(4)
-    } catch { setError('Une erreur est survenue. Veuillez réessayer ou nous appeler.') }
+    } catch (e) { setError(`Une erreur est survenue : ${e.message}. Veuillez réessayer ou nous appeler.`) }
     finally { setSending(false) }
   }
 
