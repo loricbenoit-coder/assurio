@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import {
   ArrowRight, ArrowLeft, CheckCircle2, TrendingDown, Star, Phone, Shield,
   Info, Mail, Loader2, Upload, FileText, CreditCard, X, Sparkles, AlertCircle,
-  Home, Building2, Key, Users, User, Zap, HardHat,
+  Home, Building2, Key, Users, User, Zap, HardHat, UserPlus, RotateCcw,
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { computeQuotes } from '@/lib/quoteEngine'
@@ -21,15 +21,38 @@ const PROFESSIONS = [
 ]
 
 const GUARANTEE_INFO = {
-  DC:   { label: 'Décès',                      desc: 'Rembourse le capital restant dû en cas de décès',                  required: true  },
-  PTIA: { label: 'Invalidité totale (PTIA)',    desc: 'Prise en charge si vous ne pouvez plus travailler du tout',        required: true  },
-  ITT:  { label: 'Incapacité temporaire (ITT)', desc: 'Couvre vos mensualités en cas d\'arrêt de travail',               required: false },
-  IPT:  { label: 'Invalidité permanente (IPT)', desc: 'Protection si votre taux d\'invalidité dépasse 66%',              required: false },
-  IPP:  { label: 'Invalidité partielle (IPP)',  desc: 'Couvre une invalidité entre 33% et 66%',                          required: false },
-  PE:   { label: 'Perte d\'emploi (PE)',        desc: 'Prend en charge vos mensualités en cas de licenciement',           required: false },
+  DC:   { label: 'Décès',                       desc: 'Rembourse le capital restant dû en cas de décès',            required: true  },
+  PTIA: { label: 'Invalidité totale (PTIA)',     desc: 'Prise en charge si vous ne pouvez plus travailler du tout',  required: true  },
+  ITT:  { label: 'Incapacité temporaire (ITT)',  desc: 'Couvre vos mensualités en cas d\'arrêt de travail',          required: false },
+  IPT:  { label: 'Invalidité permanente (IPT)',  desc: 'Protection si votre taux d\'invalidité dépasse 66%',         required: false },
+  IPP:  { label: 'Invalidité partielle (IPP)',   desc: 'Couvre une invalidité entre 33% et 66%',                     required: false },
+  PE:   { label: 'Perte d\'emploi (PE)',         desc: 'Prend en charge vos mensualités en cas de licenciement',      required: false },
 }
 
 const ALL_GUARANTEES = ['DC', 'PTIA', 'ITT', 'IPT', 'IPP', 'PE']
+
+const QUOTITE_PRESETS_COUPLE = [
+  { label: '50% / 50%',  values: [50, 50] },
+  { label: '100% / 100%', values: [100, 100] },
+  { label: '70% / 30%',  values: [70, 30] },
+  { label: '60% / 40%',  values: [60, 40] },
+]
+
+const emptyBorrower = (quotite) => ({
+  age: '', smoker: false, profession: 'cadre', riskSport: false, riskProfession: false, quotite,
+})
+
+/* ─── Helpers fichiers ───────────────────────────────────────── */
+const toBase64 = (file) => new Promise((res, rej) => {
+  const r = new FileReader()
+  r.onload = () => res(r.result.split(',')[1])
+  r.onerror = rej
+  r.readAsDataURL(file)
+})
+const getMediaType = (file) => ({
+  'image/jpeg': 'image/jpeg', 'image/png': 'image/png', 'image/webp': 'image/webp',
+  'image/heic': 'image/jpeg', 'application/pdf': 'application/pdf',
+}[file.type] || 'image/jpeg')
 
 /* ─── Step indicator ─────────────────────────────────────────── */
 const StepIndicator = ({ current }) => (
@@ -134,25 +157,160 @@ const QuoteCard = ({ quote, rank, selected, onSelect }) => (
   </div>
 )
 
-/* ─── Composant upload document ──────────────────────────────── */
-const DocUpload = ({ icon: Icon, title, subtitle, status, onFile, onClear, autoFilled }) => {
+/* ─── Mini zone d'upload (recto/verso) ───────────────────────── */
+const MiniUpload = ({ label, file, status, onFile, onClear }) => {
   const inputRef = useRef(null)
   const [dragging, setDragging] = useState(false)
 
   const handleDrop = (e) => {
     e.preventDefault(); setDragging(false)
-    const file = e.dataTransfer.files[0]
-    if (file) onFile(file)
+    const f = e.dataTransfer.files[0]
+    if (f) onFile(f)
+  }
+
+  return (
+    <div
+      className={cn(
+        'relative rounded-xl border-2 border-dashed p-3 transition-all flex flex-col items-center justify-center text-center min-h-[84px]',
+        dragging   ? 'border-[#0f1f6b] bg-blue-50' :
+        file       ? 'border-[#10b981] bg-emerald-50' :
+        status === 'error' ? 'border-red-300 bg-red-50' :
+        'border-slate-200 hover:border-[#0f1f6b]/40 cursor-pointer bg-white'
+      )}
+      onClick={() => !file && inputRef.current?.click()}
+      onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
+      onDragLeave={() => setDragging(false)}
+      onDrop={handleDrop}
+    >
+      <input ref={inputRef} type="file" className="hidden"
+        accept="image/jpeg,image/png,image/webp,image/heic"
+        onChange={(e) => e.target.files[0] && onFile(e.target.files[0])} />
+
+      {file ? (
+        <>
+          <CheckCircle2 className="w-5 h-5 text-[#10b981] mb-1" />
+          <span className="text-xs font-semibold text-[#0a1340]">{label}</span>
+          <span className="text-[10px] text-slate-400 truncate max-w-full px-2">{file.name}</span>
+          <button onClick={(e) => { e.stopPropagation(); onClear() }}
+            className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-white border border-slate-200 hover:bg-slate-100 flex items-center justify-center">
+            <X className="w-3 h-3 text-slate-500" />
+          </button>
+        </>
+      ) : (
+        <>
+          <Upload className="w-5 h-5 text-slate-300 mb-1" />
+          <span className="text-xs font-semibold text-slate-500">{label}</span>
+          <span className="text-[10px] text-slate-400">Cliquez ou déposez</span>
+        </>
+      )}
+    </div>
+  )
+}
+
+/* ─── Uploader CNI recto/verso (avec extraction combinée) ───── */
+const CNIUploader = ({ title, onExtracted }) => {
+  const [recto, setRecto]   = useState(null)
+  const [verso, setVerso]   = useState(null)
+  const [status, setStatus] = useState(null) // null | 'loading' | 'done' | 'error'
+  const [fields, setFields] = useState([])
+
+  const runExtraction = async (rectoFile, versoFile) => {
+    if (!rectoFile && !versoFile) return
+    setStatus('loading')
+    try {
+      const images = []
+      if (rectoFile) images.push({ imageBase64: await toBase64(rectoFile), mediaType: getMediaType(rectoFile) })
+      if (versoFile) images.push({ imageBase64: await toBase64(versoFile), mediaType: getMediaType(versoFile) })
+
+      const res = await fetch('/.netlify/functions/extract-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ images, docType: 'cni' }),
+      })
+      const json = await res.json()
+      if (!res.ok || !json.success) throw new Error()
+
+      const filled = onExtracted(json.data)
+      setFields(filled)
+      setStatus(filled.length > 0 ? 'done' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const handleFile = (side, file) => {
+    if (side === 'recto') { setRecto(file); runExtraction(file, verso) }
+    else { setVerso(file); runExtraction(recto, file) }
+  }
+
+  const clearAll = () => { setRecto(null); setVerso(null); setStatus(null); setFields([]) }
+
+  return (
+    <div className={cn(
+      'rounded-2xl border p-4',
+      status === 'done' ? 'border-[#10b981] bg-emerald-50/40' : 'border-slate-200 bg-slate-50'
+    )}>
+      <div className="flex items-center justify-between mb-3">
+        <p className="text-sm font-semibold text-[#0a1340] flex items-center gap-2">
+          <CreditCard className="w-4 h-4 text-slate-400" /> {title}
+        </p>
+        {(recto || verso) && (
+          <button onClick={clearAll} className="text-xs text-slate-400 hover:text-[#0a1340] flex items-center gap-1">
+            <RotateCcw className="w-3 h-3" /> Effacer
+          </button>
+        )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <MiniUpload label="Recto" file={recto} status={status} onFile={(f) => handleFile('recto', f)} onClear={() => { setRecto(null); runExtraction(null, verso) }} />
+        <MiniUpload label="Verso" file={verso} status={status} onFile={(f) => handleFile('verso', f)} onClear={() => { setVerso(null); runExtraction(recto, null) }} />
+      </div>
+
+      {status === 'loading' && (
+        <p className="text-xs text-[#0f1f6b] mt-3 flex items-center gap-1.5">
+          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Analyse en cours par IA…
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="text-xs text-red-500 mt-3 flex items-center gap-1.5">
+          <AlertCircle className="w-3.5 h-3.5" /> Document illisible. Réessayez avec une photo plus nette.
+        </p>
+      )}
+      {status === 'done' && fields.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-3">
+          {fields.map(f => (
+            <span key={f} className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+              <Sparkles className="w-2.5 h-2.5" /> {f}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="text-[11px] text-slate-400 mt-3">
+        Recto seul accepté, mais recto + verso améliore la précision (date de naissance souvent au verso sur les anciens modèles).
+      </p>
+    </div>
+  )
+}
+
+/* ─── Uploader offre de prêt (single doc) ───────────────────── */
+const LoanDocUpload = ({ status, fields, onFile, onClear }) => {
+  const inputRef = useRef(null)
+  const [dragging, setDragging] = useState(false)
+
+  const handleDrop = (e) => {
+    e.preventDefault(); setDragging(false)
+    const f = e.dataTransfer.files[0]
+    if (f) onFile(f)
   }
 
   return (
     <div
       className={cn(
         'relative rounded-2xl border-2 border-dashed p-5 transition-all',
-        dragging        ? 'border-[#0f1f6b] bg-blue-50' :
-        status === 'done'    ? 'border-[#10b981] bg-emerald-50' :
-        status === 'error'   ? 'border-red-300 bg-red-50' :
-        status === 'loading' ? 'border-[#0f1f6b]/40 bg-blue-50/40' :
+        dragging              ? 'border-[#0f1f6b] bg-blue-50' :
+        status === 'done'     ? 'border-[#10b981] bg-emerald-50' :
+        status === 'error'    ? 'border-red-300 bg-red-50' :
+        status === 'loading'  ? 'border-[#0f1f6b]/40 bg-blue-50/40' :
         'border-slate-200 hover:border-[#0f1f6b]/40 cursor-pointer bg-slate-50'
       )}
       onClick={() => !status && inputRef.current?.click()}
@@ -165,24 +323,24 @@ const DocUpload = ({ icon: Icon, title, subtitle, status, onFile, onClear, autoF
         onChange={(e) => e.target.files[0] && onFile(e.target.files[0])} />
       <div className="flex items-center gap-4">
         <div className={cn('w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0',
-          status === 'done'  ? 'bg-emerald-100' : status === 'error' ? 'bg-red-100' : 'bg-white border border-slate-200'
+          status === 'done' ? 'bg-emerald-100' : status === 'error' ? 'bg-red-100' : 'bg-white border border-slate-200'
         )}>
           {status === 'loading' ? <Loader2 className="w-5 h-5 text-[#0f1f6b] animate-spin" /> :
            status === 'done'    ? <CheckCircle2 className="w-5 h-5 text-[#10b981]" /> :
            status === 'error'   ? <AlertCircle className="w-5 h-5 text-red-500" /> :
-           <Icon className="w-5 h-5 text-slate-400" />}
+           <FileText className="w-5 h-5 text-slate-400" />}
         </div>
         <div className="flex-1 min-w-0">
-          <p className="font-semibold text-sm text-[#0a1340]">{title}</p>
+          <p className="font-semibold text-sm text-[#0a1340]">Offre de prêt immobilier</p>
           <p className="text-xs text-slate-400 mt-0.5">
             {status === 'loading' ? 'Analyse en cours par IA…' :
-             status === 'done'    ? subtitle :
+             status === 'done'    ? 'Montant et durée extraits' :
              status === 'error'   ? 'Impossible de lire le document. Réessayez.' :
              'Cliquez ou déposez votre fichier'}
           </p>
-          {status === 'done' && autoFilled?.length > 0 && (
+          {status === 'done' && fields?.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
-              {autoFilled.map(f => (
+              {fields.map(f => (
                 <span key={f} className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
                   <Sparkles className="w-2.5 h-2.5" /> {f}
                 </span>
@@ -202,37 +360,93 @@ const DocUpload = ({ icon: Icon, title, subtitle, status, onFile, onClear, autoF
   )
 }
 
+/* ─── Carte profil emprunteur ────────────────────────────────── */
+const BorrowerProfileCard = ({ title, borrower, onChange }) => (
+  <div className="mb-2">
+    {title && <p className="text-sm font-bold text-[#0a1340] mb-3">{title}</p>}
+    <InputField label="Âge">
+      <div className="relative">
+        <input type="number" className={inputClass} placeholder="ex : 35"
+          value={borrower.age} onChange={(e) => onChange('age', e.target.value)} min={18} max={70} />
+        <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">ans</span>
+      </div>
+    </InputField>
+    <InputField label="Profession">
+      <select className={inputClass} value={borrower.profession} onChange={(e) => onChange('profession', e.target.value)}>
+        {PROFESSIONS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
+      </select>
+    </InputField>
+    <InputField label="Statut tabagique">
+      <div className="flex gap-3">
+        {[{ value: false, label: '🚭 Non-fumeur' }, { value: true, label: '🚬 Fumeur' }].map(({ value, label }) => (
+          <button key={label} onClick={() => onChange('smoker', value)}
+            className={cn('flex-1 py-3 rounded-xl border text-sm font-medium transition-all',
+              borrower.smoker === value ? 'bg-[#0f1f6b] text-white border-[#0f1f6b]' : 'bg-slate-50 text-slate-500 border-slate-200 hover:border-[#0f1f6b]/40'
+            )}>{label}</button>
+        ))}
+      </div>
+    </InputField>
+    <div className="space-y-2">
+      {[
+        { key: 'riskSport', icon: Zap, label: 'Sport à risque' },
+        { key: 'riskProfession', icon: HardHat, label: 'Profession manuelle à risque' },
+      ].map(({ key, icon: Icon, label }) => (
+        <button key={key} onClick={() => onChange(key, !borrower[key])}
+          className={cn('w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all',
+            borrower[key] ? 'bg-orange-50 border-orange-300' : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+          )}>
+          <div className={cn('w-4 h-4 rounded-md border-2 flex items-center justify-center flex-shrink-0',
+            borrower[key] ? 'bg-orange-400 border-orange-400' : 'border-slate-300'
+          )}>
+            {borrower[key] && <CheckCircle2 className="w-2.5 h-2.5 text-white" />}
+          </div>
+          <Icon className="w-4 h-4 text-slate-400" />
+          <span className={cn('text-sm font-medium', borrower[key] ? 'text-orange-700' : 'text-slate-600')}>{label}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+)
+
 /* ─── Simulateur principal ───────────────────────────────────── */
 export const QuoteSimulator = () => {
   const [step, setStep]           = useState(0)
   const [inputMode, setInputMode] = useState('manual')
 
-  const [form, setForm] = useState({
-    amount: '', duration: '', age: '', smoker: false, profession: 'cadre',
-  })
+  const [form, setForm] = useState({ amount: '', duration: '' })
+  const [coEmprunteur, setCoEmprunteur] = useState(false)
+  const [borrowers, setBorrowers] = useState([emptyBorrower(100)])
+
   const [guaranteeForm, setGuaranteeForm] = useState({
-    projectType:        'principal',
-    quotite:            100,
+    projectType: 'principal',
     selectedGuarantees: ['DC', 'PTIA', 'ITT', 'IPT'],
-    riskSport:          false,
-    riskProfession:     false,
   })
   const [contact, setContact] = useState({ firstName: '', lastName: '', email: '', phone: '', rgpd: false })
 
-  const [results, setResults]         = useState(null)
+  const [results, setResults]             = useState(null)
   const [selectedQuote, setSelectedQuote] = useState(null)
-  const [sending, setSending]         = useState(false)
-  const [sent, setSent]               = useState(false)
-  const [error, setError]             = useState(null)
+  const [sending, setSending]             = useState(false)
+  const [sent, setSent]                   = useState(false)
+  const [error, setError]                 = useState(null)
 
-  const [cniStatus,  setCniStatus]  = useState(null)
   const [pretStatus, setPretStatus] = useState(null)
-  const [cniFields,  setCniFields]  = useState([])
   const [pretFields, setPretFields] = useState([])
 
   const set  = (k, v) => setForm(f => ({ ...f, [k]: v }))
   const setG = (k, v) => setGuaranteeForm(g => ({ ...g, [k]: v }))
   const setC = (k, v) => setContact(c => ({ ...c, [k]: v }))
+
+  const updateBorrower = (i, key, val) =>
+    setBorrowers(bs => bs.map((b, idx) => idx === i ? { ...b, [key]: val } : b))
+
+  const toggleCoEmprunteur = () => {
+    if (coEmprunteur) {
+      setBorrowers([{ ...borrowers[0], quotite: 100 }])
+    } else {
+      setBorrowers([{ ...borrowers[0], quotite: 50 }, emptyBorrower(50)])
+    }
+    setCoEmprunteur(!coEmprunteur)
+  }
 
   const toggleGuarantee = (g) => {
     if (GUARANTEE_INFO[g]?.required) return
@@ -244,39 +458,50 @@ export const QuoteSimulator = () => {
   }
 
   const canNextStep0 = form.amount >= 50000 && form.amount <= 1000000 && form.duration >= 5 && form.duration <= 30
-  const canNextStep1 = form.age >= 18 && form.age <= 70
+  const canNextStep1 = borrowers.every(b => b.age >= 18 && b.age <= 70)
   const canSubmit    = contact.firstName && contact.lastName && contact.email && contact.phone && contact.rgpd
 
-  const toBase64   = (file) => new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(r.result.split(',')[1]); r.onerror = rej; r.readAsDataURL(file) })
-  const getMediaType = (file) => ({ 'image/jpeg': 'image/jpeg', 'image/png': 'image/png', 'image/webp': 'image/webp', 'image/heic': 'image/jpeg', 'application/pdf': 'application/pdf' }[file.type] || 'image/jpeg')
-
-  const extractDoc = async (file, docType, setStatus, setAutoFilled) => {
-    setStatus('loading')
+  /* ── Extraction offre de prêt ── */
+  const extractLoanDoc = async (file) => {
+    setPretStatus('loading')
     try {
       const imageBase64 = await toBase64(file)
       const res = await fetch('/.netlify/functions/extract-document', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ imageBase64, mediaType: getMediaType(file), docType }),
+        body: JSON.stringify({ imageBase64, mediaType: getMediaType(file), docType: 'pret' }),
       })
       const json = await res.json()
       if (!res.ok || !json.success) throw new Error()
       const d = json.data; const filled = []
-      if (docType === 'cni') {
-        if (d.age)    { set('age', d.age);           filled.push(`Âge : ${d.age} ans`) }
-        if (d.prenom) { setC('firstName', d.prenom); filled.push(`Prénom : ${d.prenom}`) }
-        if (d.nom)    { setC('lastName', d.nom);     filled.push(`Nom : ${d.nom}`) }
-      } else {
-        if (d.montant)      { set('amount', d.montant);        filled.push(`Montant : ${d.montant.toLocaleString('fr-FR')}€`) }
-        if (d.duree_annees) { set('duration', d.duree_annees); filled.push(`Durée : ${d.duree_annees} ans`) }
-      }
-      setAutoFilled(filled); setStatus(filled.length > 0 ? 'done' : 'error')
-    } catch { setStatus('error') }
+      if (d.montant)      { set('amount', d.montant);        filled.push(`Montant : ${d.montant.toLocaleString('fr-FR')}€`) }
+      if (d.duree_annees) { set('duration', d.duree_annees); filled.push(`Durée : ${d.duree_annees} ans`) }
+      setPretFields(filled)
+      setPretStatus(filled.length > 0 ? 'done' : 'error')
+    } catch { setPretStatus('error') }
+  }
+
+  /* ── Extraction CNI emprunteur 1 ── */
+  const onCni1Extracted = (d) => {
+    const filled = []
+    if (d.age)    { updateBorrower(0, 'age', d.age); filled.push(`Âge : ${d.age} ans`) }
+    if (d.prenom) { setC('firstName', d.prenom);     filled.push(`Prénom : ${d.prenom}`) }
+    if (d.nom)    { setC('lastName', d.nom);         filled.push(`Nom : ${d.nom}`) }
+    return filled
+  }
+
+  /* ── Extraction CNI emprunteur 2 ── */
+  const onCni2Extracted = (d) => {
+    const filled = []
+    if (d.age)    { updateBorrower(1, 'age', d.age); filled.push(`Âge : ${d.age} ans`) }
+    if (d.prenom) filled.push(`Prénom : ${d.prenom}`)
+    if (d.nom)    filled.push(`Nom : ${d.nom}`)
+    return filled
   }
 
   const handleCompute = () => {
     const r = computeQuotes({
       amount: Number(form.amount), duration: Number(form.duration),
-      age: Number(form.age), smoker: form.smoker, profession: form.profession,
+      borrowers: borrowers.map(b => ({ ...b, age: Number(b.age) })),
       ...guaranteeForm,
     })
     setResults(r); setSelectedQuote(r.quotes[0]); setStep(3)
@@ -290,7 +515,11 @@ export const QuoteSimulator = () => {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           contact, quote: selectedQuote,
-          loanInfo: { amount: form.amount, duration: form.duration, age: form.age, smoker: form.smoker, profession: form.profession, ...guaranteeForm },
+          loanInfo: {
+            amount: form.amount, duration: form.duration,
+            age: borrowers[0].age, smoker: borrowers[0].smoker, profession: borrowers[0].profession,
+            coEmprunteur, borrowers, ...guaranteeForm,
+          },
           bankMonthly: results.bankMonthly,
           referral: getReferral(),
         }),
@@ -301,10 +530,7 @@ export const QuoteSimulator = () => {
     finally { setSending(false) }
   }
 
-  const switchMode = (mode) => {
-    setInputMode(mode)
-    if (mode === 'manual') { setCniStatus(null); setPretStatus(null); setCniFields([]); setPretFields([]) }
-  }
+  const switchMode = (mode) => setInputMode(mode)
 
   // ─── Rendu ────────────────────────────────────────────────────
   return (
@@ -342,7 +568,7 @@ export const QuoteSimulator = () => {
               </div>
             )}
 
-            {/* ══ Mode upload ══ */}
+            {/* ══ Mode upload (regroupe étapes 0 et 1) ══ */}
             {(step === 0 || step === 1) && inputMode === 'upload' && (
               <div>
                 <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 mb-5 flex items-start gap-3">
@@ -351,36 +577,67 @@ export const QuoteSimulator = () => {
                     <strong>Vos documents sont analysés en temps réel et ne sont jamais stockés.</strong> Seules les données extraites sont conservées pour la simulation.
                   </p>
                 </div>
+
+                {/* Co-emprunteur */}
+                <button onClick={toggleCoEmprunteur}
+                  className={cn('w-full flex items-center gap-3 p-3.5 rounded-2xl border text-left transition-all mb-4',
+                    coEmprunteur ? 'bg-[#f0f4ff] border-[#0f1f6b]/30' : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                  )}>
+                  <div className={cn('w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0',
+                    coEmprunteur ? 'bg-[#0f1f6b] border-[#0f1f6b]' : 'border-slate-300'
+                  )}>
+                    {coEmprunteur && <CheckCircle2 className="w-3 h-3 text-white" />}
+                  </div>
+                  <UserPlus className="w-4 h-4 text-slate-400" />
+                  <div>
+                    <span className="text-sm font-semibold text-[#0a1340]">Emprunt à deux</span>
+                    <p className="text-xs text-slate-400">Ajouter un co-emprunteur (achat en couple)</p>
+                  </div>
+                </button>
+
                 <div className="space-y-4 mb-6">
-                  <DocUpload icon={CreditCard} title="Carte nationale d'identité" subtitle="Prénom, nom et âge extraits"
-                    status={cniStatus} autoFilled={cniFields}
-                    onFile={f => extractDoc(f, 'cni', setCniStatus, setCniFields)}
-                    onClear={() => { setCniStatus(null); setCniFields([]) }} />
-                  <DocUpload icon={FileText} title="Offre de prêt immobilier" subtitle="Montant et durée extraits"
-                    status={pretStatus} autoFilled={pretFields}
-                    onFile={f => extractDoc(f, 'pret', setPretStatus, setPretFields)}
+                  <LoanDocUpload status={pretStatus} fields={pretFields}
+                    onFile={extractLoanDoc}
                     onClear={() => { setPretStatus(null); setPretFields([]) }} />
+
+                  <CNIUploader title="Carte d'identité — Emprunteur 1" onExtracted={onCni1Extracted} />
+                  {coEmprunteur && (
+                    <CNIUploader title="Carte d'identité — Emprunteur 2" onExtracted={onCni2Extracted} />
+                  )}
                 </div>
-                {(cniStatus === 'done' || pretStatus === 'done') && (
+
+                {(pretStatus === 'done' || borrowers.some(b => b.age)) && (
                   <div className="bg-[#f0f4ff] rounded-2xl p-4 mb-5">
                     <p className="text-xs font-semibold text-[#0f1f6b] mb-3 flex items-center gap-1.5">
                       <Sparkles className="w-3.5 h-3.5" /> Données extraites — vérifiez et complétez
                     </p>
-                    <div className="grid grid-cols-2 gap-3">
-                      {[
-                        { label: 'Montant (€)', key: 'amount', placeholder: '250000' },
-                        { label: 'Durée (ans)', key: 'duration', placeholder: '20' },
-                        { label: 'Âge', key: 'age', placeholder: '35' },
-                      ].map(({ label, key, placeholder }) => (
-                        <div key={key} className={key === 'amount' ? 'col-span-2' : ''}>
-                          <label className="block text-xs font-semibold text-slate-500 mb-1">{label}</label>
-                          <input type="number" className={cn(inputClass, 'text-sm py-2')} placeholder={placeholder}
-                            value={form[key]} onChange={e => set(key, e.target.value)} />
+                    <div className="grid grid-cols-2 gap-3 mb-3">
+                      <div className="col-span-2">
+                        <label className="block text-xs font-semibold text-slate-500 mb-1">Montant (€)</label>
+                        <input type="number" className={cn(inputClass, 'text-sm py-2')} placeholder="250000"
+                          value={form.amount} onChange={e => set('amount', e.target.value)} />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-500 mb-1">Durée (ans)</label>
+                        <input type="number" className={cn(inputClass, 'text-sm py-2')} placeholder="20"
+                          value={form.duration} onChange={e => set('duration', e.target.value)} />
+                      </div>
+                      <div>
+                        <label className="block text-xs font-semibold text-slate-500 mb-1">Âge — Emprunteur 1</label>
+                        <input type="number" className={cn(inputClass, 'text-sm py-2')} placeholder="35"
+                          value={borrowers[0].age} onChange={e => updateBorrower(0, 'age', e.target.value)} />
+                      </div>
+                      {coEmprunteur && (
+                        <div>
+                          <label className="block text-xs font-semibold text-slate-500 mb-1">Âge — Emprunteur 2</label>
+                          <input type="number" className={cn(inputClass, 'text-sm py-2')} placeholder="35"
+                            value={borrowers[1].age} onChange={e => updateBorrower(1, 'age', e.target.value)} />
                         </div>
-                      ))}
+                      )}
                     </div>
                   </div>
                 )}
+
                 <Button className="w-full" size="lg" disabled={!canNextStep0 || !canNextStep1}
                   onClick={() => setStep(2)}>
                   Choisir mes garanties <ArrowRight className="w-5 h-5" />
@@ -424,29 +681,41 @@ export const QuoteSimulator = () => {
             {/* ══ Étape 1 — Votre profil ══ */}
             {step === 1 && inputMode === 'manual' && (
               <div>
-                <h3 className="text-xl font-bold text-[#0a1340] mb-6">Votre profil</h3>
-                <InputField label="Votre âge">
-                  <div className="relative">
-                    <input type="number" className={inputClass} placeholder="ex : 35"
-                      value={form.age} onChange={e => set('age', e.target.value)} min={18} max={70} />
-                    <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm font-medium">ans</span>
+                <h3 className="text-xl font-bold text-[#0a1340] mb-2">Votre profil</h3>
+
+                {/* Co-emprunteur */}
+                <button onClick={toggleCoEmprunteur}
+                  className={cn('w-full flex items-center gap-3 p-3.5 rounded-2xl border text-left transition-all mb-5',
+                    coEmprunteur ? 'bg-[#f0f4ff] border-[#0f1f6b]/30' : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+                  )}>
+                  <div className={cn('w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0',
+                    coEmprunteur ? 'bg-[#0f1f6b] border-[#0f1f6b]' : 'border-slate-300'
+                  )}>
+                    {coEmprunteur && <CheckCircle2 className="w-3 h-3 text-white" />}
                   </div>
-                </InputField>
-                <InputField label="Profession">
-                  <select className={inputClass} value={form.profession} onChange={e => set('profession', e.target.value)}>
-                    {PROFESSIONS.map(({ value, label }) => <option key={value} value={value}>{label}</option>)}
-                  </select>
-                </InputField>
-                <InputField label="Statut tabagique">
-                  <div className="flex gap-3">
-                    {[{ value: false, label: '🚭 Non-fumeur' }, { value: true, label: '🚬 Fumeur' }].map(({ value, label }) => (
-                      <button key={label} onClick={() => set('smoker', value)}
-                        className={cn('flex-1 py-3 rounded-xl border text-sm font-medium transition-all',
-                          form.smoker === value ? 'bg-[#0f1f6b] text-white border-[#0f1f6b]' : 'bg-slate-50 text-slate-500 border-slate-200 hover:border-[#0f1f6b]/40'
-                        )}>{label}</button>
-                    ))}
+                  <UserPlus className="w-4 h-4 text-slate-400" />
+                  <div>
+                    <span className="text-sm font-semibold text-[#0a1340]">Emprunt à deux</span>
+                    <p className="text-xs text-slate-400">Ajouter un co-emprunteur (achat en couple)</p>
                   </div>
-                </InputField>
+                </button>
+
+                <BorrowerProfileCard
+                  title={coEmprunteur ? 'Emprunteur 1' : null}
+                  borrower={borrowers[0]}
+                  onChange={(k, v) => updateBorrower(0, k, v)}
+                />
+
+                {coEmprunteur && (
+                  <div className="pt-4 mt-2 border-t border-slate-100">
+                    <BorrowerProfileCard
+                      title="Emprunteur 2"
+                      borrower={borrowers[1]}
+                      onChange={(k, v) => updateBorrower(1, k, v)}
+                    />
+                  </div>
+                )}
+
                 <div className="flex gap-3 mt-2">
                   <Button variant="outline" className="flex-1" onClick={() => setStep(0)}>
                     <ArrowLeft className="w-4 h-4" /> Retour
@@ -488,31 +757,48 @@ export const QuoteSimulator = () => {
                 <div className="mb-5">
                   <label className="block text-sm font-semibold text-[#0a1340] mb-1.5">
                     Quotité assurée
-                    <span className="ml-2 text-xs font-normal text-slate-400">— part du capital que vous assurez</span>
+                    <span className="ml-2 text-xs font-normal text-slate-400">— part du capital assurée par personne</span>
                   </label>
-                  <div className="grid grid-cols-2 gap-2">
-                    {[
-                      { value: 100, icon: User,  label: '100%', sub: 'Seul(e)' },
-                      { value: 50,  icon: User,  label: '50%',  sub: 'Couple — 50/50' },
-                      { value: 75,  icon: User,  label: '75%',  sub: 'Couverture partielle' },
-                      { value: 'duo', icon: Users, label: '200%', sub: 'Couple — 100%+100%' },
-                    ].map(({ value, icon: Icon, label, sub }) => (
-                      <button key={value} onClick={() => setG('quotite', value)}
-                        className={cn('flex items-center gap-3 py-3 px-4 rounded-xl border text-sm font-semibold transition-all',
-                          guaranteeForm.quotite === value ? 'bg-[#0f1f6b] text-white border-[#0f1f6b]' : 'bg-slate-50 text-slate-500 border-slate-200 hover:border-[#0f1f6b]/40'
-                        )}>
-                        <Icon className="w-4 h-4 flex-shrink-0" />
-                        <div className="text-left">
-                          <div>{label}</div>
-                          <div className={cn('text-xs font-normal', guaranteeForm.quotite === value ? 'text-white/70' : 'text-slate-400')}>{sub}</div>
+
+                  {!coEmprunteur ? (
+                    <div className="grid grid-cols-3 gap-2">
+                      {[100, 75, 50].map(q => (
+                        <button key={q} onClick={() => updateBorrower(0, 'quotite', q)}
+                          className={cn('py-3 rounded-xl border text-sm font-bold transition-all',
+                            borrowers[0].quotite === q ? 'bg-[#0f1f6b] text-white border-[#0f1f6b]' : 'bg-slate-50 text-slate-500 border-slate-200 hover:border-[#0f1f6b]/40'
+                          )}>{q}%</button>
+                      ))}
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="grid grid-cols-2 gap-2 mb-3">
+                        {QUOTITE_PRESETS_COUPLE.map(p => (
+                          <button key={p.label}
+                            onClick={() => { updateBorrower(0, 'quotite', p.values[0]); updateBorrower(1, 'quotite', p.values[1]) }}
+                            className={cn('py-2.5 rounded-xl border text-sm font-semibold transition-all',
+                              borrowers[0].quotite === p.values[0] && borrowers[1].quotite === p.values[1]
+                                ? 'bg-[#0f1f6b] text-white border-[#0f1f6b]' : 'bg-slate-50 text-slate-500 border-slate-200 hover:border-[#0f1f6b]/40'
+                            )}>{p.label}</button>
+                        ))}
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-xs font-semibold text-slate-500 mb-1">Emprunteur 1 (%)</label>
+                          <input type="number" className={cn(inputClass, 'text-sm py-2')} min={0} max={100}
+                            value={borrowers[0].quotite} onChange={e => updateBorrower(0, 'quotite', Number(e.target.value))} />
                         </div>
-                      </button>
-                    ))}
-                  </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-slate-500 mb-1">Emprunteur 2 (%)</label>
+                          <input type="number" className={cn(inputClass, 'text-sm py-2')} min={0} max={100}
+                            value={borrowers[1].quotite} onChange={e => updateBorrower(1, 'quotite', Number(e.target.value))} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Garanties souhaitées */}
-                <div className="mb-5">
+                <div className="mb-6">
                   <label className="block text-sm font-semibold text-[#0a1340] mb-3">
                     Garanties souhaitées
                     <span className="ml-2 text-xs font-normal text-slate-400">— DC et PTIA obligatoires</span>
@@ -550,37 +836,8 @@ export const QuoteSimulator = () => {
                   </div>
                 </div>
 
-                {/* Risques particuliers */}
-                <div className="mb-6">
-                  <label className="block text-sm font-semibold text-[#0a1340] mb-3">Risques particuliers</label>
-                  <div className="grid grid-cols-1 gap-2">
-                    {[
-                      { key: 'riskSport', icon: Zap, label: 'Pratique d\'un sport à risque', desc: 'Sports mécaniques, sports de combat, alpinisme, plongée…' },
-                      { key: 'riskProfession', icon: HardHat, label: 'Profession manuelle à risque', desc: 'Travaux en hauteur, manipulation de machines, BTP…' },
-                    ].map(({ key, icon: Icon, label, desc }) => (
-                      <button key={key} onClick={() => setG(key, !guaranteeForm[key])}
-                        className={cn('flex items-start gap-3 p-3.5 rounded-2xl border text-left transition-all',
-                          guaranteeForm[key] ? 'bg-orange-50 border-orange-300' : 'bg-slate-50 border-slate-200 hover:border-slate-300'
-                        )}>
-                        <div className={cn('w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 mt-0.5',
-                          guaranteeForm[key] ? 'bg-orange-400 border-orange-400' : 'border-slate-300'
-                        )}>
-                          {guaranteeForm[key] && <CheckCircle2 className="w-3 h-3 text-white" />}
-                        </div>
-                        <div>
-                          <div className="flex items-center gap-2">
-                            <Icon className="w-4 h-4 text-slate-400" />
-                            <span className={cn('text-sm font-semibold', guaranteeForm[key] ? 'text-orange-700' : 'text-slate-600')}>{label}</span>
-                          </div>
-                          <p className="text-xs text-slate-400 mt-0.5">{desc}</p>
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
                 <div className="flex gap-3">
-                  <Button variant="outline" className="flex-1" onClick={() => setStep(inputMode === 'upload' ? 0 : 1)}>
+                  <Button variant="outline" className="flex-1" onClick={() => setStep(1)}>
                     <ArrowLeft className="w-4 h-4" /> Retour
                   </Button>
                   <Button className="flex-1" onClick={handleCompute}>
@@ -697,8 +954,11 @@ export const QuoteSimulator = () => {
                 <h3 className="text-xl font-bold text-[#0a1340] mb-2">Demande envoyée, {contact.firstName} !</h3>
                 <p className="text-slate-500 text-sm mb-2">Un conseiller vous contacte dans les <strong>24h</strong>.</p>
                 <p className="text-slate-400 text-xs mb-6">Récapitulatif envoyé à <strong>{contact.email}</strong></p>
-                <button onClick={() => { setSent(false); setStep(0); setResults(null); setContact({ firstName: '', lastName: '', email: '', phone: '', rgpd: false }) }}
-                  className="text-sm text-slate-400 hover:text-slate-600 underline">
+                <button onClick={() => {
+                  setSent(false); setStep(0); setResults(null)
+                  setContact({ firstName: '', lastName: '', email: '', phone: '', rgpd: false })
+                  setCoEmprunteur(false); setBorrowers([emptyBorrower(100)])
+                }} className="text-sm text-slate-400 hover:text-slate-600 underline">
                   Nouvelle simulation
                 </button>
               </div>

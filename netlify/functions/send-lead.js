@@ -39,7 +39,24 @@ h1{color:#0a1340;font-size:22px;margin:0 0 8px}
 <div class="row"><span class="label">Durée</span><span class="value">${loanInfo.duration} ans</span></div>
 <div class="row"><span class="label">Âge</span><span class="value">${loanInfo.age} ans</span></div>
 <div class="row"><span class="label">Profession</span><span class="value">${PROFESSION_LABELS[loanInfo.profession]||loanInfo.profession}</span></div>
-<div class="row"><span class="label">Tabac</span><span class="value">${loanInfo.smoker?'🚬 Fumeur':'🚭 Non-fumeur'}</span></div></div>
+<div class="row"><span class="label">Tabac</span><span class="value">${loanInfo.smoker?'🚬 Fumeur':'🚭 Non-fumeur'}</span></div>
+${loanInfo.borrowers?.[0]?.quotite ? `<div class="row"><span class="label">Quotité</span><span class="value">${loanInfo.borrowers[0].quotite}%</span></div>` : ''}
+${(loanInfo.riskSport || loanInfo.borrowers?.[0]?.riskSport) ? `<div class="row"><span class="label">Sport à risque</span><span class="value">⚠️ Oui</span></div>` : ''}
+${(loanInfo.riskProfession || loanInfo.borrowers?.[0]?.riskProfession) ? `<div class="row"><span class="label">Profession à risque</span><span class="value">⚠️ Oui</span></div>` : ''}
+</div>
+${loanInfo.coEmprunteur && loanInfo.borrowers?.[1] ? `
+<div class="section"><div class="st">👥 Co-emprunteur</div>
+<div class="row"><span class="label">Âge</span><span class="value">${loanInfo.borrowers[1].age} ans</span></div>
+<div class="row"><span class="label">Profession</span><span class="value">${PROFESSION_LABELS[loanInfo.borrowers[1].profession]||loanInfo.borrowers[1].profession}</span></div>
+<div class="row"><span class="label">Tabac</span><span class="value">${loanInfo.borrowers[1].smoker?'🚬 Fumeur':'🚭 Non-fumeur'}</span></div>
+<div class="row"><span class="label">Quotité</span><span class="value">${loanInfo.borrowers[1].quotite}%</span></div>
+${loanInfo.borrowers[1].riskSport ? `<div class="row"><span class="label">Sport à risque</span><span class="value">⚠️ Oui</span></div>` : ''}
+${loanInfo.borrowers[1].riskProfession ? `<div class="row"><span class="label">Profession à risque</span><span class="value">⚠️ Oui</span></div>` : ''}
+</div>` : ''}
+${loanInfo.projectType ? `<div class="section"><div class="st">📋 Projet & garanties</div>
+<div class="row"><span class="label">Type de bien</span><span class="value">${{principal:'Résidence principale',secondaire:'Résidence secondaire',locatif:'Investissement locatif'}[loanInfo.projectType]||loanInfo.projectType}</span></div>
+<div class="row"><span class="label">Garanties souhaitées</span><span class="value">${(loanInfo.selectedGuarantees||[]).join(', ')}</span></div>
+</div>` : ''}
 <div class="hl">
 <div><div style="font-size:12px;color:#64748b;margin-bottom:4px">Offre choisie</div><div style="font-weight:700;color:#0a1340">${quote.insurer}</div></div>
 <div style="text-align:right"><div style="font-size:22px;font-weight:800;color:#0a1340">${quote.monthly}€<span style="font-size:13px;font-weight:400;color:#94a3b8">/mois</span></div>

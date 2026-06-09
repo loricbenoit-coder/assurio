@@ -1,7 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk'
 
 const PROMPTS = {
-  cni: `Tu es un système d'extraction de données. Analyse cette carte nationale d'identité française et extrait uniquement les informations suivantes.
+  cni: `Tu es un système d'extraction de données. Analyse cette/ces image(s) de carte nationale d'identité française (recto et/ou verso) et extrait uniquement les informations suivantes en combinant les informations des deux faces si fournies.
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ou après.
 Format attendu: {"date_naissance":"YYYY-MM-DD","prenom":"string","nom":"string"}
 Si une information est illisible ou absente, mets null pour ce champ.`,
@@ -21,9 +21,14 @@ export const handler = async (event) => {
   }
 
   try {
-    const { imageBase64, mediaType, docType } = JSON.parse(event.body)
+    const { imageBase64, mediaType, docType, images } = JSON.parse(event.body)
 
-    if (!imageBase64 || !mediaType || !docType) {
+    // Accepte soit un tableau d'images (recto/verso), soit une seule image (compatibilité)
+    const imageList = Array.isArray(images) && images.length > 0
+      ? images
+      : (imageBase64 && mediaType ? [{ imageBase64, mediaType }] : [])
+
+    if (imageList.length === 0 || !docType) {
       return { statusCode: 400, body: JSON.stringify({ error: 'Paramètres manquants' }) }
     }
 
@@ -39,10 +44,10 @@ export const handler = async (event) => {
       messages: [{
         role: 'user',
         content: [
-          {
+          ...imageList.map(img => ({
             type: 'image',
-            source: { type: 'base64', media_type: mediaType, data: imageBase64 },
-          },
+            source: { type: 'base64', media_type: img.mediaType, data: img.imageBase64 },
+          })),
           { type: 'text', text: PROMPTS[docType] },
         ],
       }],
