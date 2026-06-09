@@ -155,7 +155,7 @@ export const handler = async (event, context) => {
       await store.set(leadId, JSON.stringify(leadData))
     } catch (e) {
       console.error('Blob save error:', e)
-      return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur enregistrement du lead' }) }
+      return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur enregistrement du lead', detail: e.message }) }
     }
 
     // 2. Email immédiat au courtier
@@ -180,6 +180,6 @@ export const handler = async (event, context) => {
     return { statusCode: 200, headers, body: JSON.stringify({ success: true, leadId }) }
   } catch (error) {
     console.error('Send lead error:', error)
-    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur envoi' }) }
+    return { statusCode: 500, headers, body: JSON.stringify({ error: 'Erreur envoi', detail: error.message }) }
   }
 }
