@@ -1567,4 +1567,209 @@ Si votre pathologie chronique est ancienne et stabilisée, et que votre **capita
 Une maladie chronique bien suivie ne doit pas vous décourager de devenir propriétaire ou de faire des économies sur votre assurance emprunteur. Chez Assur Emprunteur, nous avons l'habitude d'accompagner les profils avec antécédents médicaux et de les orienter vers les assureurs les plus adaptés à leur situation, dans le respect total de la confidentialité de leurs informations de santé.
     `,
   },
+  {
+    slug: 'assurance-rachat-de-credit',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&q=75&fm=webp&fit=crop',
+    imageAlt: 'Assurance rachat de crédit regroupement de prêts immobilier',
+    title: "Assurance rachat de crédit : comment réduire son coût en 2025",
+    description: "L'assurance rachat de crédit (regroupement de prêts) est souvent négligée alors qu'elle peut représenter une part importante du coût final. Comparatif et conseils pour payer moins cher.",
+    category: 'Guide pratique',
+    readTime: '5 min',
+    date: '2025-07-16',
+    keywords: "assurance rachat de crédit, assurance regroupement de prêts, assurance emprunteur rachat de crédit, réduire coût rachat de crédit",
+    content: `
+## Qu'est-ce que l'assurance rachat de crédit ?
+
+L'**assurance rachat de crédit** (aussi appelée assurance regroupement de prêts) couvre le nouveau prêt unique qui remplace l'ensemble de vos crédits existants (crédit immobilier, crédits consommation, découvert...) lors d'une opération de **rachat de crédit**. Comme pour un prêt immobilier classique, cette assurance protège l'organisme prêteur — et votre famille — en cas de décès, invalidité ou incapacité de travail.
+
+## Pourquoi l'assurance rachat de crédit est-elle souvent plus chère ?
+
+Plusieurs raisons expliquent un coût d'assurance souvent élevé sur une opération de rachat de crédit :
+
+- **Le profil emprunteur est parfois plus fragile** : les rachats de crédit concernent souvent des personnes en situation de surendettement ou avec des revenus irréguliers, perçues comme plus risquées par les assureurs
+- **La durée du nouveau prêt est rallongée** : un rachat de crédit s'étale souvent sur une durée plus longue que les crédits initiaux, ce qui augmente le coût total de l'assurance
+- **L'organisme de rachat propose son propre contrat groupe**, rarement le plus compétitif du marché
+
+## La délégation d'assurance s'applique-t-elle au rachat de crédit ?
+
+**Oui.** Que le rachat de crédit comporte une part immobilière (regroupement avec hypothèque) ou soit purement un crédit à la consommation, vous conservez le **droit de choisir votre propre assurance** plutôt que celle proposée par l'organisme de regroupement, dès lors que les garanties sont équivalentes.
+
+- Pour un **rachat de crédit avec garantie hypothécaire** (assimilé à un crédit immobilier), la loi Lemoine s'applique : résiliation et changement d'assurance possibles **à tout moment**
+- Pour un **rachat de crédit à la consommation sans hypothèque**, les règles de la loi Lagarde s'appliquent : libre choix de l'assureur dès la souscription
+
+## Comment réduire le coût de son assurance rachat de crédit
+
+### 1. Comparez avant de signer l'offre de regroupement
+
+Comme pour un crédit immobilier classique, le meilleur moment pour optimiser l'assurance est **avant la signature définitive** de l'offre de rachat de crédit. Une fois le contrat signé avec l'assurance groupe, il faudra passer par une procédure de résiliation.
+
+### 2. Vérifiez l'équivalence des garanties exigées
+
+L'organisme de rachat de crédit doit vous remettre la liste des garanties minimales requises. Comparez ensuite des offres d'assurance individuelles couvrant a minima ces garanties (DC, PTIA, et le plus souvent ITT/IPT si la part immobilière est significative).
+
+### 3. Adaptez les garanties à la nature du rachat
+
+Si votre rachat de crédit ne comporte **aucune part immobilière** (uniquement des crédits à la consommation), les exigences de garanties sont généralement plus légères. Ne payez pas pour des garanties surdimensionnées par rapport au risque réel.
+
+### 4. Profitez de la loi Lemoine si le rachat inclut une part immobilière
+
+Si vous avez déjà signé un rachat de crédit avec assurance groupe et qu'il comporte une garantie hypothécaire, vous pouvez le résilier **à tout moment** sans frais et basculer vers une assurance individuelle moins chère.
+
+## Exemple chiffré
+
+**Rachat de crédit de 120 000€ sur 15 ans (avec part immobilière), profil 42 ans non-fumeur :**
+
+| Offre | Prime mensuelle | Coût total sur 15 ans |
+|-------|-----------------|------------------------|
+| Assurance groupe de l'organisme de rachat | 65€ | 11 700€ |
+| Assurance individuelle déléguée | 28€ | 5 040€ |
+
+Soit une économie de **6 660€** sur la durée de l'opération.
+
+## Points de vigilance spécifiques au rachat de crédit
+
+- **Ne laissez jamais de période sans couverture** entre l'ancienne et la nouvelle assurance
+- **Vérifiez les exclusions liées à votre situation financière** : certains contrats excluent les situations de surendettement déclaré
+- **Attention aux frais de dossier** facturés par certains assureurs lors d'un changement en cours de rachat de crédit
+
+## Conclusion
+
+L'assurance représente une part substantielle du coût d'un rachat de crédit, souvent sous-estimée au moment de la signature. Comme pour un prêt immobilier classique, comparer les offres — avant ou après la signature grâce à la loi Lemoine — permet de réduire significativement la facture totale de votre opération de regroupement. Notre simulateur Assur Emprunteur peut vous aider à estimer ces économies potentielles.
+    `,
+  },
+  {
+    slug: 'divorce-separation-assurance-emprunteur',
+    image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1200&q=75&fm=webp&fit=crop',
+    imageAlt: 'Divorce séparation prêt immobilier assurance emprunteur désolidarisation',
+    title: "Divorce, séparation et assurance emprunteur : ce qui change pour votre prêt",
+    description: "En cas de divorce ou de séparation, l'assurance emprunteur de votre prêt immobilier commun doit être revue. Désolidarisation, rachat de soulte, nouvelle quotité : le guide complet.",
+    category: 'Cas particuliers',
+    readTime: '5 min',
+    date: '2025-07-19',
+    keywords: "assurance emprunteur divorce, désolidarisation prêt immobilier assurance, assurance emprunteur séparation, rachat de soulte assurance",
+    content: `
+## Pourquoi le divorce ou la séparation impacte votre assurance emprunteur
+
+Lorsqu'un couple souscrit un prêt immobilier ensemble, chaque co-emprunteur est généralement couvert par l'**assurance emprunteur** selon une certaine **quotité** (par exemple 50/50 ou 60/40). En cas de divorce ou de séparation, la situation du prêt — et donc de son assurance — doit obligatoirement être revue, que le bien soit vendu, conservé par l'un des ex-conjoints, ou maintenu en indivision.
+
+## Les trois scénarios possibles après une séparation
+
+### 1. Vente du bien immobilier
+
+Si le bien commun est vendu, le prêt est remboursé par anticipation grâce au prix de vente, et l'**assurance emprunteur prend fin automatiquement**. Chaque ex-conjoint récupère, le cas échéant, la part de prime d'assurance non consommée s'il avait opté pour un paiement en prime unique.
+
+### 2. Rachat de la part de l'ex-conjoint (rachat de soulte)
+
+Si l'un des ex-conjoints conserve le bien et **rachète la soulte** (la part de l'autre), une nouvelle opération de financement est généralement mise en place. Cela implique :
+
+- La **désolidarisation** de l'ex-conjoint qui quitte le prêt : il n'est plus emprunteur ni assuré sur ce crédit
+- Un **nouveau contrat d'assurance emprunteur** pour celui qui reste, sur la base de sa seule quotité (généralement 100%)
+- Une nouvelle évaluation tarifaire, car le profil de risque change (un seul assuré au lieu de deux, capital assuré modifié)
+
+### 3. Maintien en indivision
+
+Si les ex-conjoints conservent le bien en indivision (par exemple en attendant une vente ultérieure ou pour les enfants), le prêt et son assurance peuvent rester inchangés dans un premier temps, mais une clarification est fortement recommandée pour éviter les litiges en cas de décès ou d'impayé de l'un des deux.
+
+## La désolidarisation : un point clé à ne pas négliger
+
+La **désolidarisation** d'un prêt immobilier consiste à retirer un emprunteur du contrat de prêt — et donc de son assurance. Cette opération nécessite **l'accord de la banque**, qui va réévaluer la solvabilité de l'emprunteur restant seul sur le crédit.
+
+**Attention :** tant que la désolidarisation n'est pas actée par la banque, **les deux ex-conjoints restent solidairement responsables du remboursement du prêt**, même après le divorce prononcé sur le plan civil. Sur le plan de l'assurance, cela signifie que les deux contrats (ou la quotité initiale) peuvent rester actifs jusqu'à la régularisation bancaire.
+
+## Et la quotité d'assurance dans tout ça ?
+
+Si vous restez seul sur le prêt après le rachat de soulte, votre **quotité d'assurance passe généralement à 100%** (puisque vous êtes désormais le seul emprunteur). C'est l'occasion de :
+
+- **Comparer les offres du marché** pour ce nouveau besoin d'assurance à 100% sur un seul tête
+- **Adapter les garanties** à votre nouvelle situation familiale (par exemple, si vous avez la garde des enfants, une protection renforcée peut être pertinente)
+
+## Profitez de cette étape pour faire des économies
+
+Une séparation, bien que difficile sur le plan personnel, est souvent l'occasion de **renégocier entièrement votre assurance emprunteur**. Le nouveau contrat sur une seule tête, avec une quotité à 100%, peut être comparé avec plusieurs assureurs pour obtenir le meilleur tarif — sans devoir conserver le contrat groupe initialement souscrit en couple.
+
+Grâce à la **loi Lemoine**, ce changement d'assurance peut intervenir **à tout moment**, sans attendre une date anniversaire.
+
+## Que faire en pratique ?
+
+1. **Informez votre banque** de votre situation dès que possible
+2. **Demandez une simulation de désolidarisation** ou de rachat de soulte
+3. **Comparez les offres d'assurance** pour le nouveau montage (capital, quotité, garanties)
+4. **Vérifiez le sort des primes déjà versées** sur l'ancien contrat (remboursement du trop-perçu éventuel)
+
+## Conclusion
+
+Le divorce ou la séparation a des conséquences directes sur votre prêt immobilier et son assurance emprunteur. Désolidarisation, rachat de soulte, nouvelle quotité : chaque étape mérite d'être anticipée avec l'aide de votre banque et d'un courtier. Chez Assur Emprunteur, nous accompagnons les emprunteurs dans cette transition pour trouver une nouvelle assurance adaptée et économique.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-pret-professionnel',
+    image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=75&fm=webp&fit=crop',
+    imageAlt: 'Assurance emprunteur prêt professionnel local commercial entreprise',
+    title: "Assurance emprunteur pour un prêt professionnel : ce qu'il faut savoir",
+    description: "Achat d'un local commercial, d'un fonds de commerce ou de murs professionnels ? L'assurance emprunteur d'un prêt professionnel a ses propres règles. Notre guide pour bien s'assurer.",
+    category: 'Cas particuliers',
+    readTime: '5 min',
+    date: '2025-07-23',
+    keywords: "assurance emprunteur prêt professionnel, assurance prêt local commercial, assurance prêt entreprise dirigeant, assurance emprunteur SCI professionnelle",
+    content: `
+## L'assurance emprunteur ne concerne pas que l'immobilier résidentiel
+
+Lorsqu'un dirigeant d'entreprise, un professionnel libéral ou une société (via une SCI ou en nom propre) souscrit un **prêt professionnel** — pour acheter des murs commerciaux, un local d'activité, un cabinet, ou financer un fonds de commerce — la banque exige presque toujours une **assurance emprunteur**, au même titre qu'un crédit immobilier classique.
+
+## En quoi l'assurance d'un prêt professionnel diffère-t-elle ?
+
+### Le bénéficiaire du contrat
+
+Pour un prêt professionnel souscrit par une société, le **bénéficiaire de l'assurance** est généralement l'entreprise elle-même (ou la banque, par délégation), et non directement les héritiers du dirigeant. En cas de décès ou d'invalidité du dirigeant assuré, l'indemnisation permet de **rembourser le prêt professionnel** et de préserver la trésorerie de l'entreprise.
+
+### Les garanties spécifiques à surveiller
+
+Pour un prêt professionnel, certaines garanties méritent une attention particulière :
+
+- **DC (Décès) et PTIA** : indispensables, comme pour tout prêt
+- **ITT/IPT** : la définition retenue est cruciale. Pour un dirigeant ou un indépendant, privilégiez une définition liée à **l'incapacité d'exercer sa propre profession**, et non "toute profession"
+- **Garantie homme-clé** : dans certains montages, une garantie complémentaire peut couvrir spécifiquement l'incapacité du dirigeant principal, indépendamment du prêt lui-même
+
+### La quotité pour les associés
+
+Si le prêt professionnel est souscrit par plusieurs associés (SCI, SARL, etc.), la **quotité d'assurance** peut être répartie selon les parts de chacun, ou selon leur importance opérationnelle dans l'entreprise — un associé majoritaire et opérationnel peut être assuré à une quotité plus élevée qu'un associé minoritaire passif.
+
+## La délégation d'assurance s'applique-t-elle aux prêts professionnels ?
+
+**Oui.** Le principe de **délégation d'assurance** issu de la loi Lagarde, et la possibilité de résiliation à tout moment introduite par la loi Lemoine pour les prêts immobiliers, s'appliquent également aux prêts professionnels dès lors qu'ils financent un bien immobilier (murs commerciaux, locaux professionnels).
+
+Cela signifie que vous pouvez :
+- Présenter une assurance externe **dès la souscription** du prêt professionnel
+- **Changer d'assurance à tout moment** en cours de prêt si les garanties restent équivalentes
+
+## Pourquoi comparer est particulièrement rentable pour un prêt professionnel
+
+Les montants des prêts professionnels (achat de murs commerciaux, locaux d'activité) sont souvent **élevés**, et les durées longues. L'écart entre un contrat groupe bancaire et une offre individuelle ou collective négociée par un courtier peut donc représenter des sommes très importantes en valeur absolue.
+
+**Exemple : prêt professionnel de 400 000€ sur 15 ans pour l'achat de murs commerciaux, dirigeant de 45 ans :**
+
+| Offre | Prime mensuelle | Coût total sur 15 ans |
+|-------|-----------------|------------------------|
+| Assurance groupe banque | 280€ | 50 400€ |
+| Assurance individuelle déléguée | 150€ | 27 000€ |
+
+Soit une économie potentielle de **23 400€** sur la durée du prêt.
+
+## Cas particulier : le questionnaire de santé pour les dirigeants
+
+Contrairement aux prêts immobiliers résidentiels, l'**exonération du questionnaire de santé** prévue par la loi Lemoine (capital < 200 000€, fin de prêt avant 60 ans) s'applique selon les mêmes règles pour un prêt professionnel finançant un bien immobilier. Pour les montants plus élevés, fréquents dans l'immobilier professionnel, le questionnaire de santé reste généralement requis.
+
+## Comment bien assurer un prêt professionnel ?
+
+1. **Identifiez précisément la nature du prêt** (immobilier professionnel, matériel, trésorerie) : les règles de délégation diffèrent
+2. **Vérifiez la définition de l'ITT/IPT** adaptée à votre activité professionnelle réelle
+3. **Réfléchissez à la répartition de la quotité** entre associés en fonction de leur rôle dans l'entreprise
+4. **Comparez systématiquement** avec des offres individuelles ou collectives, le contrat groupe bancaire étant rarement le plus compétitif
+5. **Anticipez une révision** en cas de changement de statut (cession de parts, départ d'un associé, changement d'activité)
+
+## Conclusion
+
+L'assurance emprunteur d'un prêt professionnel obéit aux mêmes grands principes que celle d'un crédit immobilier résidentiel, mais avec des enjeux souvent plus importants en montant et des garanties à adapter précisément à l'activité de l'entreprise et au rôle du dirigeant assuré. Chez Assur Emprunteur, nous pouvons vous orienter vers des partenaires capables d'analyser ces dossiers professionnels et de proposer des couvertures sur mesure, à un tarif optimisé.
+    `,
+  },
 ]
