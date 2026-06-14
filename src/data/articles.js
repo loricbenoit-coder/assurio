@@ -1364,4 +1364,207 @@ La réponse dépend de votre situation :
 L'assurance pour un crédit à la consommation mérite la même attention que pour un prêt immobilier. Ne vous laissez pas imposer une assurance coûteuse sans avoir comparé. Chez Assur Emprunteur, nous pouvons vous conseiller sur l'ensemble de vos besoins en assurance emprunteur, qu'il s'agisse d'un prêt immobilier ou d'un crédit à la consommation.
     `,
   },
+  {
+    slug: 'assurance-emprunteur-fonctionnaire',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=75&fm=webp&fit=crop',
+    imageAlt: 'Fonctionnaire assurance emprunteur prêt immobilier statut public',
+    title: "Assurance emprunteur fonctionnaire : avantages et spécificités",
+    description: "Les fonctionnaires bénéficient d'un profil apprécié des assureurs, mais aussi de règles spécifiques (mutuelles, contrats collectifs). Voici comment en tirer le meilleur parti.",
+    category: 'Cas particuliers',
+    readTime: '5 min',
+    date: '2025-07-05',
+    keywords: "assurance emprunteur fonctionnaire, assurance prêt immobilier agent public, mutuelle fonction publique assurance prêt",
+    content: `
+## Pourquoi les fonctionnaires sont-ils un profil apprécié des assureurs ?
+
+Le statut de fonctionnaire (titulaire de la fonction publique d'État, territoriale ou hospitalière) est considéré par les assureurs comme un **gage de stabilité**. Emploi pérenne, revenus réguliers, faible risque de licenciement : ces critères jouent en faveur d'un tarif d'assurance emprunteur souvent plus avantageux que pour un salarié du privé.
+
+## Les avantages spécifiques
+
+### Une garantie de revenus en cas d'arrêt de travail
+
+Contrairement aux salariés du privé, les fonctionnaires conservent leur **plein traitement pendant 3 mois** en cas de maladie ordinaire, puis un demi-traitement pendant 9 mois supplémentaire. Cette particularité peut être prise en compte par certains assureurs pour adapter le délai de franchise de la garantie ITT.
+
+### Des contrats collectifs via les mutuelles de fonctionnaires
+
+Les grandes mutuelles de la fonction publique (MGEN, MNT, Intériale, etc.) proposent parfois des contrats d'assurance emprunteur collectifs. Ces contrats peuvent être intéressants, mais **ils ne sont pas systématiquement les moins chers** : il est essentiel de les comparer avec les offres individuelles du marché.
+
+### Pas de surprime liée à la stabilité de l'emploi
+
+Pour les salariés en CDD, intérim ou les indépendants, certains assureurs appliquent des conditions plus strictes. Le statut de fonctionnaire titulaire écarte généralement ce type de difficulté.
+
+## Les points de vigilance malgré tout
+
+### La définition de l'ITT
+
+Même pour un fonctionnaire, la définition de la garantie **ITT (Incapacité Temporaire Totale de travail)** doit être vérifiée. Certains contrats prévoient une réduction de l'indemnisation pendant la période de demi-traitement.
+
+### Les enseignants et professions à risque
+
+Certaines professions de la fonction publique sont jugées plus exposées : enseignants en zones difficiles, personnels hospitaliers exposés à des risques biologiques, agents de la sécurité publique (policiers, pompiers, militaires). Ces profils peuvent faire l'objet de questions complémentaires, voire de surprimes pour les garanties invalidité.
+
+### Le statut contractuel n'est pas le même que titulaire
+
+Un agent contractuel de la fonction publique ne bénéficie pas des mêmes protections statutaires qu'un titulaire. Pour l'assurance emprunteur, son profil est plus proche de celui d'un salarié en CDD : vérifiez bien comment votre assureur classe votre situation.
+
+## Comment optimiser son assurance emprunteur en tant que fonctionnaire ?
+
+1. **Ne signez pas automatiquement** le contrat collectif proposé par votre mutuelle de fonctionnaire sans comparer
+2. **Mettez en avant la stabilité de votre statut** auprès du courtier : elle peut justifier une tarification plus douce
+3. **Vérifiez la définition de l'ITT** en tenant compte de votre régime de demi-traitement
+4. **Profitez de la loi Lemoine** pour changer d'assurance à tout moment si le contrat initial (souvent celui de la banque) n'est pas le plus avantageux
+
+## Exemple de comparaison
+
+**Profil : enseignante de 35 ans, non-fumeuse, prêt de 220 000€ sur 22 ans**
+
+| Offre | Prime mensuelle | Coût total |
+|-------|-----------------|------------|
+| Contrat groupe banque | 48€ | 12 672€ |
+| Mutuelle fonction publique | 32€ | 8 448€ |
+| Meilleure offre individuelle marché | 24€ | 6 336€ |
+
+Même en partant d'un contrat de mutuelle déjà compétitif, une délégation individuelle bien négociée permet souvent d'aller encore plus loin.
+
+## Conclusion
+
+Être fonctionnaire est un atout pour obtenir une assurance emprunteur à un tarif raisonnable, mais cela ne dispense pas de comparer les offres. Chez Assur Emprunteur, nous analysons votre statut et votre régime de protection sociale pour identifier l'offre la plus adaptée et la moins chère, qu'elle vienne d'une mutuelle de fonctionnaires ou d'un assureur individuel.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-primo-accedant',
+    image: 'https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?w=1200&q=75&fm=webp&fit=crop',
+    imageAlt: 'Primo-accédant premier achat immobilier assurance emprunteur',
+    title: "Primo-accédant : bien choisir son assurance emprunteur dès le premier achat",
+    description: "Premier achat immobilier, premier prêt, première assurance emprunteur : évitez les erreurs classiques des primo-accédants et démarrez avec le bon contrat.",
+    category: 'Guide pratique',
+    readTime: '5 min',
+    date: '2025-07-08',
+    keywords: "assurance emprunteur primo-accédant, premier achat immobilier assurance prêt, assurance emprunteur première fois",
+    content: `
+## Pourquoi l'assurance emprunteur est cruciale pour un premier achat
+
+Pour un primo-accédant, le prêt immobilier représente souvent **le plus gros engagement financier d'une vie**. L'assurance emprunteur, qui représente en moyenne 25 à 35% du coût total du crédit, mérite donc une attention particulière dès le départ — bien plus qu'une simple case à cocher lors du rendez-vous à la banque.
+
+## L'erreur la plus fréquente : accepter le contrat groupe sans réfléchir
+
+Lors d'un premier achat, la banque propose quasi systématiquement son **contrat d'assurance groupe**. Beaucoup de primo-accédants l'acceptent par méconnaissance de leurs droits, par peur de compliquer le dossier, ou simplement par manque de temps.
+
+Pourtant, la **loi Lagarde** garantit depuis 2010 le droit de choisir une assurance différente de celle de la banque, **dès la souscription du prêt**, sans que cela ne retarde ni ne complique l'octroi du crédit.
+
+## Les bons réflexes pour un primo-accédant
+
+### 1. Demandez la Fiche Personnalisée Standardisée d'Information (FPSI)
+
+Dès le début des discussions avec votre banque, demandez cette fiche qui liste les garanties minimales exigées pour votre prêt. C'est votre référence pour comparer les offres externes.
+
+### 2. Comparez avant de signer l'offre de prêt
+
+Idéalement, comparez les assurances **avant** de signer l'offre de prêt définitive. Cela vous permet de présenter directement une délégation d'assurance à la banque, sans avoir à résilier plus tard.
+
+### 3. Ne sous-estimez pas votre besoin de garanties
+
+En tant que primo-accédant, vous engagez souvent une part importante de vos revenus dans les mensualités. Les garanties **ITT et IPT** sont particulièrement importantes : en cas d'arrêt de travail prolongé, elles évitent que votre achat ne se transforme en catastrophe financière.
+
+### 4. Profitez de votre jeune âge (souvent)
+
+Si vous êtes jeune et en bonne santé, c'est le moment où les tarifs d'assurance emprunteur sont **les plus bas de votre vie**. Profitez de cette fenêtre pour souscrire un contrat individuel avantageux plutôt que de vous contenter du contrat groupe, dont le tarif est mutualisé avec des profils plus âgés ou plus à risque.
+
+## L'exonération du questionnaire de santé : une chance pour les jeunes acquéreurs
+
+Grâce à la loi Lemoine, si votre capital assuré est **inférieur à 200 000€ par tête** et que votre prêt se termine **avant vos 60 ans**, vous n'avez pas de questionnaire de santé à remplir. De nombreux primo-accédants, souvent jeunes et avec des montants de prêt modérés, entrent dans ce cadre — une simplification administrative non négligeable.
+
+## Quel budget prévoir pour l'assurance emprunteur en tant que primo-accédant ?
+
+**Exemple : 28 ans, non-fumeur, premier prêt de 180 000€ sur 25 ans**
+
+| Offre | Prime mensuelle | Coût total sur 25 ans |
+|-------|-----------------|------------------------|
+| Contrat groupe banque | 32€ | 9 600€ |
+| Meilleure offre individuelle marché | 13€ | 3 900€ |
+
+Soit une économie potentielle de **plus de 5 700€** dès le départ, simplement en comparant avant de signer.
+
+## Et si mon dossier est jugé "fragile" en tant que primo-accédant ?
+
+Certains primo-accédants ont des CDD, sont en période d'essai ou ont des revenus encore modestes. Cela peut compliquer l'accès au crédit, mais a généralement **peu d'impact sur l'assurance emprunteur elle-même**, qui dépend surtout de votre âge, votre santé et votre profession — pas de votre ancienneté professionnelle (sauf cas particulier des indépendants).
+
+## Conclusion
+
+Pour un premier achat immobilier, prendre quelques minutes pour comparer les assurances emprunteur peut représenter des milliers d'euros d'économies sur toute la durée du prêt. Chez Assur Emprunteur, notre simulateur gratuit vous permet d'obtenir une estimation personnalisée avant même de signer votre offre de prêt.
+    `,
+  },
+  {
+    slug: 'assurance-emprunteur-diabete-maladie-chronique',
+    image: 'https://images.unsplash.com/photo-1576091160438-3a3d9c6e0c01?w=1200&q=75&fm=webp&fit=crop',
+    imageAlt: 'Assurance emprunteur diabète maladie chronique surprime',
+    title: "Assurance emprunteur et maladie chronique (diabète, hypertension...) : vos solutions",
+    description: "Diabète, hypertension, maladies auto-immunes... une maladie chronique ne vous ferme pas la porte de l'assurance emprunteur. Voici comment obtenir une couverture adaptée.",
+    category: 'Cas particuliers',
+    readTime: '5 min',
+    date: '2025-07-12',
+    keywords: "assurance emprunteur diabète, assurance prêt maladie chronique, surprime assurance emprunteur hypertension",
+    content: `
+## Une maladie chronique n'empêche pas d'emprunter
+
+Diabète de type 1 ou 2, hypertension artérielle, maladies auto-immunes (polyarthrite, maladie de Crohn...), asthme sévère : ces pathologies chroniques sont fréquentes et **ne constituent pas un obstacle absolu** à l'obtention d'un prêt immobilier et de son assurance. Mais elles peuvent entraîner un examen médical plus approfondi, une surprime, voire des exclusions de garanties.
+
+## Comment les assureurs évaluent une maladie chronique
+
+Le questionnaire de santé (quand il est requis) permet à l'assureur d'évaluer plusieurs critères :
+
+- **L'ancienneté et la stabilité de la pathologie** : un diabète équilibré depuis plusieurs années avec un bon suivi médical est perçu différemment d'un diagnostic récent
+- **Le traitement suivi** : traitement oral, insuline, observance du traitement
+- **Les complications éventuelles** : atteintes cardiovasculaires, rénales, ophtalmologiques associées au diabète, par exemple
+- **Le suivi médical régulier** : consultations spécialisées, examens de contrôle (HbA1c pour le diabète, par exemple)
+
+## Les issues possibles après l'examen médical
+
+### 1. Acceptation aux conditions standards
+
+Si la pathologie est bien contrôlée et sans complication, certains assureurs acceptent **sans surprime**, notamment pour un diabète de type 2 bien équilibré sans complication chez une personne de moins de 50 ans.
+
+### 2. Acceptation avec surprime
+
+L'assureur peut appliquer une **majoration tarifaire** (de quelques % à plusieurs dizaines de %) pour compenser le risque statistique supplémentaire.
+
+### 3. Acceptation avec exclusion de garantie
+
+Certaines garanties peuvent être accordées avec une **exclusion spécifique** liée à la pathologie déclarée (par exemple, exclusion des complications directement liées au diabète pour la garantie invalidité), tout en maintenant les autres garanties.
+
+### 4. Refus et recours à la convention AERAS
+
+En cas de refus ou de conditions jugées disproportionnées, la **convention AERAS** (voir notre article dédié) permet un second examen par des médecins spécialisés, puis si besoin un passage devant un pool de co-assureurs.
+
+## Pourquoi comparer les assureurs est encore plus important
+
+Face à une même pathologie, les écarts entre assureurs peuvent être **considérables**. Certains assureurs sont historiquement plus ouverts sur certaines pathologies (diabète stabilisé, hypertension traitée) que d'autres, qui appliquent des grilles de tarification plus strictes.
+
+**Exemple concret pour un diabète de type 2 traité, bien équilibré, chez une personne de 45 ans :**
+
+| Assureur | Surprime appliquée |
+|----------|---------------------|
+| Assureur A | +75% sur la garantie décès |
+| Assureur B | +25% sur la garantie décès, sans exclusion |
+| Assureur C | Aucune surprime, exclusion limitée sur l'IPT |
+
+Un courtier qui connaît les positionnements de chaque assureur sur les pathologies chroniques peut vous orienter directement vers les offres les plus favorables, sans multiplier les questionnaires de santé refusés.
+
+## L'importance du droit à l'oubli et de la loi Lemoine
+
+Si votre pathologie chronique est ancienne et stabilisée, et que votre **capital assuré est inférieur à 200 000€** avec un prêt se terminant **avant vos 60 ans**, vous pouvez être **totalement exonéré de questionnaire de santé** grâce à la loi Lemoine — quelle que soit votre pathologie. Vérifiez systématiquement cette éligibilité avant de remplir un questionnaire médical.
+
+## Nos conseils pratiques
+
+1. **Ne minimisez jamais votre état de santé** dans le questionnaire : une fausse déclaration peut annuler votre contrat en cas de sinistre
+2. **Constituez un dossier médical complet** : derniers bilans, attestation de suivi régulier, traitement actuel — un dossier bien documenté rassure l'assureur
+3. **Faites-vous accompagner par un courtier** habitué aux risques aggravés de santé
+4. **Vérifiez l'exonération du questionnaire** liée à la loi Lemoine avant toute démarche
+5. **N'hésitez pas à solliciter plusieurs assureurs** : un refus ou une forte surprime chez l'un n'implique pas la même réponse chez un autre
+
+## Conclusion
+
+Une maladie chronique bien suivie ne doit pas vous décourager de devenir propriétaire ou de faire des économies sur votre assurance emprunteur. Chez Assur Emprunteur, nous avons l'habitude d'accompagner les profils avec antécédents médicaux et de les orienter vers les assureurs les plus adaptés à leur situation, dans le respect total de la confidentialité de leurs informations de santé.
+    `,
+  },
 ]
