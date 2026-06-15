@@ -14,6 +14,7 @@ import { LazySection } from '@/components/ui/LazySection'
 // Sections lourdes — chargées uniquement en approchant du viewport
 const SavingsCalculator   = lazy(() => import('@/components/sections/SavingsCalculator').then(m => ({ default: m.SavingsCalculator })))
 const QuoteSimulator      = lazy(() => import('@/components/sections/QuoteSimulator').then(m => ({ default: m.QuoteSimulator })))
+const SuiviDossier        = lazy(() => import('@/components/sections/SuiviDossier').then(m => ({ default: m.SuiviDossier })))
 const Testimonials        = lazy(() => import('@/components/sections/Testimonials').then(m => ({ default: m.Testimonials })))
 const FAQ                 = lazy(() => import('@/components/sections/FAQ').then(m => ({ default: m.FAQ })))
 const CTA                 = lazy(() => import('@/components/sections/CTA').then(m => ({ default: m.CTA })))
@@ -69,6 +70,9 @@ const LandingPage = () => (
       </LazySection>
       <LazySection id="simulateur" minHeight={700}>
         <QuoteSimulator />
+      </LazySection>
+      <LazySection minHeight={700}>
+        <SuiviDossier />
       </LazySection>
       <LazySection minHeight={500}>
         <Testimonials />

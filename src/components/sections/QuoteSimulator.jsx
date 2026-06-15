@@ -979,7 +979,7 @@ export const QuoteSimulator = () => {
                 <h3 className="text-xl font-bold text-[#0a1340] mb-2">Demande envoyée, {contact.firstName} !</h3>
                 <p className="text-slate-500 text-sm mb-2">Un conseiller vous contacte dans les <strong>24h</strong>.</p>
                 <p className="text-slate-400 text-xs mb-6">Récapitulatif envoyé à <strong>{contact.email}</strong></p>
-                <a href="/souscription" className="inline-block mb-4">
+                <a href="#suivi-dossier" className="inline-block mb-4">
                   <Button variant="outline">
                     Découvrir le suivi de mon dossier <ArrowRight className="w-4 h-4" />
                   </Button>

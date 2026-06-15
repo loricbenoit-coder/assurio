@@ -119,8 +119,8 @@ const NavButtons = ({ onBack, onNext, nextLabel = 'Continuer', nextDisabled }) =
   </div>
 )
 
-/* ─── Page ────────────────────────────────────────────────────── */
-export const Souscription = () => {
+/* ─── Wizard (réutilisable, page ou section) ────────────────────── */
+export const SouscriptionWizard = ({ embedded = false }) => {
   const [stepIndex, setStepIndex] = useState(0)
   const [offerType, setOfferType] = useState(null)
   const [coEmprunteur, setCoEmprunteur] = useState(false)
@@ -223,22 +223,22 @@ export const Souscription = () => {
   const canPreteur = preteur.organisme
 
   return (
-    <>
-      <SEO
-        title="Espace souscription — Assur Emprunteur"
-        description="Parcours de souscription en ligne pour votre assurance de prêt immobilier (démonstration)."
-      />
-      <section className="pt-28 pb-24 bg-gradient-to-b from-slate-50 to-white min-h-screen">
-        <div className="max-w-3xl mx-auto px-6">
+    <div className="max-w-3xl mx-auto px-6">
 
           {/* Header */}
           <div className="text-center mb-8">
             <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-3">
               Espace souscription
             </span>
-            <h1 className="text-3xl md:text-4xl font-bold text-[#0a1340] mb-3 tracking-tight">
-              Votre dossier d'assurance de prêt
-            </h1>
+            {embedded ? (
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1340] mb-3 tracking-tight">
+                Votre dossier d'assurance de prêt
+              </h2>
+            ) : (
+              <h1 className="text-3xl md:text-4xl font-bold text-[#0a1340] mb-3 tracking-tight">
+                Votre dossier d'assurance de prêt
+              </h1>
+            )}
             <p className="text-slate-500 max-w-xl mx-auto">
               Suivez votre dossier étape par étape, exactement comme votre conseiller le traite.
             </p>
@@ -793,8 +793,19 @@ export const Souscription = () => {
             )}
 
           </div>
-        </div>
-      </section>
-    </>
+    </div>
   )
 }
+
+/* ─── Page complète (route /souscription) ───────────────────────── */
+export const Souscription = () => (
+  <>
+    <SEO
+      title="Espace souscription — Assur Emprunteur"
+      description="Parcours de souscription en ligne pour votre assurance de prêt immobilier (démonstration)."
+    />
+    <section className="pt-28 pb-24 bg-gradient-to-b from-slate-50 to-white min-h-screen">
+      <SouscriptionWizard />
+    </section>
+  </>
+)
