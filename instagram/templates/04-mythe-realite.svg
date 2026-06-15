@@ -1,0 +1,25 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1080" height="1080" fill="#0a1340"/>
+
+  <!-- MYTHE block -->
+  <rect x="80" y="120" width="920" height="320" rx="24" fill="#3f1d1d"/>
+  <text x="540" y="200" fill="#f87171" font-size="40" font-weight="800" text-anchor="middle">❌ MYTHE</text>
+  <text x="540" y="280" fill="#ffffff" font-size="42" font-weight="600" text-anchor="middle">
+    <tspan x="540" dy="0">"Je ne peux changer</tspan>
+    <tspan x="540" dy="56">d'assurance qu'à la date</tspan>
+    <tspan x="540" dy="56">anniversaire du contrat"</tspan>
+  </text>
+
+  <!-- REALITE block -->
+  <rect x="80" y="480" width="920" height="420" rx="24" fill="#0f2e1f"/>
+  <text x="540" y="560" fill="#34d399" font-size="40" font-weight="800" text-anchor="middle">✅ RÉALITÉ</text>
+  <text x="540" y="640" fill="#ffffff" font-size="42" font-weight="600" text-anchor="middle">
+    <tspan x="540" dy="0">Depuis 2022 (loi Lemoine),</tspan>
+    <tspan x="540" dy="56">vous pouvez résilier et</tspan>
+    <tspan x="540" dy="56">changer À TOUT MOMENT,</tspan>
+    <tspan x="540" dy="56">sans frais ni pénalité.</tspan>
+  </text>
+
+  <!-- Footer -->
+  <text x="540" y="1010" fill="#64748b" font-size="28" font-weight="700" text-anchor="middle">Assur Emprunteur</text>
+</svg>

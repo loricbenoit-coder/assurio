@@ -1,0 +1,30 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1080" height="1080" fill="#f8fafc"/>
+  <rect x="0" y="0" width="1080" height="14" fill="#10b981"/>
+
+  <!-- Title -->
+  <text x="540" y="140" fill="#0a1340" font-size="58" font-weight="800" text-anchor="middle">Banque vs Courtier</text>
+  <text x="540" y="190" fill="#64748b" font-size="32" font-weight="500" text-anchor="middle">Prêt de 250 000€ sur 20 ans · 40 ans, non-fumeur</text>
+
+  <!-- Banque card -->
+  <rect x="80" y="260" width="920" height="220" rx="20" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+  <text x="540" y="330" fill="#64748b" font-size="34" font-weight="700" text-anchor="middle">🏦 Assurance banque</text>
+  <text x="540" y="420" fill="#0a1340" font-size="80" font-weight="800" text-anchor="middle">90€<tspan font-size="36" fill="#94a3b8">/mois</tspan></text>
+  <text x="540" y="465" fill="#64748b" font-size="38" font-weight="600" text-anchor="middle">21 600€ / 20 ans</text>
+
+  <!-- Courtier card -->
+  <rect x="80" y="510" width="920" height="220" rx="20" fill="#ecfdf5" stroke="#10b981" stroke-width="3"/>
+  <text x="540" y="580" fill="#16a34a" font-size="34" font-weight="700" text-anchor="middle">🤝 Meilleure offre marché</text>
+  <text x="540" y="670" fill="#0a1340" font-size="80" font-weight="800" text-anchor="middle">38€<tspan font-size="36" fill="#94a3b8">/mois</tspan></text>
+  <text x="540" y="715" fill="#16a34a" font-size="38" font-weight="600" text-anchor="middle">9 120€ / 20 ans</text>
+
+  <!-- Savings badge -->
+  <rect x="80" y="780" width="920" height="120" rx="20" fill="#0a1340"/>
+  <text x="540" y="855" fill="#ffffff" font-size="46" font-weight="800" text-anchor="middle">Économie : 12 480€ 💰</text>
+
+  <!-- CTA -->
+  <rect x="290" y="940" width="500" height="90" rx="45" fill="#10b981"/>
+  <text x="540" y="995" fill="#0a1340" font-size="36" font-weight="800" text-anchor="middle">Simulation gratuite →</text>
+
+  <text x="540" y="1060" fill="#94a3b8" font-size="26" font-weight="700" text-anchor="middle">Assur Emprunteur</text>
+</svg>

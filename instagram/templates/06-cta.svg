@@ -1,0 +1,28 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#0a1340"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg2)"/>
+
+  <!-- Icon circle -->
+  <circle cx="540" cy="300" r="100" fill="#ffffff"/>
+  <text x="540" y="330" font-size="90" text-anchor="middle">⏱️</text>
+
+  <!-- Title -->
+  <text x="540" y="500" fill="#ffffff" font-size="72" font-weight="800" text-anchor="middle">2 minutes.</text>
+  <text x="540" y="600" fill="#ffffff" font-size="40" font-weight="500" text-anchor="middle">
+    <tspan x="540" dy="0">C'est le temps qu'il vous faut</tspan>
+    <tspan x="540" dy="52">pour savoir combien vous</tspan>
+    <tspan x="540" dy="52">pouvez économiser sur votre</tspan>
+    <tspan x="540" dy="52">assurance de prêt immobilier.</tspan>
+  </text>
+
+  <!-- CTA -->
+  <rect x="290" y="880" width="500" height="100" rx="50" fill="#ffffff"/>
+  <text x="540" y="945" fill="#0a1340" font-size="40" font-weight="800" text-anchor="middle">Simuler gratuitement</text>
+
+  <text x="540" y="1030" fill="rgba(255,255,255,0.7)" font-size="28" font-weight="700" text-anchor="middle">Assur Emprunteur · Lien en bio</text>
+</svg>

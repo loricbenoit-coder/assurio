@@ -27,6 +27,7 @@ const Admin                   = lazy(() => import('@/pages/Admin').then(m => ({ 
 const APropos                 = lazy(() => import('@/pages/APropos').then(m => ({ default: m.APropos })))
 const Blog                    = lazy(() => import('@/pages/Blog').then(m => ({ default: m.Blog })))
 const Article                 = lazy(() => import('@/pages/Article').then(m => ({ default: m.Article })))
+const Souscription             = lazy(() => import('@/pages/Souscription').then(m => ({ default: m.Souscription })))
 
 // Scroll vers l'ancre après chaque navigation
 // Initialise le tracking affilié dès l'arrivée sur le site
@@ -105,6 +106,7 @@ const App = () => (
       <Route path="/a-propos" element={<LegalPage><APropos /></LegalPage>} />
       <Route path="/blog" element={<LegalPage><Blog /></LegalPage>} />
       <Route path="/blog/:slug" element={<LegalPage><Article /></LegalPage>} />
+      <Route path="/souscription" element={<LegalPage><Souscription /></LegalPage>} />
     </Routes>
     <ReferralTracker />
     <ChatWidget />

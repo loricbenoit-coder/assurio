@@ -979,13 +979,20 @@ export const QuoteSimulator = () => {
                 <h3 className="text-xl font-bold text-[#0a1340] mb-2">Demande envoyée, {contact.firstName} !</h3>
                 <p className="text-slate-500 text-sm mb-2">Un conseiller vous contacte dans les <strong>24h</strong>.</p>
                 <p className="text-slate-400 text-xs mb-6">Récapitulatif envoyé à <strong>{contact.email}</strong></p>
-                <button onClick={() => {
-                  setSent(false); setStep(0); setResults(null); setSelectedQuote(null); setLeadId(null)
-                  setContact({ firstName: '', lastName: '', email: '', phone: '', rgpd: false })
-                  setCoEmprunteur(false); setBorrowers([emptyBorrower(100)])
-                }} className="text-sm text-slate-400 hover:text-slate-600 underline">
-                  Nouvelle simulation
-                </button>
+                <a href="/souscription" className="inline-block mb-4">
+                  <Button variant="outline">
+                    Découvrir le suivi de mon dossier <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
+                <div>
+                  <button onClick={() => {
+                    setSent(false); setStep(0); setResults(null); setSelectedQuote(null); setLeadId(null)
+                    setContact({ firstName: '', lastName: '', email: '', phone: '', rgpd: false })
+                    setCoEmprunteur(false); setBorrowers([emptyBorrower(100)])
+                  }} className="text-sm text-slate-400 hover:text-slate-600 underline">
+                    Nouvelle simulation
+                  </button>
+                </div>
               </div>
             )}
           </div>

@@ -1,0 +1,31 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1080" height="1080" fill="#f8fafc"/>
+
+  <!-- Top bar -->
+  <rect x="0" y="0" width="1080" height="14" fill="#10b981"/>
+
+  <!-- Badge -->
+  <rect x="410" y="110" width="260" height="56" rx="28" fill="#ecfdf5"/>
+  <text x="540" y="147" fill="#10b981" font-size="26" font-weight="800" text-anchor="middle">LOI LEMOINE</text>
+
+  <!-- Title -->
+  <text x="540" y="300" fill="#0a1340" font-size="72" font-weight="800" text-anchor="middle">
+    <tspan x="540" dy="0">Ce qui change</tspan>
+    <tspan x="540" dy="92">pour vous</tspan>
+  </text>
+  <text x="540" y="500" fill="#64748b" font-size="38" font-weight="500" text-anchor="middle">
+    <tspan x="540" dy="0">3 points essentiels à connaître</tspan>
+    <tspan x="540" dy="48">avant de garder l'assurance</tspan>
+    <tspan x="540" dy="48">de votre banque</tspan>
+  </text>
+
+  <!-- Swipe indicator -->
+  <g transform="translate(540,920)">
+    <circle cx="0" cy="0" r="36" fill="#0f1f6b"/>
+    <text x="0" y="10" fill="#ffffff" font-size="32" font-weight="800" text-anchor="middle">→</text>
+  </g>
+  <text x="540" y="1000" fill="#94a3b8" font-size="30" font-weight="600" text-anchor="middle">SWIPEZ POUR DÉCOUVRIR</text>
+
+  <!-- Footer brand -->
+  <text x="540" y="60" fill="#94a3b8" font-size="28" font-weight="700" text-anchor="middle">Assur Emprunteur</text>
+</svg>

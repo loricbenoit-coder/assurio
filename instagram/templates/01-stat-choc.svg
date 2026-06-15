@@ -1,0 +1,32 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1f6b"/>
+      <stop offset="1" stop-color="#0a1340"/>
+    </linearGradient>
+  </defs>
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+
+  <!-- Badge -->
+  <rect x="410" y="100" width="260" height="56" rx="28" fill="#10b981"/>
+  <text x="540" y="137" fill="#ffffff" font-size="26" font-weight="700" text-anchor="middle">LE SAVIEZ-VOUS ?</text>
+
+  <!-- Big stat -->
+  <text x="540" y="430" fill="#ffffff" font-size="160" font-weight="800" text-anchor="middle">15 000€</text>
+  <text x="540" y="500" fill="#a5b4fc" font-size="44" font-weight="600" text-anchor="middle">d'économies possibles</text>
+  <text x="540" y="555" fill="#a5b4fc" font-size="44" font-weight="600" text-anchor="middle">sur votre assurance de prêt</text>
+
+  <!-- Body text -->
+  <text x="540" y="660" fill="#ffffff" font-size="36" font-weight="400" text-anchor="middle">
+    <tspan x="540" dy="0">Grâce à la loi Lemoine, vous pouvez</tspan>
+    <tspan x="540" dy="50">changer d'assurance emprunteur</tspan>
+    <tspan x="540" dy="50">à tout moment, sans frais.</tspan>
+  </text>
+
+  <!-- CTA -->
+  <rect x="290" y="880" width="500" height="90" rx="45" fill="#10b981"/>
+  <text x="540" y="935" fill="#0a1340" font-size="36" font-weight="800" text-anchor="middle">Simulation gratuite →</text>
+
+  <!-- Footer brand -->
+  <text x="540" y="1020" fill="#64748b" font-size="28" font-weight="700" text-anchor="middle">Assur Emprunteur</text>
+</svg>

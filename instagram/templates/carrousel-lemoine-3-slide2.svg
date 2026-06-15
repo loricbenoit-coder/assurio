@@ -1,0 +1,33 @@
+<svg viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <rect width="1080" height="1080" fill="#ffffff"/>
+  <rect x="0" y="0" width="1080" height="14" fill="#10b981"/>
+
+  <!-- Slide number -->
+  <circle cx="540" cy="150" r="50" fill="#0f1f6b"/>
+  <text x="540" y="165" fill="#ffffff" font-size="44" font-weight="800" text-anchor="middle">2</text>
+
+  <!-- Heading -->
+  <text x="540" y="320" fill="#0a1340" font-size="60" font-weight="800" text-anchor="middle">
+    <tspan x="540" dy="0">Moins de</tspan>
+    <tspan x="540" dy="72">questions de santé</tspan>
+  </text>
+
+  <!-- Body -->
+  <text x="540" y="450" fill="#475569" font-size="38" font-weight="400" text-anchor="middle">
+    <tspan x="540" dy="0">Si votre capital assuré est</tspan>
+    <tspan x="540" dy="52">inférieur à 200 000€ par personne</tspan>
+    <tspan x="540" dy="52">et que le prêt se termine avant</tspan>
+    <tspan x="540" dy="52">vos 60 ans : aucun questionnaire</tspan>
+    <tspan x="540" dy="52">de santé n'est exigé.</tspan>
+  </text>
+
+  <!-- Highlight box -->
+  <rect x="80" y="760" width="920" height="140" rx="20" fill="#ecfdf5"/>
+  <text x="540" y="820" fill="#16a34a" font-size="34" font-weight="700" text-anchor="middle">
+    <tspan x="540" dy="0">Plus simple, plus rapide,</tspan>
+    <tspan x="540" dy="46">même avec des antécédents</tspan>
+  </text>
+
+  <!-- Footer -->
+  <text x="540" y="1020" fill="#94a3b8" font-size="28" font-weight="700" text-anchor="middle">Assur Emprunteur · 3/4</text>
+</svg>

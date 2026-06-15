@@ -17,6 +17,7 @@ const LINKS = {
     { label: 'Formulaire de contact', href: '/contact', isRoute: true },
     { label: 'Avis clients', href: '/#avis' },
     { label: 'Conseils', href: '/blog', isRoute: true },
+    { label: 'Suivi de dossier', href: '/souscription', isRoute: true },
   ],
   Légal: [
     { label: 'Mentions légales', href: '/mentions-legales', isRoute: true },
