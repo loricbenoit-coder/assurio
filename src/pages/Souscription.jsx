@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import {
   ArrowRight, ArrowLeft, CheckCircle2, Circle, Clock, FileText, Home, Repeat, PlusCircle,
   UserPlus, Banknote, Building2, ShieldCheck, ClipboardList, Send, Download, Info,
+  Upload, X, Loader2, Sparkles, AlertCircle, RotateCcw, CreditCard,
 } from 'lucide-react'
 import { SEO } from '@/components/ui/SEO'
 import { Button } from '@/components/ui/Button'
 import { computeQuotes } from '@/lib/quoteEngine'
 import { cn } from '@/lib/utils'
+import { toBase64, getMediaType } from '@/lib/fileUtils'
 
 /* ─── Référentiels ───────────────────────────────────────────── */
 const OFFER_TYPES = [
@@ -30,6 +32,13 @@ const SPORTS_RISQUE = ['Moto / Sport mécanique', 'Plongée sous-marine', 'Sport
 const NATURES_PRET = ['Amortissable', 'In fine', 'Relais', 'Prêt à taux zéro (PTZ)']
 const TYPES_TAUX = ['Fixe', 'Variable']
 const ORGANISMES = ['BNP Paribas', 'Crédit Agricole', 'Société Générale', 'Crédit Mutuel', 'Banque Populaire', 'Caisse d\'Épargne', 'LCL', 'La Banque Postale', 'Autre']
+
+const RISK_PROFESSIONS = [
+  'Métiers du BTP (couvreur, charpentier, échafaudeur…)', 'Électricien haute tension', 'Militaire, policier, gendarme, pompier',
+  'Marin pêcheur, métiers offshore', 'Mineur, carrier', 'Pilote, personnel navigant', 'Artificier, convoyeur de fonds', 'Métiers de la sécurité armée',
+]
+
+const DELAI_EFFET_JOURS = 105 // ~3 mois et demi
 
 const STEP_DEFS = [
   { key: 'offre',       label: 'Choix de l\'offre' },
@@ -68,6 +77,15 @@ const ageFromBirthdate = (d) => {
   const diff = Date.now() - birth.getTime()
   return Math.max(18, Math.min(70, Math.floor(diff / (365.25 * 24 * 3600 * 1000))))
 }
+
+const addDays = (date, days) => {
+  const d = new Date(date)
+  d.setDate(d.getDate() + days)
+  return d
+}
+const toISODate = (date) => date.toISOString().slice(0, 10)
+const todayISO = () => toISODate(new Date())
+const defaultEffectDate = () => toISODate(addDays(new Date(), DELAI_EFFET_JOURS))
 
 const inputClass = 'w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0f1f6b] focus:ring-1 focus:ring-[#0f1f6b]/20 bg-white'
 const labelClass = 'block text-sm font-semibold text-[#0a1340] mb-1.5'
@@ -119,6 +137,276 @@ const NavButtons = ({ onBack, onNext, nextLabel = 'Continuer', nextDisabled }) =
   </div>
 )
 
+/* ─── Bulle d'information "i" ──────────────────────────────────── */
+const InfoTip = ({ text }) => {
+  const [open, setOpen] = useState(false)
+  return (
+    <span className="relative inline-block ml-1.5 align-middle">
+      <button type="button" onClick={() => setOpen(o => !o)}
+        onBlur={() => setTimeout(() => setOpen(false), 150)}
+        className="w-4 h-4 rounded-full bg-slate-200 hover:bg-[#0f1f6b] hover:text-white text-slate-500 text-[10px] font-bold flex items-center justify-center transition-colors align-middle">
+        i
+      </button>
+      {open && (
+        <span className="absolute z-20 left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 bg-[#0a1340] text-white text-xs rounded-xl p-3 shadow-xl leading-relaxed text-left normal-case font-normal">
+          {text}
+        </span>
+      )}
+    </span>
+  )
+}
+
+/* ─── Mini zone d'upload (recto/verso) ───────────────────────── */
+const MiniUpload = ({ label, file, status, onFile, onClear }) => {
+  const inputRef = useRef(null)
+  const [dragging, setDragging] = useState(false)
+
+  const handleDrop = (e) => {
+    e.preventDefault(); setDragging(false)
+    const f = e.dataTransfer.files[0]
+    if (f) onFile(f)
+  }
+
+  return (
+    <div
+      className={cn(
+        'relative rounded-xl border-2 border-dashed p-3 transition-all flex flex-col items-center justify-center text-center min-h-[84px]',
+        dragging   ? 'border-[#0f1f6b] bg-blue-50' :
+        file       ? 'border-[#10b981] bg-emerald-50' :
+        status === 'error' ? 'border-red-300 bg-red-50' :
+        'border-slate-200 hover:border-[#0f1f6b]/40 cursor-pointer bg-white'
+      )}
+      onClick={() => !file && inputRef.current?.click()}
+      onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
+      onDragLeave={() => setDragging(false)}
+      onDrop={handleDrop}
+    >
+      <input ref={inputRef} type="file" className="hidden"
+        accept="image/jpeg,image/png,image/webp,image/heic"
+        onChange={(e) => e.target.files[0] && onFile(e.target.files[0])} />
+
+      {file ? (
+        <>
+          <CheckCircle2 className="w-5 h-5 text-[#10b981] mb-1" />
+          <span className="text-xs font-semibold text-[#0a1340]">{label}</span>
+          <span className="text-[10px] text-slate-400 truncate max-w-full px-2">{file.name}</span>
+          <button onClick={(e) => { e.stopPropagation(); onClear() }}
+            className="absolute top-1.5 right-1.5 w-5 h-5 rounded-full bg-white border border-slate-200 hover:bg-slate-100 flex items-center justify-center">
+            <X className="w-3 h-3 text-slate-500" />
+          </button>
+        </>
+      ) : (
+        <>
+          <Upload className="w-5 h-5 text-slate-300 mb-1" />
+          <span className="text-xs font-semibold text-slate-500">{label}</span>
+          <span className="text-[10px] text-slate-400">Cliquez ou déposez</span>
+        </>
+      )}
+    </div>
+  )
+}
+
+/* ─── Uploader CNI recto/verso (avec extraction combinée) ───── */
+const CNIUploader = ({ title, optional, onExtracted }) => {
+  const [recto, setRecto]   = useState(null)
+  const [verso, setVerso]   = useState(null)
+  const [status, setStatus] = useState(null) // null | 'loading' | 'done' | 'error'
+  const [fields, setFields] = useState([])
+
+  const runExtraction = async (rectoFile, versoFile) => {
+    if (!rectoFile && !versoFile) { setStatus(null); setFields([]); return }
+    setStatus('loading')
+    try {
+      const images = []
+      if (rectoFile) images.push({ imageBase64: await toBase64(rectoFile), mediaType: getMediaType(rectoFile) })
+      if (versoFile) images.push({ imageBase64: await toBase64(versoFile), mediaType: getMediaType(versoFile) })
+
+      const res = await fetch('/.netlify/functions/extract-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ images, docType: 'cni' }),
+      })
+      const json = await res.json()
+      if (!res.ok || !json.success) throw new Error()
+
+      const filled = onExtracted(json.data)
+      setFields(filled)
+      setStatus(filled.length > 0 ? 'done' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const handleFile = (side, file) => {
+    if (side === 'recto') { setRecto(file); runExtraction(file, verso) }
+    else { setVerso(file); runExtraction(recto, file) }
+  }
+
+  const clearAll = () => { setRecto(null); setVerso(null); setStatus(null); setFields([]) }
+
+  return (
+    <div className={cn(
+      'rounded-2xl border p-4',
+      status === 'done' ? 'border-[#10b981] bg-emerald-50/40' : 'border-slate-200 bg-slate-50'
+    )}>
+      <div className="flex items-center justify-between mb-3">
+        <p className="text-sm font-semibold text-[#0a1340] flex items-center gap-2">
+          <CreditCard className="w-4 h-4 text-slate-400" /> {title}
+          {optional && <span className="text-[10px] font-medium text-slate-400 bg-slate-200 px-1.5 py-0.5 rounded-full">facultatif</span>}
+        </p>
+        {(recto || verso) && (
+          <button onClick={clearAll} className="text-xs text-slate-400 hover:text-[#0a1340] flex items-center gap-1">
+            <RotateCcw className="w-3 h-3" /> Effacer
+          </button>
+        )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <MiniUpload label="Recto" file={recto} status={status} onFile={(f) => handleFile('recto', f)} onClear={() => { setRecto(null); runExtraction(null, verso) }} />
+        <MiniUpload label="Verso" file={verso} status={status} onFile={(f) => handleFile('verso', f)} onClear={() => { setVerso(null); runExtraction(recto, null) }} />
+      </div>
+
+      {status === 'loading' && (
+        <p className="text-xs text-[#0f1f6b] mt-3 flex items-center gap-1.5">
+          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Analyse en cours par IA…
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="text-xs text-red-500 mt-3 flex items-center gap-1.5">
+          <AlertCircle className="w-3.5 h-3.5" /> Document illisible. Vous pouvez renseigner les champs manuellement.
+        </p>
+      )}
+      {status === 'done' && fields.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-3">
+          {fields.map(f => (
+            <span key={f} className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+              <Sparkles className="w-2.5 h-2.5" /> {f}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="text-[11px] text-slate-400 mt-3">
+        Recto seul accepté, mais recto + verso améliore la précision. Les champs restent modifiables manuellement.
+      </p>
+    </div>
+  )
+}
+
+/* ─── Uploader multi-fichiers : offre de prêt + amortissements ── */
+const PretDocsUploader = ({ onExtracted }) => {
+  const inputRef = useRef(null)
+  const [files, setFiles] = useState([])
+  const [status, setStatus] = useState(null)
+  const [fields, setFields] = useState([])
+  const [dragging, setDragging] = useState(false)
+
+  const runExtraction = async (fileList) => {
+    if (fileList.length === 0) { setStatus(null); setFields([]); return }
+    setStatus('loading')
+    try {
+      const images = await Promise.all(fileList.map(async f => ({ imageBase64: await toBase64(f), mediaType: getMediaType(f) })))
+      const res = await fetch('/.netlify/functions/extract-document', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ images, docType: 'pret' }),
+      })
+      const json = await res.json()
+      if (!res.ok || !json.success) throw new Error()
+
+      const filled = onExtracted(json.data)
+      setFields(filled)
+      setStatus(filled.length > 0 ? 'done' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  const addFiles = (newFiles) => {
+    if (newFiles.length === 0) return
+    const next = [...files, ...newFiles]
+    setFiles(next)
+    runExtraction(next)
+  }
+
+  const removeFile = (idx) => {
+    const next = files.filter((_, i) => i !== idx)
+    setFiles(next)
+    runExtraction(next)
+  }
+
+  const clearAll = () => { setFiles([]); setStatus(null); setFields([]) }
+
+  const handleDrop = (e) => {
+    e.preventDefault(); setDragging(false)
+    addFiles(Array.from(e.dataTransfer.files))
+  }
+
+  return (
+    <div className={cn('rounded-2xl border p-4 mb-4', status === 'done' ? 'border-[#10b981] bg-emerald-50/40' : 'border-slate-200 bg-slate-50')}>
+      <div className="flex items-center justify-between mb-3">
+        <p className="text-sm font-semibold text-[#0a1340] flex items-center gap-2">
+          <FileText className="w-4 h-4 text-slate-400" /> Offre de prêt & tableaux d'amortissement
+        </p>
+        {files.length > 0 && (
+          <button onClick={clearAll} className="text-xs text-slate-400 hover:text-[#0a1340] flex items-center gap-1">
+            <RotateCcw className="w-3 h-3" /> Effacer
+          </button>
+        )}
+      </div>
+
+      <div
+        className={cn('rounded-xl border-2 border-dashed p-4 text-center cursor-pointer transition-all',
+          dragging ? 'border-[#0f1f6b] bg-blue-50' : 'border-slate-200 hover:border-[#0f1f6b]/40 bg-white')}
+        onClick={() => inputRef.current?.click()}
+        onDragOver={(e) => { e.preventDefault(); setDragging(true) }}
+        onDragLeave={() => setDragging(false)}
+        onDrop={handleDrop}
+      >
+        <input ref={inputRef} type="file" multiple className="hidden"
+          accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
+          onChange={(e) => { e.target.files.length && addFiles(Array.from(e.target.files)); e.target.value = '' }} />
+        <Upload className="w-5 h-5 text-slate-300 mx-auto mb-1" />
+        <span className="text-xs font-semibold text-slate-500">Cliquez ou déposez vos fichiers (PDF ou images)</span>
+        <p className="text-[10px] text-slate-400 mt-1">Offre de prêt + tableaux d'amortissement — plusieurs fichiers possibles</p>
+      </div>
+
+      {files.length > 0 && (
+        <div className="flex flex-wrap gap-2 mt-3">
+          {files.map((f, i) => (
+            <span key={i} className="text-xs bg-white border border-slate-200 px-2 py-1 rounded-full flex items-center gap-1.5 text-slate-600">
+              {f.name}
+              <button onClick={() => removeFile(i)}><X className="w-3 h-3 text-slate-400" /></button>
+            </span>
+          ))}
+        </div>
+      )}
+
+      {status === 'loading' && (
+        <p className="text-xs text-[#0f1f6b] mt-3 flex items-center gap-1.5">
+          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Analyse en cours par IA…
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="text-xs text-red-500 mt-3 flex items-center gap-1.5">
+          <AlertCircle className="w-3.5 h-3.5" /> Document illisible. Vous pouvez renseigner les champs manuellement.
+        </p>
+      )}
+      {status === 'done' && fields.length > 0 && (
+        <div className="flex flex-wrap gap-1 mt-3">
+          {fields.map(f => (
+            <span key={f} className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium flex items-center gap-1">
+              <Sparkles className="w-2.5 h-2.5" /> {f}
+            </span>
+          ))}
+        </div>
+      )}
+      <p className="text-[11px] text-slate-400 mt-3">
+        Les champs sont pré-remplis automatiquement et restent modifiables manuellement.
+      </p>
+    </div>
+  )
+}
+
 /* ─── Wizard (réutilisable, page ou section) ────────────────────── */
 export const SouscriptionWizard = ({ embedded = false }) => {
   const [stepIndex, setStepIndex] = useState(0)
@@ -126,7 +414,7 @@ export const SouscriptionWizard = ({ embedded = false }) => {
   const [coEmprunteur, setCoEmprunteur] = useState(false)
   const [assureds, setAssureds] = useState([emptyAssured()])
 
-  const [loanInfo, setLoanInfo] = useState({ dateEffet: '', objet: 'principal' })
+  const [loanInfo, setLoanInfo] = useState({ dateEffet: defaultEffectDate(), objet: 'principal' })
   const [prets, setPrets] = useState([emptyPret()])
 
   const [preteur, setPreteur] = useState({
@@ -210,16 +498,79 @@ export const SouscriptionWizard = ({ embedded = false }) => {
 
   const restart = () => {
     setStepIndex(0); setOfferType(null); setCoEmprunteur(false); setAssureds([emptyAssured()])
-    setLoanInfo({ dateEffet: '', objet: 'principal' }); setPrets([emptyPret()])
+    setLoanInfo({ dateEffet: defaultEffectDate(), objet: 'principal' }); setPrets([emptyPret()])
     setPreteur({ organisme: '', agenceNom: '', agenceDomiciliation: '', codeAgence: '', adresseNum: '', adresseRue: '', complement: '', localite: '', codePostalAgence: '' })
     setResults(null); setSelectedQuote(null)
     setSubstitution({ envoiCourrier: true, auNomDe: '', refPret: '', conseillerPrenom: '', conseillerNom: '', conseillerEmail: '', conseillerTel: '' })
   }
 
+  /* ── Extraction CNI : pré-remplissage emprunteur / co-emprunteur ── */
+  const onCniExtracted = (slotIndex, data) => {
+    const filled = []
+    setAssureds(as => {
+      let next = as
+      if (slotIndex === 1 && as.length === 1) {
+        next = [{ ...as[0], qualite: 'Emprunteur' }, { ...emptyAssured(), qualite: 'Co-emprunteur' }]
+        setCoEmprunteur(true)
+      }
+      return next.map((a, idx) => {
+        if (idx !== slotIndex) return a
+        const updated = { ...a }
+        if (data.prenom) { updated.prenom = data.prenom; filled.push('Prénom') }
+        if (data.nom) { updated.nom = data.nom; filled.push('Nom') }
+        if (data.date_naissance) { updated.dateNaissance = data.date_naissance; filled.push('Date de naissance') }
+        if (data.sexe) { updated.civilite = data.sexe === 'F' ? 'Mme' : 'M'; filled.push('Civilité') }
+        return updated
+      })
+    })
+    return filled
+  }
+
+  /* ── Extraction offre de prêt / tableaux d'amortissement ── */
+  const onPretExtracted = (data) => {
+    const filled = []
+    setPrets(ps => ps.map((p, idx) => {
+      if (idx !== 0) return p
+      const updated = { ...p }
+      if (data.montant) { updated.montant = String(data.montant); filled.push('Montant') }
+      if (data.taux_nominal) { updated.taux = String(data.taux_nominal); filled.push('Taux') }
+      if (data.type_taux) { updated.typeTaux = data.type_taux; filled.push('Type de taux') }
+      if (data.duree_mois) { updated.duree = String(data.duree_mois); filled.push('Durée') }
+      if (data.differe_mois != null) { updated.differe = String(data.differe_mois); filled.push('Différé') }
+      if (data.nature) { updated.nature = data.nature; filled.push('Nature du prêt') }
+      if (Array.isArray(data.paliers) && data.paliers.length > 0) {
+        updated.paliers = data.paliers.map(pal => ({ duree: String(pal.duree_mois ?? ''), montant: String(pal.montant ?? '') }))
+        filled.push('Paliers')
+      }
+      return updated
+    }))
+    if (data.objet_financement) {
+      setLoanInfo(l => ({ ...l, objet: data.objet_financement }))
+      filled.push('Objet du financement')
+    }
+    if (data.organisme_preteur || data.agence_nom) {
+      setPreteur(p => ({
+        ...p,
+        organisme: data.organisme_preteur || p.organisme,
+        agenceNom: data.agence_nom || p.agenceNom,
+        codeAgence: data.agence_code || p.codeAgence,
+        adresseRue: data.agence_adresse || p.adresseRue,
+        codePostalAgence: data.agence_code_postal || p.codePostalAgence,
+        localite: data.agence_ville || p.localite,
+      }))
+      filled.push('Organisme prêteur')
+    }
+    return filled
+  }
+
   /* ── Validations simples ── */
   const canCoordonnees = assureds.every(a => a.nom && a.prenom && a.dateNaissance && a.email && a.tel)
   const canProfil = assureds.every(a => a.profession && a.codePostal)
-  const canPrets = prets.every(p => p.montant && p.taux && p.duree) && loanInfo.dateEffet
+  const minDateEffet = defaultEffectDate()
+  const dateEffetError = loanInfo.dateEffet && (loanInfo.dateEffet < todayISO() || loanInfo.dateEffet < minDateEffet)
+    ? `La date d'effet doit être au moins 3 mois et demi après aujourd'hui (à partir du ${minDateEffet.split('-').reverse().join('/')}).`
+    : null
+  const canPrets = prets.every(p => p.montant && p.taux && p.duree) && loanInfo.dateEffet && !dateEffetError
   const canPreteur = preteur.organisme
 
   return (
@@ -309,6 +660,12 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                 <SectionTitle icon={UserPlus} title="Vos coordonnées"
                   subtitle="Informations extraites de votre carte d'identité." />
 
+                <div className="space-y-3 mb-5">
+                  <CNIUploader title="Carte d'identité — Emprunteur 1" onExtracted={(data) => onCniExtracted(0, data)} />
+                  <CNIUploader title="Carte d'identité — Co-emprunteur" optional
+                    onExtracted={(data) => onCniExtracted(1, data)} />
+                </div>
+
                 <Toggle checked={coEmprunteur} onChange={toggleCoEmprunteur} label="Ajouter un co-emprunteur" />
 
                 <div className="space-y-6 mt-5">
@@ -374,15 +731,29 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                         </select>
                       </Field>
 
-                      <Field label="Profession exercée">
+                      <Field label="Profession exercée"
+                        hint="L'intitulé exact figure sur votre bulletin de salaire ou votre contrat de travail.">
                         <input className={inputClass} value={a.profession} onChange={e => updateAssured(i, 'profession', e.target.value)} placeholder="ex : Comptable" />
                       </Field>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
-                        <Toggle checked={a.professionRisque} onChange={v => updateAssured(i, 'professionRisque', v)} label="Profession à risque" />
+                        <div className="flex items-center">
+                          <div className="flex-1"><Toggle checked={a.professionRisque} onChange={v => updateAssured(i, 'professionRisque', v)} label="Profession à risque" /></div>
+                          <InfoTip text={
+                            <>
+                              <p className="font-semibold mb-1">Professions généralement considérées à risque :</p>
+                              <ul className="list-disc pl-4 space-y-0.5">
+                                {RISK_PROFESSIONS.map(p => <li key={p}>{p}</li>)}
+                              </ul>
+                            </>
+                          } />
+                        </div>
                         <Toggle checked={a.professionManuelle} onChange={v => updateAssured(i, 'professionManuelle', v)} label="Profession manuelle" />
                         <Toggle checked={a.travauxHauteur} onChange={v => updateAssured(i, 'travauxHauteur', v)} label="Travaux en hauteur" />
-                        <Toggle checked={a.fumeur} onChange={v => updateAssured(i, 'fumeur', v)} label="Fumeur" />
+                        <div className="flex items-center">
+                          <div className="flex-1"><Toggle checked={a.fumeur} onChange={v => updateAssured(i, 'fumeur', v)} label="Fumeur" /></div>
+                          <InfoTip text="Est considéré comme fumeur, au sens des assureurs, toute personne ayant consommé du tabac ou de la nicotine (cigarettes, cigarette électronique, patchs, substituts nicotiniques…), même occasionnellement, au cours des 12 à 24 derniers mois." />
+                        </div>
                       </div>
 
                       <Field label="Déplacements professionnels par an">
@@ -419,10 +790,22 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                 <SectionTitle icon={Banknote} title="Vos prêts"
                   subtitle="Informations extraites de votre offre de prêt." />
 
+                <PretDocsUploader onExtracted={onPretExtracted} />
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
-                  <Field label="Date d'effet des garanties">
-                    <input type="date" className={inputClass} value={loanInfo.dateEffet} onChange={e => setLoanInfo(l => ({ ...l, dateEffet: e.target.value }))} />
-                  </Field>
+                  <div className="mb-4">
+                    <label className={labelClass}>
+                      Date d'effet des garanties
+                      <InfoTip text="L'effet des garanties est fixé automatiquement 3 mois et demi après aujourd'hui, afin d'éviter un double prélèvement (banque + assureur) pendant la période de transition. Vous pouvez modifier cette date manuellement, sans descendre sous ce délai." />
+                    </label>
+                    <input type="date" className={inputClass} value={loanInfo.dateEffet} min={minDateEffet}
+                      onChange={e => setLoanInfo(l => ({ ...l, dateEffet: e.target.value }))} />
+                    {dateEffetError && (
+                      <p className="text-xs text-red-500 mt-1.5 flex items-center gap-1">
+                        <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" /> {dateEffetError}
+                      </p>
+                    )}
+                  </div>
                   <Field label="Objet du financement">
                     <select className={inputClass} value={loanInfo.objet} onChange={e => setLoanInfo(l => ({ ...l, objet: e.target.value }))}>
                       <option value="principal">Résidence principale</option>
@@ -713,14 +1096,9 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                   {assureds.map((a, i) => (
                     <div key={i} className={i > 0 ? 'pt-4 border-t border-slate-100' : ''}>
                       {coEmprunteur && <p className="text-sm font-bold text-[#0a1340] mb-2">{a.qualite} — {a.prenom || `Assuré ${i + 1}`}</p>}
-                      <Field label="Support d'adhésion">
-                        <div className="grid grid-cols-2 gap-2">
-                          {['Numérique', 'Papier'].map(s => (
-                            <button key={s} onClick={() => updateAssured(i, 'supportAdhesion', s)}
-                              className={cn('py-2.5 rounded-xl border text-sm font-semibold transition-all',
-                                a.supportAdhesion === s ? 'bg-[#0f1f6b] text-white border-[#0f1f6b]' : 'bg-slate-50 text-slate-500 border-slate-200'
-                              )}>{s}</button>
-                          ))}
+                      <Field label="Support d'adhésion" hint="L'adhésion se fait exclusivement par voie électronique.">
+                        <div className="flex items-center gap-2 py-2.5 px-4 rounded-xl border border-[#0f1f6b] bg-[#f0f4ff] text-sm font-semibold text-[#0f1f6b]">
+                          <CheckCircle2 className="w-4 h-4" /> Numérique
                         </div>
                       </Field>
                     </div>

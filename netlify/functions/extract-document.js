@@ -3,16 +3,19 @@ import Anthropic from '@anthropic-ai/sdk'
 const PROMPTS = {
   cni: `Tu es un système d'extraction de données. Analyse cette/ces image(s) de carte nationale d'identité française (recto et/ou verso) et extrait uniquement les informations suivantes en combinant les informations des deux faces si fournies.
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ou après.
-Format attendu: {"date_naissance":"YYYY-MM-DD","prenom":"string","nom":"string"}
+Format attendu: {"date_naissance":"YYYY-MM-DD","prenom":"string","nom":"string","sexe":"M ou F"}
 Si une information est illisible ou absente, mets null pour ce champ.`,
 
-  pret: `Tu es un système d'extraction de données. Analyse ce document de prêt immobilier (offre de prêt, tableau d'amortissement, ou contrat) et extrait uniquement les informations suivantes.
+  pret: `Tu es un système d'extraction de données. Analyse ce(s) document(s) (offre de prêt immobilier et/ou tableaux d'amortissement, pouvant être répartis sur plusieurs fichiers) et extrait les informations suivantes en les combinant.
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ou après.
-Format attendu: {"montant":number,"duree_annees":number,"taux_nominal":number}
-- montant: capital emprunté total en euros (entier)
-- duree_annees: durée totale du prêt en années (entier)
-- taux_nominal: taux d'intérêt nominal en % (décimal, ex: 3.75)
-Si une information est illisible ou absente, mets null pour ce champ.`,
+Format attendu:
+{"montant":number,"taux_nominal":number,"type_taux":"Fixe ou Variable","duree_mois":number,"differe_mois":number,"nature":"Amortissable, In fine, Relais ou Prêt à taux zéro (PTZ)","objet_financement":"principal, secondaire ou locatif","paliers":[{"duree_mois":number,"montant":number}],"organisme_preteur":"string","agence_nom":"string","agence_code":"string","agence_adresse":"string","agence_code_postal":"string","agence_ville":"string"}
+- montant : capital emprunté total en euros (entier)
+- duree_mois : durée totale du prêt en mois
+- differe_mois : durée du différé d'amortissement en mois (0 si absent)
+- paliers : si le prêt comporte plusieurs phases avec des mensualités différentes (visible sur le tableau d'amortissement ou l'offre), liste chaque palier avec sa durée en mois et le montant de la mensualité correspondante. Tableau vide [] si un seul palier.
+- objet_financement : déduis "principal", "secondaire" ou "locatif" si mentionné, sinon "principal" par défaut.
+Si une information est illisible ou absente, mets null pour ce champ (sauf paliers : tableau vide []).`,
 }
 
 export const handler = async (event) => {
@@ -40,14 +43,14 @@ export const handler = async (event) => {
 
     const response = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 300,
+      max_tokens: 600,
       messages: [{
         role: 'user',
         content: [
-          ...imageList.map(img => ({
-            type: 'image',
-            source: { type: 'base64', media_type: img.mediaType, data: img.imageBase64 },
-          })),
+          ...imageList.map(img => img.mediaType === 'application/pdf'
+            ? { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: img.imageBase64 } }
+            : { type: 'image', source: { type: 'base64', media_type: img.mediaType, data: img.imageBase64 } }
+          ),
           { type: 'text', text: PROMPTS[docType] },
         ],
       }],
