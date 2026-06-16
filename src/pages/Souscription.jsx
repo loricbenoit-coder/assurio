@@ -140,23 +140,17 @@ const NavButtons = ({ onBack, onNext, nextLabel = 'Continuer', nextDisabled }) =
 )
 
 /* ─── Bulle d'information "i" ──────────────────────────────────── */
-const InfoTip = ({ text }) => {
-  const [open, setOpen] = useState(false)
-  return (
-    <span className="relative inline-block ml-1.5 align-middle">
-      <button type="button" onClick={() => setOpen(o => !o)}
-        onBlur={() => setTimeout(() => setOpen(false), 150)}
-        className="w-4 h-4 rounded-full bg-slate-200 hover:bg-[#0f1f6b] hover:text-white text-slate-500 text-[10px] font-bold flex items-center justify-center transition-colors align-middle">
-        i
-      </button>
-      {open && (
-        <span className="absolute z-20 left-1/2 -translate-x-1/2 bottom-full mb-2 w-64 bg-[#0a1340] text-white text-xs rounded-xl p-3 shadow-xl leading-relaxed text-left normal-case font-normal">
-          {text}
-        </span>
-      )}
+const InfoTip = ({ text }) => (
+  <span className="group relative inline-block ml-2 align-middle">
+    <span className="w-5 h-5 rounded-full bg-[#0f1f6b] text-white text-[11px] font-bold flex items-center justify-center cursor-help shadow-md shadow-[#0f1f6b]/30 select-none transition-transform group-hover:scale-110">
+      i
     </span>
-  )
-}
+    <span className="pointer-events-none absolute z-30 left-1/2 -translate-x-1/2 bottom-full mb-2.5 w-72 bg-[#0a1340] text-white text-xs rounded-2xl p-4 shadow-2xl leading-relaxed text-left normal-case font-normal opacity-0 group-hover:opacity-100 transition-opacity duration-150">
+      {text}
+      <span className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-x-[6px] border-x-transparent border-t-[6px] border-t-[#0a1340]" />
+    </span>
+  </span>
+)
 
 /* ─── Mini zone d'upload (recto/verso) ───────────────────────── */
 const MiniUpload = ({ label, file, status, onFile, onClear }) => {
