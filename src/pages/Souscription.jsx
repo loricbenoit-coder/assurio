@@ -1133,7 +1133,7 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                 <div className="bg-slate-50 rounded-2xl p-4 mb-5 space-y-2 text-sm">
                   <div className="flex justify-between"><span className="text-slate-400">Offre sélectionnée</span><span className="font-semibold text-[#0a1340]">{selectedQuote?.insurer || '—'}</span></div>
                   <div className="flex justify-between"><span className="text-slate-400">Cotisation</span><span className="font-semibold text-[#0a1340]">{selectedQuote?.monthly || '—'}€/mois</span></div>
-                  <div className="flex justify-between"><span className="text-slate-400">Date d'effet</span><span className="font-semibold text-[#0a1340]">{loanInfo.dateEffet || '—'}</span></div>
+                  <div className="flex justify-between"><span className="text-slate-400">Date d'effet</span><span className="font-semibold text-[#0a1340]">{loanInfo.dateEffet ? loanInfo.dateEffet.split('-').reverse().join('/') : '—'}</span></div>
                   <div className="flex justify-between"><span className="text-slate-400">Organisme prêteur</span><span className="font-semibold text-[#0a1340]">{preteur.organisme || '—'}</span></div>
                 </div>
 
