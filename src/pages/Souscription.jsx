@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import {
   ArrowRight, ArrowLeft, CheckCircle2, Circle, Clock, FileText, Home, Repeat, PlusCircle,
   UserPlus, Banknote, Building2, ShieldCheck, ClipboardList, Send, Download, Info,
-  Upload, X, Loader2, Sparkles, AlertCircle, RotateCcw, CreditCard,
+  Upload, X, Loader2, Sparkles, AlertCircle, RotateCcw, CreditCard, Lock, Phone, Zap,
 } from 'lucide-react'
 import { SEO } from '@/components/ui/SEO'
 import { Button } from '@/components/ui/Button'
@@ -403,8 +403,95 @@ const PretDocsUploader = ({ onExtracted }) => {
   )
 }
 
+/* ─── Écran d'intro avant le parcours ───────────────────────────── */
+const INTRO_STEPS = [
+  'Vos coordonnées', 'Profil assurable', 'Vos prêts',
+  'Simulation comparative', 'Souscription en ligne',
+]
+
+const WizardIntro = ({ onStart }) => (
+  <div className="max-w-3xl mx-auto px-6">
+    <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+      <div className="h-1.5 bg-gradient-to-r from-[#0f1f6b] via-[#3b5bdb] to-[#10b981]" />
+      <div className="p-8 sm:p-10">
+
+        {/* Titre */}
+        <div className="text-center mb-8">
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0a1340] mb-3 tracking-tight">
+            Obtenez votre meilleure offre<br />
+            <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg,#0f1f6b,#3b5bdb)' }}>
+              d'assurance de prêt en 15 min
+            </span>
+          </h3>
+          <p className="text-slate-500 text-base leading-relaxed">
+            Notre IA lit vos documents et pré-remplit tout. Votre conseiller négocie pour vous.
+          </p>
+        </div>
+
+        {/* Étapes aperçu */}
+        <div className="flex items-center gap-1 justify-center mb-8 overflow-x-auto pb-1">
+          {INTRO_STEPS.map((s, i) => (
+            <div key={s} className="flex items-center gap-1 flex-shrink-0">
+              <div className="flex flex-col items-center gap-1">
+                <div className="w-7 h-7 rounded-full bg-[#f0f4ff] border border-[#0f1f6b]/20 text-[#0f1f6b] text-xs font-bold flex items-center justify-center">
+                  {i + 1}
+                </div>
+                <span className="text-[10px] text-slate-400 font-medium max-w-[64px] text-center leading-tight hidden sm:block">{s}</span>
+              </div>
+              {i < INTRO_STEPS.length - 1 && <div className="w-5 h-px bg-slate-200 mb-4" />}
+            </div>
+          ))}
+        </div>
+
+        {/* 3 bénéfices */}
+        <div className="grid grid-cols-3 gap-3 mb-8">
+          {[
+            { icon: Zap,          label: '15 min',           sub: 'Durée estimée' },
+            { icon: CheckCircle2, label: 'Sans engagement',  sub: '100% gratuit' },
+            { icon: Phone,        label: 'Réponse sous 24h', sub: 'Conseiller dédié' },
+          ].map(({ icon: Icon, label, sub }) => (
+            <div key={label} className="text-center p-4 bg-gradient-to-b from-slate-50 to-white rounded-2xl border border-slate-200">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0f1f6b] to-[#3b5bdb] flex items-center justify-center mx-auto mb-2 shadow-md shadow-[#0f1f6b]/20">
+                <Icon className="w-4 h-4 text-white" />
+              </div>
+              <p className="text-sm font-bold text-[#0a1340]">{label}</p>
+              <p className="text-xs text-slate-400">{sub}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-px bg-slate-200 rounded-2xl overflow-hidden mb-8">
+          {[
+            { v: '8 400€', l: 'économies moyennes' },
+            { v: '4.9/5',  l: 'satisfaction client' },
+            { v: '48h',    l: 'délai de décision' },
+          ].map(({ v, l }) => (
+            <div key={l} className="bg-white py-4 text-center">
+              <p className="text-xl font-extrabold text-[#0a1340]">{v}</p>
+              <p className="text-xs text-slate-400 mt-0.5">{l}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <Button size="lg" className="w-full text-base" onClick={onStart}>
+          Démarrer mon dossier gratuit <ArrowRight className="w-5 h-5" />
+        </Button>
+
+        {/* Note de confiance */}
+        <p className="text-center text-xs text-slate-400 mt-4 flex items-center justify-center gap-1.5">
+          <Lock className="w-3 h-3" />
+          Données confidentielles · Aucun envoi à un assureur sans votre accord · Courtier certifié ORIAS
+        </p>
+      </div>
+    </div>
+  </div>
+)
+
 /* ─── Wizard (réutilisable, page ou section) ────────────────────── */
 export const SouscriptionWizard = ({ embedded = false }) => {
+  const [started, setStarted] = useState(false)
   const [stepIndex, setStepIndex] = useState(0)
   const [offerType, setOfferType] = useState(null)
   const [coEmprunteur, setCoEmprunteur] = useState(false)
@@ -585,38 +672,20 @@ export const SouscriptionWizard = ({ embedded = false }) => {
   const canPrets = prets.every(p => p.montant && p.taux && p.duree) && loanInfo.dateEffet && !dateEffetError
   const canPreteur = preteur.organisme
 
+  if (!started) return <WizardIntro onStart={() => setStarted(true)} />
+
   return (
     <div className="max-w-3xl mx-auto px-6">
 
-          {/* Header */}
-          <div className="text-center mb-10">
-            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#10b981] uppercase tracking-widest mb-5 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-200">
+          {/* Header compact (visible une fois démarré) */}
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
-              Espace souscription
-            </span>
-            {embedded ? (
-              <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1340] mb-3 tracking-tight">
-                Votre dossier d'assurance de prêt
-              </h2>
-            ) : (
-              <h1 className="text-3xl md:text-4xl font-extrabold text-[#0a1340] mb-3 tracking-tight">
-                Votre dossier d'assurance de prêt
-              </h1>
-            )}
-            <p className="text-slate-500 max-w-xl mx-auto leading-relaxed">
-              Suivez votre dossier étape par étape, exactement comme votre conseiller le traite.
-            </p>
-          </div>
-
-          {/* Demo banner */}
-          <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3 mb-6 flex items-start gap-3">
-            <Info className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-            <p className="text-xs text-amber-700 leading-relaxed">
-              <strong>Démonstration :</strong> ce parcours reproduit les étapes réelles de traitement de votre dossier.
-              Aucune donnée n'est transmise à un assureur ici — pour démarrer un vrai dossier,{' '}
-              <Link to="/contact" className="underline font-semibold">contactez-nous</Link> ou utilisez le{' '}
-              <a href="/#simulateur" className="underline font-semibold">simulateur</a>.
-            </p>
+              <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Votre dossier en cours</span>
+            </div>
+            <button onClick={() => setStarted(false)} className="text-xs text-slate-400 hover:text-slate-600 underline">
+              ← Retour à l'accueil
+            </button>
           </div>
 
           {/* Step indicator */}

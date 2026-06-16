@@ -118,9 +118,9 @@ const TRUST_ITEMS = [
 ]
 
 const STATS = [
-  { value: '60%', label: "d'économies moyennes" },
-  { value: '50 000+', label: 'clients assurés' },
-  { value: '4.9/5', label: 'note moyenne' },
+  { value: '15 000€', label: "d'économies maximum" },
+  { value: '48h', label: 'délai de traitement' },
+  { value: '4.9/5', label: 'satisfaction client' },
 ]
 
 export const Hero = () => {
@@ -198,22 +198,22 @@ export const Hero = () => {
 
           {/* CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3 mb-10 sm:mb-16">
-            <a href="#simulateur" className="w-full sm:w-auto">
-              <Button size="lg" className="group w-full sm:w-auto" data-sb-field-path="ctaPrimary">
-                {content.ctaPrimary}
+            <a href="#suivi-dossier" className="w-full sm:w-auto">
+              <Button size="lg" className="group w-full sm:w-auto bg-[#10b981] hover:bg-[#059669] shadow-xl shadow-emerald-500/30">
+                Démarrer mon dossier gratuit
                 <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-white/20 text-white hover:bg-white/10 gap-2"
-              onClick={() => setVideoOpen(true)}
-              data-sb-field-path="ctaSecondary"
-            >
-              <Play className="w-4 h-4 fill-white" />
-              {content.ctaSecondary}
-            </Button>
+            <a href="#simulateur" className="w-full sm:w-auto">
+              <Button
+                variant="outline"
+                size="lg"
+                className="w-full sm:w-auto border-white/20 text-white hover:bg-white/10"
+                data-sb-field-path="ctaPrimary"
+              >
+                {content.ctaPrimary}
+              </Button>
+            </a>
           </div>
 
           <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
