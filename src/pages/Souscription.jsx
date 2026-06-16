@@ -184,7 +184,7 @@ const MiniUpload = ({ label, file, status, onFile, onClear }) => {
       onDrop={handleDrop}
     >
       <input ref={inputRef} type="file" className="hidden"
-        accept="image/jpeg,image/png,image/webp,image/heic"
+        accept="image/jpeg,image/png,image/webp,image/heic,application/pdf"
         onChange={(e) => e.target.files[0] && onFile(e.target.files[0])} />
 
       {file ? (
@@ -288,7 +288,7 @@ const CNIUploader = ({ title, optional, onExtracted }) => {
         </div>
       )}
       <p className="text-[11px] text-slate-400 mt-3">
-        Recto seul accepté, mais recto + verso améliore la précision. Les champs restent modifiables manuellement.
+        Image ou PDF accepté. Recto seul suffisant, mais recto + verso améliore la précision. Les champs restent modifiables manuellement.
       </p>
     </div>
   )
