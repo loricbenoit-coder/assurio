@@ -30,7 +30,7 @@ export const SuiviDossier = () => (
         </span>
       </h2>
       <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-        Notre IA lit votre offre de prêt et votre CNI pour pré-remplir le dossier automatiquement. Votre conseiller négocie et vous fait économiser.
+        Téléversez vos documents — le dossier se pré-remplit automatiquement. Votre conseiller négocie et vous fait économiser.
       </p>
 
       {/* Bénéfices */}

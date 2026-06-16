@@ -264,7 +264,7 @@ const CNIUploader = ({ title, optional, onExtracted }) => {
 
       {status === 'loading' && (
         <p className="text-xs text-[#0f1f6b] mt-3 flex items-center gap-1.5">
-          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Analyse en cours par IA…
+          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Lecture du document en cours…
         </p>
       )}
       {status === 'error' && (
@@ -379,7 +379,7 @@ const PretDocsUploader = ({ onExtracted }) => {
 
       {status === 'loading' && (
         <p className="text-xs text-[#0f1f6b] mt-3 flex items-center gap-1.5">
-          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Analyse en cours par IA…
+          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Lecture du document en cours…
         </p>
       )}
       {status === 'error' && (
@@ -424,7 +424,7 @@ const WizardIntro = ({ onStart }) => (
             </span>
           </h3>
           <p className="text-slate-500 text-base leading-relaxed">
-            Notre IA lit vos documents et pré-remplit tout. Votre conseiller négocie pour vous.
+            Téléversez vos documents — le dossier se pré-remplit automatiquement. Votre conseiller fait le reste.
           </p>
         </div>
 

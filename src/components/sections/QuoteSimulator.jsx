@@ -268,7 +268,7 @@ const CNIUploader = ({ title, onExtracted }) => {
 
       {status === 'loading' && (
         <p className="text-xs text-[#0f1f6b] mt-3 flex items-center gap-1.5">
-          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Analyse en cours par IA…
+          <Loader2 className="w-3.5 h-3.5 animate-spin" /> Lecture du document en cours…
         </p>
       )}
       {status === 'error' && (
@@ -333,7 +333,7 @@ const LoanDocUpload = ({ status, fields, onFile, onClear }) => {
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-sm text-[#0a1340]">Offre de prêt immobilier</p>
           <p className="text-xs text-slate-400 mt-0.5">
-            {status === 'loading' ? 'Analyse en cours par IA…' :
+            {status === 'loading' ? 'Lecture du document en cours…' :
              status === 'done'    ? 'Montant et durée extraits' :
              status === 'error'   ? 'Impossible de lire le document. Réessayez.' :
              'Cliquez ou déposez votre fichier'}
