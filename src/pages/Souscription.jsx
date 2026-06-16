@@ -87,45 +87,47 @@ const toISODate = (date) => date.toISOString().slice(0, 10)
 const todayISO = () => toISODate(new Date())
 const defaultEffectDate = () => toISODate(addDays(new Date(), DELAI_EFFET_JOURS))
 
-const inputClass = 'w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0f1f6b] focus:ring-1 focus:ring-[#0f1f6b]/20 bg-white'
-const labelClass = 'block text-sm font-semibold text-[#0a1340] mb-1.5'
+const inputClass = 'w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-[#0f1f6b] focus:ring-2 focus:ring-[#0f1f6b]/10 bg-white shadow-sm transition-all placeholder:text-slate-300'
+const labelClass = 'block text-sm font-semibold text-slate-700 mb-1.5'
 
 const Field = ({ label, children, hint }) => (
   <div className="mb-4">
     <label className={labelClass}>{label}</label>
-    {hint && <p className="text-xs text-slate-400 mb-1.5">{hint}</p>}
+    {hint && <p className="text-xs text-slate-400 mb-1.5 leading-relaxed">{hint}</p>}
     {children}
   </div>
 )
 
 const Toggle = ({ checked, onChange, label }) => (
   <button onClick={() => onChange(!checked)}
-    className={cn('w-full flex items-center gap-3 p-3 rounded-xl border text-left transition-all',
-      checked ? 'bg-emerald-50 border-[#10b981]' : 'bg-slate-50 border-slate-200 hover:border-slate-300'
+    className={cn('w-full flex items-center gap-3 p-3.5 rounded-xl border text-left transition-all',
+      checked
+        ? 'bg-gradient-to-r from-emerald-50 to-teal-50 border-[#10b981] shadow-sm shadow-emerald-100'
+        : 'bg-white border-slate-200 hover:border-[#0f1f6b]/30 hover:bg-slate-50'
     )}>
-    <div className={cn('w-4 h-4 rounded-md border-2 flex items-center justify-center flex-shrink-0',
-      checked ? 'bg-[#10b981] border-[#10b981]' : 'border-slate-300'
+    <div className={cn('w-5 h-5 rounded-lg border-2 flex items-center justify-center flex-shrink-0 transition-all',
+      checked ? 'bg-[#10b981] border-[#10b981] shadow-sm' : 'border-slate-300 bg-white'
     )}>
-      {checked && <CheckCircle2 className="w-2.5 h-2.5 text-white" />}
+      {checked && <CheckCircle2 className="w-3 h-3 text-white" />}
     </div>
-    <span className="text-sm font-medium text-slate-600">{label}</span>
+    <span className={cn('text-sm font-medium transition-colors', checked ? 'text-[#0a1340]' : 'text-slate-500')}>{label}</span>
   </button>
 )
 
 const SectionTitle = ({ icon: Icon, title, subtitle }) => (
-  <div className="flex items-center gap-3 mb-5">
-    <div className="w-10 h-10 rounded-xl bg-[#f0f4ff] flex items-center justify-center flex-shrink-0">
-      <Icon className="w-5 h-5 text-[#0f1f6b]" />
+  <div className="flex items-center gap-4 mb-6">
+    <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#0f1f6b] to-[#3b5bdb] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#0f1f6b]/25">
+      <Icon className="w-5 h-5 text-white" />
     </div>
     <div>
       <h3 className="text-lg font-bold text-[#0a1340]">{title}</h3>
-      {subtitle && <p className="text-xs text-slate-400">{subtitle}</p>}
+      {subtitle && <p className="text-xs text-slate-400 mt-0.5">{subtitle}</p>}
     </div>
   </div>
 )
 
 const NavButtons = ({ onBack, onNext, nextLabel = 'Continuer', nextDisabled }) => (
-  <div className="flex gap-3 mt-6">
+  <div className="flex gap-3 mt-8 pt-6 border-t border-slate-100">
     {onBack && (
       <Button variant="outline" className="flex-shrink-0" onClick={onBack}>
         <ArrowLeft className="w-4 h-4" /> Retour
@@ -577,20 +579,21 @@ export const SouscriptionWizard = ({ embedded = false }) => {
     <div className="max-w-3xl mx-auto px-6">
 
           {/* Header */}
-          <div className="text-center mb-8">
-            <span className="inline-block text-sm font-semibold text-[#10b981] uppercase tracking-widest mb-3">
+          <div className="text-center mb-10">
+            <span className="inline-flex items-center gap-2 text-xs font-bold text-[#10b981] uppercase tracking-widest mb-5 bg-emerald-50 px-4 py-2 rounded-full border border-emerald-200">
+              <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
               Espace souscription
             </span>
             {embedded ? (
-              <h2 className="text-3xl md:text-4xl font-bold text-[#0a1340] mb-3 tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1340] mb-3 tracking-tight">
                 Votre dossier d'assurance de prêt
               </h2>
             ) : (
-              <h1 className="text-3xl md:text-4xl font-bold text-[#0a1340] mb-3 tracking-tight">
+              <h1 className="text-3xl md:text-4xl font-extrabold text-[#0a1340] mb-3 tracking-tight">
                 Votre dossier d'assurance de prêt
               </h1>
             )}
-            <p className="text-slate-500 max-w-xl mx-auto">
+            <p className="text-slate-500 max-w-xl mx-auto leading-relaxed">
               Suivez votre dossier étape par étape, exactement comme votre conseiller le traite.
             </p>
           </div>
@@ -607,27 +610,40 @@ export const SouscriptionWizard = ({ embedded = false }) => {
           </div>
 
           {/* Step indicator */}
-          <div className="flex items-center gap-1 mb-6 overflow-x-auto pb-2 -mx-1 px-1">
-            {visibleSteps.map((s, i) => (
-              <div key={s.key} className="flex items-center gap-1 flex-shrink-0">
-                <div className={cn(
-                  'w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold transition-all flex-shrink-0',
-                  i < stepIndex ? 'bg-[#10b981] text-white' : i === stepIndex ? 'bg-[#0f1f6b] text-white' : 'bg-slate-200 text-slate-400'
-                )}>
-                  {i < stepIndex ? <CheckCircle2 className="w-4 h-4" /> : i}
+          <div className="mb-8">
+            <div className="flex items-center gap-1 overflow-x-auto pb-2 -mx-1 px-1">
+              {visibleSteps.map((s, i) => (
+                <div key={s.key} className="flex items-center gap-1 flex-shrink-0">
+                  <div className={cn(
+                    'w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all flex-shrink-0 ring-4',
+                    i < stepIndex
+                      ? 'bg-[#10b981] text-white ring-emerald-100'
+                      : i === stepIndex
+                      ? 'bg-[#0f1f6b] text-white ring-[#0f1f6b]/15 shadow-lg shadow-[#0f1f6b]/30'
+                      : 'bg-white text-slate-400 ring-slate-100 border border-slate-200'
+                  )}>
+                    {i < stepIndex ? <CheckCircle2 className="w-4 h-4" /> : i + 1}
+                  </div>
+                  {i < visibleSteps.length - 1 && (
+                    <div className={cn('w-4 sm:w-6 h-0.5 rounded-full transition-all', i < stepIndex ? 'bg-[#10b981]' : 'bg-slate-200')} />
+                  )}
                 </div>
-                {i < visibleSteps.length - 1 && (
-                  <div className={cn('w-4 sm:w-6 h-px', i < stepIndex ? 'bg-[#10b981]' : 'bg-slate-200')} />
-                )}
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="flex items-center gap-2 mt-3">
+              <span className="text-xs font-bold text-[#0f1f6b] uppercase tracking-widest">
+                Étape {stepIndex + 1}/{visibleSteps.length}
+              </span>
+              <span className="text-slate-300">·</span>
+              <span className="text-sm font-semibold text-[#0a1340]">{visibleSteps[stepIndex]?.label}</span>
+            </div>
           </div>
-          <p className="text-xs font-semibold text-[#0f1f6b] uppercase tracking-wider mb-6">
-            Étape {stepIndex} — {visibleSteps[stepIndex]?.label}
-          </p>
 
           {/* Card */}
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8">
+          <div className="bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden">
+            {/* Gradient top stripe */}
+            <div className="h-1.5 bg-gradient-to-r from-[#0f1f6b] via-[#3b5bdb] to-[#10b981]" />
+            <div className="p-6 sm:p-8">
 
             {/* ══ Étape 0 — Choix de l'offre ══ */}
             {currentKey === 'offre' && (
@@ -637,17 +653,23 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                 <div className="space-y-3">
                   {OFFER_TYPES.map(({ value, icon: Icon, title, desc }) => (
                     <button key={value} onClick={() => { setOfferType(value); goNext() }}
-                      className={cn('w-full flex items-start gap-4 p-4 rounded-2xl border text-left transition-all',
-                        offerType === value ? 'border-[#0f1f6b] bg-[#f0f4ff]' : 'border-slate-200 hover:border-[#0f1f6b]/40 bg-slate-50'
+                      className={cn('w-full flex items-start gap-4 p-5 rounded-2xl border-2 text-left transition-all',
+                        offerType === value
+                          ? 'border-[#0f1f6b] bg-gradient-to-r from-[#f0f4ff] to-white shadow-md shadow-[#0f1f6b]/10'
+                          : 'border-slate-200 hover:border-[#0f1f6b]/30 bg-white hover:shadow-sm'
                       )}>
-                      <div className="w-11 h-11 rounded-xl bg-white border border-slate-200 flex items-center justify-center flex-shrink-0">
-                        <Icon className="w-5 h-5 text-[#0f1f6b]" />
+                      <div className={cn('w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-all',
+                        offerType === value
+                          ? 'bg-gradient-to-br from-[#0f1f6b] to-[#3b5bdb] shadow-md'
+                          : 'bg-slate-50 border border-slate-200'
+                      )}>
+                        <Icon className={cn('w-5 h-5', offerType === value ? 'text-white' : 'text-[#0f1f6b]')} />
                       </div>
                       <div className="flex-1">
                         <p className="font-bold text-sm text-[#0a1340] mb-0.5">{title}</p>
                         <p className="text-xs text-slate-400 leading-relaxed">{desc}</p>
                       </div>
-                      <ArrowRight className="w-4 h-4 text-slate-300 flex-shrink-0 mt-1" />
+                      <ArrowRight className={cn('w-4 h-4 flex-shrink-0 mt-1 transition-all', offerType === value ? 'text-[#0f1f6b]' : 'text-slate-300')} />
                     </button>
                   ))}
                 </div>
@@ -670,13 +692,20 @@ export const SouscriptionWizard = ({ embedded = false }) => {
 
                 <div className="space-y-6 mt-5">
                   {assureds.map((a, i) => (
-                    <div key={i} className={i > 0 ? 'pt-5 border-t border-slate-100' : ''}>
-                      {coEmprunteur && <p className="text-sm font-bold text-[#0a1340] mb-3">{a.qualite}</p>}
-                      <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div key={i} className={i > 0 ? 'pt-5 mt-2 border-t border-slate-100' : ''}>
+                      {coEmprunteur && (
+                        <div className="flex items-center gap-2 mb-4">
+                          <div className="w-6 h-6 rounded-full bg-[#0f1f6b] text-white text-xs font-bold flex items-center justify-center">{i + 1}</div>
+                          <p className="text-sm font-bold text-[#0a1340]">{a.qualite}</p>
+                        </div>
+                      )}
+                      <div className="grid grid-cols-2 gap-2 mb-4">
                         {['M', 'Mme'].map(c => (
                           <button key={c} onClick={() => updateAssured(i, 'civilite', c)}
-                            className={cn('py-2.5 rounded-xl border text-sm font-semibold transition-all col-span-1',
-                              a.civilite === c ? 'bg-[#0f1f6b] text-white border-[#0f1f6b]' : 'bg-slate-50 text-slate-500 border-slate-200'
+                            className={cn('py-3 rounded-xl border-2 text-sm font-semibold transition-all',
+                              a.civilite === c
+                                ? 'bg-gradient-to-r from-[#0f1f6b] to-[#3b5bdb] text-white border-[#0f1f6b] shadow-md shadow-[#0f1f6b]/20'
+                                : 'bg-white text-slate-500 border-slate-200 hover:border-[#0f1f6b]/30'
                             )}>{c === 'M' ? 'Monsieur' : 'Madame'}</button>
                         ))}
                       </div>
@@ -816,7 +845,7 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                 </div>
 
                 {prets.map((p, i) => (
-                  <div key={i} className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mb-4">
+                  <div key={i} className="rounded-2xl border border-slate-200 bg-gradient-to-b from-slate-50 to-white p-4 mb-4 shadow-sm">
                     <div className="flex items-center justify-between mb-3">
                       <p className="text-sm font-bold text-[#0a1340]">Prêt {i + 1}</p>
                       {prets.length > 1 && (
@@ -947,14 +976,20 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                   {results.quotes.slice(0, 5).map((quote, rank) => (
                     <div key={quote.insurer}
                       onClick={() => setSelectedQuote(quote)}
-                      className={cn('rounded-2xl border p-4 cursor-pointer transition-all',
-                        selectedQuote?.insurer === quote.insurer ? 'border-[#0f1f6b] ring-1 ring-[#0f1f6b] bg-[#f0f4ff]' : 'border-slate-200 hover:border-slate-300'
+                      className={cn('rounded-2xl border-2 p-4 cursor-pointer transition-all',
+                        selectedQuote?.insurer === quote.insurer
+                          ? 'border-[#0f1f6b] bg-gradient-to-r from-[#f0f4ff] to-white shadow-md shadow-[#0f1f6b]/10'
+                          : 'border-slate-200 hover:border-[#0f1f6b]/30 bg-white hover:shadow-sm'
                       )}>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-2">
-                          <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: quote.color }} />
+                          <div className="w-3 h-3 rounded-full shadow-sm" style={{ backgroundColor: quote.color }} />
                           <span className="font-bold text-sm text-[#0a1340]">{quote.insurer}</span>
-                          {rank === 0 && <span className="text-xs bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded-full font-medium">Meilleure offre</span>}
+                          {rank === 0 && (
+                            <span className="text-xs bg-gradient-to-r from-emerald-50 to-teal-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded-full font-semibold">
+                              ★ Meilleure offre
+                            </span>
+                          )}
                         </div>
                         <div className="text-right">
                           <div className="text-xl font-extrabold text-[#0a1340]">{quote.monthly}€<span className="text-sm font-normal text-slate-400">/mois</span></div>
@@ -1115,11 +1150,13 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                 <SectionTitle icon={Clock} title="Analyse et décision"
                   subtitle="Suivi de votre dossier après envoi." />
 
-                <div className="bg-emerald-50 border border-[#10b981] rounded-2xl p-4 mb-6 flex items-center gap-3">
-                  <CheckCircle2 className="w-6 h-6 text-[#10b981] flex-shrink-0" />
+                <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-[#10b981] rounded-2xl p-5 mb-6 flex items-center gap-4 shadow-sm shadow-emerald-100">
+                  <div className="w-12 h-12 rounded-2xl bg-[#10b981] flex items-center justify-center flex-shrink-0 shadow-md shadow-emerald-300">
+                    <CheckCircle2 className="w-6 h-6 text-white" />
+                  </div>
                   <div>
-                    <p className="font-bold text-sm text-[#0a1340]">Dossier transmis avec succès</p>
-                    <p className="text-xs text-slate-500">Décision : <strong>En attente</strong> — un conseiller vous recontacte sous 24h.</p>
+                    <p className="font-bold text-[#0a1340]">Dossier transmis avec succès</p>
+                    <p className="text-sm text-slate-500 mt-0.5">Décision : <strong className="text-[#0a1340]">En attente</strong> — un conseiller vous recontacte sous 24h.</p>
                   </div>
                 </div>
 
@@ -1170,6 +1207,7 @@ export const SouscriptionWizard = ({ embedded = false }) => {
               </div>
             )}
 
+          </div>
           </div>
     </div>
   )
