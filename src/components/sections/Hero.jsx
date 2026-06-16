@@ -112,7 +112,7 @@ const FloatingReviews = () => {
 }
 
 const TRUST_ITEMS = [
-  'Réponse en 2 minutes',
+  'Tarifs minimum garantis',
   '100% en ligne',
   'Sans engagement',
 ]

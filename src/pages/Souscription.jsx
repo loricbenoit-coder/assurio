@@ -424,7 +424,7 @@ const WizardIntro = ({ onStart }) => (
             </span>
           </h3>
           <p className="text-slate-500 text-base leading-relaxed">
-            Téléversez vos documents — le dossier se pré-remplit automatiquement. Votre conseiller fait le reste.
+            Téléversez vos documents — le dossier se pré-remplit automatiquement. Vous accédez directement aux tarifs minimum du marché.
           </p>
         </div>
 
@@ -448,7 +448,7 @@ const WizardIntro = ({ onStart }) => (
           {[
             { icon: Zap,          label: '15 min',           sub: 'Durée estimée' },
             { icon: CheckCircle2, label: 'Sans engagement',  sub: '100% gratuit' },
-            { icon: Phone,        label: 'Réponse sous 24h', sub: 'Conseiller dédié' },
+            { icon: Phone,        label: 'Tarifs minimum', sub: 'Appliqués à tous les dossiers' },
           ].map(({ icon: Icon, label, sub }) => (
             <div key={label} className="text-center p-4 bg-gradient-to-b from-slate-50 to-white rounded-2xl border border-slate-200">
               <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#0f1f6b] to-[#3b5bdb] flex items-center justify-center mx-auto mb-2 shadow-md shadow-[#0f1f6b]/20">

@@ -11,7 +11,7 @@ const STATS = [
 const BENEFITS = [
   { icon: Clock,        title: '15 min',          sub: 'Durée estimée' },
   { icon: CheckCircle2, title: 'Sans engagement',  sub: '100% gratuit' },
-  { icon: Phone,        title: 'Conseiller dédié', sub: 'Réponse sous 24h' },
+  { icon: Phone,        title: 'Tarifs minimum', sub: 'Appliqués sur tous les dossiers' },
 ]
 
 export const SuiviDossier = () => (
@@ -30,7 +30,7 @@ export const SuiviDossier = () => (
         </span>
       </h2>
       <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-        Téléversez vos documents — le dossier se pré-remplit automatiquement. Votre conseiller négocie et vous fait économiser.
+        Téléversez vos documents — le dossier se pré-remplit automatiquement. Vous accédez directement aux tarifs les plus bas du marché, sans négociation.
       </p>
 
       {/* Bénéfices */}
