@@ -1,3 +1,5 @@
+import { getStore, connectLambda } from '@netlify/blobs'
+
 const OWNER_EMAIL = 'loricbenoit@gmail.com'
 
 const sendEmail = async (key, { to, subject, html }) => {
@@ -14,6 +16,7 @@ const sendEmail = async (key, { to, subject, html }) => {
 
 export const handler = async (event) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' }
+  connectLambda(event)
 
   const headers = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
 
@@ -25,7 +28,24 @@ export const handler = async (event) => {
     if (!email) return { statusCode: 400, headers, body: JSON.stringify({ error: 'Email requis' }) }
 
     const now = new Date()
+    const leadId = `lead_${now.getTime()}`
     const timeStr = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' })
+
+    // Sauvegarde dans Netlify Blobs (visible dans la page admin)
+    try {
+      const store = getStore('leads')
+      await store.set(leadId, JSON.stringify({
+        id: leadId,
+        contact: { firstName: prenom || '', lastName: nom || '', email, phone: tel || '' },
+        loanInfo: {},
+        quote: null,
+        createdAt: now.toISOString(),
+        status: 'nouveau',
+        type: 'prospect',
+      }))
+    } catch (e) {
+      console.error('Blob save error:', e)
+    }
 
     const html = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><style>
 body{font-family:Inter,Arial,sans-serif;background:#f8fafc;margin:0;padding:20px}

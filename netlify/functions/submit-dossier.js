@@ -1,3 +1,5 @@
+import { getStore, connectLambda } from '@netlify/blobs'
+
 const OWNER_EMAIL = 'loricbenoit@gmail.com'
 
 const fmt = (n) =>
@@ -152,6 +154,7 @@ ${selectedQuote?.savings ? `<div class="saving-box">
 
 export const handler = async (event) => {
   if (event.httpMethod !== 'POST') return { statusCode: 405, body: 'Method Not Allowed' }
+  connectLambda(event)
 
   const headers = { 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json' }
 
@@ -161,7 +164,40 @@ export const handler = async (event) => {
 
     if (!RESEND_KEY) throw new Error('RESEND_API_KEY manquant')
 
+    const now = new Date()
+    const dossierId = `dossier_${now.getTime()}`
     const primary = assureds?.[0] || {}
+    const totalCapital = prets.reduce((s, p) => s + (Number(p.montant) || 0), 0)
+    const maxDureeMois = Math.max(...prets.map(p => Number(p.dureeMois) || 0), 0)
+
+    // Sauvegarde dans Netlify Blobs (visible dans la page admin)
+    try {
+      const store = getStore('leads')
+      await store.set(dossierId, JSON.stringify({
+        id: dossierId,
+        contact: {
+          firstName: primary.prenom || '',
+          lastName: primary.nom || '',
+          email: primary.email || '',
+          phone: primary.tel || '',
+        },
+        loanInfo: {
+          amount: totalCapital,
+          duration: Math.round(maxDureeMois / 12),
+          objet: loanInfo.objet,
+          dateEffet: loanInfo.dateEffet,
+        },
+        quote: selectedQuote || null,
+        assureds,
+        prets,
+        preteur,
+        createdAt: now.toISOString(),
+        status: 'nouveau',
+        type: 'dossier',
+      }))
+    } catch (e) {
+      console.error('Blob save error:', e)
+    }
 
     await sendEmail(RESEND_KEY, {
       to: [OWNER_EMAIL],
