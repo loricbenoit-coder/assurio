@@ -574,9 +574,33 @@ export const SouscriptionWizard = ({ embedded = false }) => {
     goNext()
   }
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     setSubmitting(true)
-    setTimeout(() => { setSubmitting(false); goNext() }, 1200)
+    try {
+      await fetch('/.netlify/functions/submit-dossier', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ assureds, prets, loanInfo, preteur, selectedQuote }),
+      })
+    } catch (e) {
+      console.error('submit-dossier:', e)
+    }
+    setSubmitting(false)
+    goNext()
+  }
+
+  const captureLead = async () => {
+    const a = assureds[0]
+    if (!a?.email) return
+    try {
+      await fetch('/.netlify/functions/capture-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prenom: a.prenom, nom: a.nom, email: a.email, tel: a.tel, dateNaissance: a.dateNaissance }),
+      })
+    } catch (e) {
+      console.error('capture-lead:', e)
+    }
   }
 
   const restart = () => {
@@ -810,7 +834,7 @@ export const SouscriptionWizard = ({ embedded = false }) => {
                     </div>
                   ))}
                 </div>
-                <NavButtons onBack={goBack} onNext={goNext} nextDisabled={!canCoordonnees} />
+                <NavButtons onBack={goBack} onNext={() => { captureLead(); goNext() }} nextDisabled={!canCoordonnees} />
               </div>
             )}
 
