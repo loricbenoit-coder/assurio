@@ -525,21 +525,37 @@ export const SouscriptionWizard = ({ embedded = false }) => {
   /* ── Extraction offre de prêt / tableaux d'amortissement ── */
   const onPretExtracted = (data) => {
     const filled = []
-    setPrets(ps => ps.map((p, idx) => {
-      if (idx !== 0) return p
-      const updated = { ...p }
-      if (data.montant) { updated.montant = String(data.montant); filled.push('Montant') }
-      if (data.taux_nominal) { updated.taux = String(data.taux_nominal); filled.push('Taux') }
-      if (data.type_taux) { updated.typeTaux = data.type_taux; filled.push('Type de taux') }
-      if (data.duree_mois) { updated.duree = String(data.duree_mois); filled.push('Durée') }
-      if (data.differe_mois != null) { updated.differe = String(data.differe_mois); filled.push('Différé') }
-      if (data.nature) { updated.nature = data.nature; filled.push('Nature du prêt') }
-      if (Array.isArray(data.paliers) && data.paliers.length > 0) {
-        updated.paliers = data.paliers.map(pal => ({ duree: String(pal.duree_mois ?? ''), montant: String(pal.montant ?? '') }))
-        filled.push('Paliers')
-      }
-      return updated
-    }))
+
+    // Normalise : nouveau format { prets: [...] } ou ancien format à plat (fallback)
+    const pretsList = Array.isArray(data.prets) && data.prets.length > 0
+      ? data.prets
+      : (data.montant ? [data] : [])
+
+    if (pretsList.length > 0) {
+      const newPrets = pretsList.map(p => {
+        const pret = { ...emptyPret() }
+        if (p.montant)          pret.montant  = String(p.montant)
+        if (p.taux_nominal != null) pret.taux = String(p.taux_nominal)
+        if (p.type_taux)        pret.typeTaux = p.type_taux
+        if (p.duree_mois)       pret.duree    = String(p.duree_mois)
+        if (p.differe_mois != null) pret.differe = String(p.differe_mois)
+        if (p.nature)           pret.nature   = p.nature
+        if (Array.isArray(p.paliers) && p.paliers.length > 0) {
+          pret.paliers = p.paliers.map(pal => ({
+            duree: String(pal.duree_mois ?? ''),
+            montant: String(pal.montant ?? ''),
+          }))
+        }
+        return pret
+      })
+      setPrets(newPrets)
+      filled.push(`${newPrets.length} prêt${newPrets.length > 1 ? 's' : ''} détecté${newPrets.length > 1 ? 's' : ''}`)
+      if (pretsList.some(p => p.montant)) filled.push('Montants')
+      if (pretsList.some(p => p.taux_nominal != null)) filled.push('Taux')
+      if (pretsList.some(p => p.duree_mois)) filled.push('Durées')
+      if (pretsList.some(p => Array.isArray(p.paliers) && p.paliers.length > 0)) filled.push('Paliers')
+    }
+
     if (data.objet_financement) {
       setLoanInfo(l => ({ ...l, objet: data.objet_financement }))
       filled.push('Objet du financement')

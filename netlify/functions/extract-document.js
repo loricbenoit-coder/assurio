@@ -6,16 +6,21 @@ Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ou après.
 Format attendu: {"date_naissance":"YYYY-MM-DD","prenom":"string","nom":"string","sexe":"M ou F"}
 Si une information est illisible ou absente, mets null pour ce champ.`,
 
-  pret: `Tu es un système d'extraction de données. Analyse ce(s) document(s) (offre de prêt immobilier et/ou tableaux d'amortissement, pouvant être répartis sur plusieurs fichiers) et extrait les informations suivantes en les combinant.
+  pret: `Tu es un système d'extraction de données. Analyse ce(s) document(s) (offre de prêt immobilier et/ou tableaux d'amortissement, pouvant être répartis sur plusieurs fichiers). Il peut y avoir UN ou PLUSIEURS prêts distincts (ex : prêt principal + PTZ + prêt complémentaire). Extrait CHAQUE prêt séparément dans le tableau "prets".
 Réponds UNIQUEMENT avec un objet JSON valide, sans texte avant ou après.
 Format attendu:
-{"montant":number,"taux_nominal":number,"type_taux":"Fixe ou Variable","duree_mois":number,"differe_mois":number,"nature":"Amortissable, In fine, Relais ou Prêt à taux zéro (PTZ)","objet_financement":"principal, secondaire ou locatif","paliers":[{"duree_mois":number,"montant":number}],"organisme_preteur":"string","agence_nom":"string","agence_code":"string","agence_adresse":"string","agence_code_postal":"string","agence_ville":"string"}
-- montant : capital emprunté total en euros (entier)
+{"prets":[{"montant":number,"taux_nominal":number,"type_taux":"Fixe ou Variable","duree_mois":number,"differe_mois":number,"nature":"Amortissable, In fine, Relais ou Prêt à taux zéro (PTZ)","paliers":[{"duree_mois":number,"montant":number}]}],"objet_financement":"principal, secondaire ou locatif","organisme_preteur":"string","agence_nom":"string","agence_code":"string","agence_adresse":"string","agence_code_postal":"string","agence_ville":"string"}
+Règles :
+- prets : UN objet par prêt distinct. Si un seul prêt, tableau à un élément.
+- montant : capital emprunté en euros (entier)
+- taux_nominal : taux annuel en % (ex: 3.0). Mettre 0 si taux zéro.
 - duree_mois : durée totale du prêt en mois
-- differe_mois : durée du différé d'amortissement en mois (0 si absent)
-- paliers : si le prêt comporte plusieurs phases avec des mensualités différentes (visible sur le tableau d'amortissement ou l'offre), liste chaque palier avec sa durée en mois et le montant de la mensualité correspondante. Tableau vide [] si un seul palier.
-- objet_financement : déduis "principal", "secondaire" ou "locatif" si mentionné, sinon "principal" par défaut.
-Si une information est illisible ou absente, mets null pour ce champ (sauf paliers : tableau vide []).`,
+- differe_mois : durée du différé en mois (0 si absent)
+- nature : "Amortissable" par défaut ; "Prêt à taux zéro (PTZ)" si taux 0% ou PTZ explicite ; "In fine" ou "Relais" si mentionné
+- paliers : liste chaque phase si les mensualités changent en cours de prêt (durée + montant mensualité). Tableau vide [] sinon.
+- objet_financement : "principal", "secondaire" ou "locatif" (défaut "principal")
+- Les champs organisme et agence sont communs à tous les prêts (un seul prêteur en général).
+Si une information est illisible ou absente, mets null (sauf paliers : []).`,
 }
 
 export const handler = async (event) => {
@@ -43,7 +48,7 @@ export const handler = async (event) => {
 
     const response = await client.messages.create({
       model: 'claude-haiku-4-5-20251001',
-      max_tokens: 600,
+      max_tokens: 1200,
       messages: [{
         role: 'user',
         content: [
