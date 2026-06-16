@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Shield, LogOut, TrendingDown, Phone, Mail, Euro, Calendar, RefreshCw, Download, Link, Users } from 'lucide-react'
+import { Shield, LogOut, TrendingDown, Phone, Mail, Euro, Calendar, RefreshCw, Download, Link, Users, Archive } from 'lucide-react'
 
 const AFFILIES = [
   { id: 'kevin-immo', name: 'Kevin Immo', platform: 'YouTube', link: 'https://assur-emprunteur.fr?ref=kevin-immo' },
@@ -13,6 +13,7 @@ const STATUS_CONFIG = {
   en_cours: { label: 'En cours',  color: 'bg-orange-100 text-orange-700' },
   signe:    { label: 'Signé ✅',  color: 'bg-green-100 text-green-700' },
   perdu:    { label: 'Perdu',     color: 'bg-red-100 text-red-700' },
+  archive:  { label: 'Archivé',   color: 'bg-slate-100 text-slate-400' },
 }
 
 const fmt = (n) => Number(n).toLocaleString('fr-FR') + '€'
@@ -243,13 +244,43 @@ const StatusSelector = ({ lead, password, onUpdate }) => {
   )
 }
 
+/* ─── Bouton archiver (1 clic) ───────────────────────────── */
+const ArchiveButton = ({ lead, password, onUpdate }) => {
+  const [loading, setLoading] = useState(false)
+  const handleClick = async (e) => {
+    e.stopPropagation()
+    setLoading(true)
+    try {
+      const res = await fetch('/.netlify/functions/update-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-admin-password': password },
+        body: JSON.stringify({ leadId: lead.id, status: 'archive' }),
+      })
+      if (res.ok) onUpdate(lead.id, { status: 'archive' })
+    } catch (err) { console.error(err) }
+    finally { setLoading(false) }
+  }
+  return (
+    <button onClick={handleClick} disabled={loading} title="Archiver ce lead"
+      className="p-1.5 rounded-lg bg-slate-100 hover:bg-slate-500 hover:text-white text-slate-400 transition-colors disabled:opacity-40">
+      <Archive className="w-3.5 h-3.5" />
+    </button>
+  )
+}
+
 /* ─── Onglet Leads ───────────────────────────────────────── */
 const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected, password, onLeadUpdate }) => {
-  const total = leads.length
-  const signes = leads.filter(l => l.status === 'signe').length
-  const ca = leads.filter(l => l.status === 'signe').reduce((acc, l) => acc + (l.quote?.savings > 5000 ? 700 : 350), 0)
-  const nouveaux = leads.filter(l => l.status === 'nouveau').length
-  const filtered = filter === 'tous' ? leads : leads.filter(l => l.status === filter)
+  const activeLeads = leads.filter(l => l.status !== 'archive')
+  const total = activeLeads.length
+  const signes = activeLeads.filter(l => l.status === 'signe').length
+  const ca = activeLeads.filter(l => l.status === 'signe').reduce((acc, l) => acc + (l.quote?.savings > 5000 ? 700 : 350), 0)
+  const nouveaux = activeLeads.filter(l => l.status === 'nouveau').length
+  const archived = leads.filter(l => l.status === 'archive')
+  const filtered = filter === 'tous'
+    ? activeLeads
+    : filter === 'archive'
+      ? archived
+      : activeLeads.filter(l => l.status === filter)
 
   return (
     <div>
@@ -271,13 +302,18 @@ const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected, p
       </div>
 
       <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
-        <div className="flex gap-2 flex-wrap">
-          {['tous', ...Object.keys(STATUS_CONFIG)].map(s => (
+        <div className="flex gap-2 flex-wrap items-center">
+          {['tous', 'nouveau', 'contacte', 'en_cours', 'signe', 'perdu'].map(s => (
             <button key={s} onClick={() => setFilter(s)}
               className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === s ? 'bg-[#0f1f6b] text-white' : 'bg-white border border-slate-200 text-slate-600 hover:border-[#0f1f6b]/40'}`}>
               {s === 'tous' ? `Tous (${total})` : STATUS_CONFIG[s].label}
             </button>
           ))}
+          <div className="w-px h-6 bg-slate-200 mx-1" />
+          <button onClick={() => setFilter('archive')}
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${filter === 'archive' ? 'bg-slate-600 text-white' : 'bg-white border border-slate-200 text-slate-400 hover:border-slate-400'}`}>
+            Archivé ({archived.length})
+          </button>
         </div>
         <button onClick={exportCSV} className="flex items-center gap-2 bg-white border border-slate-200 text-slate-600 hover:text-[#0f1f6b] px-4 py-2 rounded-xl text-sm font-medium transition-colors">
           <Download className="w-4 h-4" /> Exporter CSV
@@ -350,8 +386,11 @@ const TabLeads = ({ leads, loading, filter, setFilter, exportCSV, setSelected, p
                     </td>
                     <td className="px-4 py-4">
                       <div className="flex gap-2">
-                        <a href={`tel:${lead.contact.phone}`} onClick={e => e.stopPropagation()} className="p-1.5 rounded-lg bg-slate-100 hover:bg-[#0f1f6b] hover:text-white text-slate-600 transition-colors"><Phone className="w-3.5 h-3.5" /></a>
-                        <a href={`mailto:${lead.contact.email}`} onClick={e => e.stopPropagation()} className="p-1.5 rounded-lg bg-slate-100 hover:bg-[#10b981] hover:text-white text-slate-600 transition-colors"><Mail className="w-3.5 h-3.5" /></a>
+                        {lead.contact?.phone && <a href={`tel:${lead.contact.phone}`} onClick={e => e.stopPropagation()} className="p-1.5 rounded-lg bg-slate-100 hover:bg-[#0f1f6b] hover:text-white text-slate-600 transition-colors"><Phone className="w-3.5 h-3.5" /></a>}
+                        {lead.contact?.email && <a href={`mailto:${lead.contact.email}`} onClick={e => e.stopPropagation()} className="p-1.5 rounded-lg bg-slate-100 hover:bg-[#10b981] hover:text-white text-slate-600 transition-colors"><Mail className="w-3.5 h-3.5" /></a>}
+                        {lead.status !== 'archive' && (
+                          <ArchiveButton lead={lead} password={password} onUpdate={onLeadUpdate} />
+                        )}
                       </div>
                     </td>
                   </tr>

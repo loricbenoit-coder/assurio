@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f1f6b"/>
+      <stop offset="100%" style="stop-color:#0a1340"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#10b981"/>
+      <stop offset="100%" style="stop-color:#34d399"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative circle top right -->
+  <circle cx="1050" cy="100" r="320" fill="#10b981" opacity="0.06"/>
+  <circle cx="100" cy="550" r="200" fill="#527bf5" opacity="0.04"/>
+
+  <!-- Grid pattern -->
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5" opacity="0.04"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Logo icon placeholder -->
+  <rect x="80" y="80" width="56" height="56" rx="14" fill="#10b981" opacity="0.9"/>
+  <text x="108" y="118" font-family="Arial,sans-serif" font-size="28" font-weight="900" fill="white" text-anchor="middle">A</text>
+
+  <!-- Brand name -->
+  <text x="154" y="110" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="white" opacity="0.9">Assur Emprunteur</text>
+  <text x="154" y="130" font-family="Arial,sans-serif" font-size="13" fill="white" opacity="0.4">Courtier en assurance emprunteur</text>
+
+  <!-- Main headline -->
+  <text x="80" y="280" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="white" letter-spacing="-1">Économisez jusqu'à</text>
+  <text x="80" y="360" font-family="Arial,sans-serif" font-size="72" font-weight="900" fill="url(#green)" letter-spacing="-2">-60% sur votre</text>
+  <text x="80" y="440" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="white" letter-spacing="-1">assurance emprunteur</text>
+
+  <!-- Stats bar -->
+  <rect x="80" y="496" width="1040" height="80" rx="16" fill="white" opacity="0.06"/>
+
+  <text x="200" y="530" font-family="Arial,sans-serif" font-size="26" font-weight="900" fill="#10b981" text-anchor="middle">15 000€</text>
+  <text x="200" y="555" font-family="Arial,sans-serif" font-size="13" fill="white" opacity="0.5" text-anchor="middle">d'économies max</text>
+
+  <rect x="393" y="512" width="1" height="46" fill="white" opacity="0.15"/>
+
+  <text x="520" y="530" font-family="Arial,sans-serif" font-size="26" font-weight="900" fill="#10b981" text-anchor="middle">48h</text>
+  <text x="520" y="555" font-family="Arial,sans-serif" font-size="13" fill="white" opacity="0.5" text-anchor="middle">délai de traitement</text>
+
+  <rect x="713" y="512" width="1" height="46" fill="white" opacity="0.15"/>
+
+  <text x="840" y="530" font-family="Arial,sans-serif" font-size="26" font-weight="900" fill="#10b981" text-anchor="middle">4.9/5</text>
+  <text x="840" y="555" font-family="Arial,sans-serif" font-size="13" fill="white" opacity="0.5" text-anchor="middle">satisfaction client</text>
+
+  <rect x="1033" y="512" width="1" height="46" fill="white" opacity="0.15"/>
+
+  <text x="1040" y="530" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="white" opacity="0.7" text-anchor="middle">Gratuit</text>
+  <text x="1040" y="555" font-family="Arial,sans-serif" font-size="13" fill="white" opacity="0.5" text-anchor="middle">sans engagement</text>
+
+  <!-- URL -->
+  <text x="1120" y="45" font-family="Arial,sans-serif" font-size="15" fill="white" opacity="0.4" text-anchor="end">assur-emprunteur.fr</text>
+</svg>
