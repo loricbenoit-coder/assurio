@@ -24,13 +24,13 @@ export const SuiviDossier = () => (
         Dossier guidé étape par étape
       </span>
       <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a1340] mb-4 tracking-tight">
-        Votre assurance de prêt,<br />
+        Déposez vos documents,<br />
         <span className="text-transparent bg-clip-text" style={{ backgroundImage: 'linear-gradient(135deg,#0f1f6b,#3b5bdb)' }}>
-          traitée comme par un expert
+          on s'occupe du reste
         </span>
       </h2>
       <p className="text-slate-500 text-lg leading-relaxed mb-8 max-w-xl mx-auto">
-        Notre IA lit vos documents et pré-remplit tout. Votre conseiller négocie pour vous. Vous économisez.
+        Notre IA lit votre offre de prêt et votre CNI pour pré-remplir le dossier automatiquement. Votre conseiller négocie et vous fait économiser.
       </p>
 
       {/* Bénéfices */}
