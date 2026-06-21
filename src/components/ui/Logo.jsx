@@ -1,49 +1,67 @@
 import React from 'react'
 import { cn } from '@/lib/utils'
 
-/**
- * Logo Assur Emprunteur — 3 bandes corporate
- * Blanc · Teal · Cyan — rapprochées, dynamiques
- */
+/* ─── Symbole L'Éclat ─────────────────────────────────────────────────
+   dark=false → fond sombre  : facettes blanches (navbar transparente, hero)
+   dark=true  → fond clair   : facettes navy   (navbar scrollée, footer)
+──────────────────────────────────────────────────────────────────────── */
+const EclatIcon = ({ size = 36, dark = false }) => {
+  const c = dark
+    ? { a: '#0f1f6b', b: 'rgba(15,31,107,0.4)', c2: 'rgba(15,31,107,0.55)', d: 'rgba(15,31,107,0.16)' }
+    : { a: '#ffffff', b: 'rgba(255,255,255,0.42)', c2: 'rgba(255,255,255,0.58)', d: 'rgba(255,255,255,0.18)' }
 
-export const LogoIcon = ({ size = 36, light = false, className }) => (
-  <svg
-    width={size}
-    height={size}
-    viewBox="0 0 84 84"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className={className}
-  >
-    <rect width="84" height="84" rx="14" fill={light ? 'rgba(255,255,255,0.12)' : '#0f1f6b'} />
-    {/* 3 bandes rapprochées */}
-    <line x1="12" y1="66" x2="43" y2="17" stroke="white"   strokeWidth="7" strokeLinecap="round"/>
-    <line x1="29" y1="70" x2="60" y2="21" stroke="#10b981" strokeWidth="7" strokeLinecap="round"/>
-    <line x1="46" y1="74" x2="77" y2="25" stroke="#38bdf8" strokeWidth="7" strokeLinecap="round"/>
-  </svg>
-)
+  return (
+    <svg width={size} height={size} viewBox="0 0 44 44" fill="none" aria-hidden="true"
+      style={{ flexShrink: 0 }}>
+      <path d="M22 4 L10 22 L22 18 Z"  fill={c.a}/>
+      <path d="M22 4 L34 22 L22 18 Z"  fill={c.b}/>
+      <path d="M22 40 L10 22 L22 26 Z" fill={c.c2}/>
+      <path d="M22 40 L34 22 L22 26 Z" fill={c.d}/>
+      <circle cx="22" cy="22" r="2.5" fill="#10b981"/>
+    </svg>
+  )
+}
 
+/* ─── Wordmark ──────────────────────────────────────────────────────── */
 export const LogoWordmark = ({ dark = false, withTagline = false, className }) => (
-  <div className={cn('inline-flex items-center gap-3 select-none', className)}>
-    <LogoIcon size={36} light={!dark} />
-    <div className="flex flex-col justify-center leading-none">
-      <div
-        className="font-black tracking-tight"
-        style={{ fontSize: '17px', letterSpacing: '-0.03em', lineHeight: 1 }}
-      >
-        <span style={{ color: dark ? '#0f1f6b' : '#ffffff' }}>ASSUR </span>
-        <span style={{ color: '#10b981' }}>EMPRUNTEUR</span>
+  <div className={cn('inline-flex items-center select-none', className)}
+    style={{ gap: 16, cursor: 'default' }}>
+    <EclatIcon size={36} dark={dark} />
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div style={{
+        width: 2.5, height: 30, borderRadius: 2, flexShrink: 0,
+        background: '#10b981',
+      }} />
+      <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
+        <div>
+          <span style={{
+            fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+            fontSize: 17, fontWeight: 900, letterSpacing: '-0.035em',
+            color: dark ? '#0a1340' : '#ffffff',
+          }}>ASSUR</span>
+          <span style={{
+            fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+            fontSize: 17, fontWeight: 300, letterSpacing: '0.01em',
+            color: dark ? 'rgba(10,19,64,0.5)' : 'rgba(255,255,255,0.5)',
+            marginLeft: 7,
+          }}>EMPRUNTEUR</span>
+        </div>
+        {withTagline && (
+          <span style={{
+            fontFamily: 'Inter, system-ui, -apple-system, sans-serif',
+            fontSize: 7.5, fontWeight: 500, letterSpacing: '0.24em',
+            textTransform: 'uppercase', display: 'block', marginTop: 5,
+            color: dark ? 'rgba(10,19,64,0.3)' : 'rgba(255,255,255,0.25)',
+          }}>Courtier en assurance</span>
+        )}
       </div>
-      {withTagline && (
-        <span
-          className="font-medium uppercase mt-1.5"
-          style={{ fontSize: '8px', letterSpacing: '0.2em', color: dark ? '#94a3b8' : 'rgba(255,255,255,0.35)' }}
-        >
-          Courtier en assurance
-        </span>
-      )}
     </div>
   </div>
+)
+
+/* ─── Icône seule (ChatWidget etc.) ────────────────────────────────── */
+export const LogoIcon = ({ size = 36, light = false, className }) => (
+  <EclatIcon size={size} dark={!light} />
 )
 
 export const Logo = ({ dark = false, withTagline = false, className }) => (
