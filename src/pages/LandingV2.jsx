@@ -25,7 +25,7 @@ const NavV2 = () => {
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
       transition: 'background 0.3s, border-bottom 0.3s',
-      background: scrolled ? 'rgba(8,9,14,0.85)' : 'transparent',
+      background: scrolled ? 'rgba(15,22,35,0.88)' : 'transparent',
       backdropFilter: scrolled ? 'blur(20px)' : 'none',
       borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
     }}>
@@ -184,7 +184,7 @@ const HeroV2 = () => {
 
   return (
     <section style={{
-      minHeight: '100vh', background: '#08090e', display: 'flex', alignItems: 'center',
+      minHeight: '100vh', background: '#0f1623', display: 'flex', alignItems: 'center',
       padding: '80px 0 60px', position: 'relative', overflow: 'hidden',
     }}>
       {/* Lueurs d'arrière-plan */}
@@ -260,7 +260,7 @@ const HeroV2 = () => {
 
 /* ─── Logos assureurs ────────────────────────────────────────────────── */
 const InsurersV2 = () => (
-  <section style={{ background: '#08090e', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '32px 0' }}>
+  <section style={{ background: '#0f1623', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '32px 0' }}>
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
       <p style={{ textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.25)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 24 }}>
         Assureurs partenaires
@@ -304,7 +304,7 @@ const HowItWorksV2 = () => {
   ]
 
   return (
-    <section style={{ background: '#0a0b12', padding: '100px 0' }}>
+    <section style={{ background: '#111d35', padding: '100px 0' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.12em', display: 'block', marginBottom: 16 }}>
@@ -354,7 +354,7 @@ const SocialProofV2 = () => {
   ]
 
   return (
-    <section style={{ background: '#08090e', padding: '100px 0' }}>
+    <section style={{ background: '#0f1623', padding: '100px 0' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <div style={{ display: 'flex', justifyContent: 'center', gap: 4, marginBottom: 16 }}>
@@ -401,7 +401,7 @@ const SocialProofV2 = () => {
 
 /* ─── Feature : extraction IA mise en avant ─────────────────────────── */
 const FeatureAIV2 = () => (
-  <section style={{ background: '#0a0b12', padding: '100px 0' }}>
+  <section style={{ background: '#111d35', padding: '100px 0' }}>
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80, alignItems: 'center' }}>
         <div>
@@ -475,7 +475,7 @@ const FeatureAIV2 = () => (
 
 /* ─── CTA final ──────────────────────────────────────────────────────── */
 const CTAV2 = () => (
-  <section style={{ background: '#08090e', padding: '100px 0' }}>
+  <section style={{ background: '#0f1623', padding: '100px 0' }}>
     <div style={{ maxWidth: 700, margin: '0 auto', padding: '0 24px', textAlign: 'center' }}>
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(16,185,129,0.08)', border: '1px solid rgba(16,185,129,0.15)', borderRadius: 999, padding: '6px 14px', marginBottom: 32 }}>
         <Lock size={12} color="#10b981" />
@@ -504,7 +504,7 @@ const CTAV2 = () => (
 
 /* ─── Footer minimal ─────────────────────────────────────────────────── */
 const FooterV2 = () => (
-  <footer style={{ background: '#08090e', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '32px 24px' }}>
+  <footer style={{ background: '#0f1623', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '32px 24px' }}>
     <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
       <LogoWordmark dark={false} />
       <div style={{ display: 'flex', gap: 24 }}>
@@ -519,11 +519,11 @@ const FooterV2 = () => (
 
 /* ─── Page complète ──────────────────────────────────────────────────── */
 export const LandingV2 = () => (
-  <div style={{ background: '#08090e', minHeight: '100vh' }}>
+  <div style={{ background: '#0f1623', minHeight: '100vh' }}>
     <style>{`
       @keyframes spin { to { transform: rotate(360deg) } }
       * { box-sizing: border-box }
-      select option { background: #1a1b2e; color: #fff }
+      select option { background: #0f1623; color: #fff }
     `}</style>
     <NavV2 />
     <HeroV2 />
