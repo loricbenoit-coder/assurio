@@ -291,7 +291,7 @@ const HowItWorksV2 = () => {
       glow: 'rgba(99,102,241,0.15)',
       num: '02',
       title: 'Recevez les tarifs minimum',
-      desc: 'Accès direct aux tarifs minimum garantis sur tous les contrats. Pas de négociation — le prix le plus bas d'emblée.',
+      desc: "Accès direct aux tarifs minimum garantis sur tous les contrats. Pas de négociation — le prix le plus bas d'emblée.",
     },
     {
       icon: Shield,
