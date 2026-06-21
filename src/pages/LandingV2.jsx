@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ArrowRight, CheckCircle2, Star, Zap, Shield, Upload, Lock } from 'lucide-react'
 import { computeQuotes } from '@/lib/quoteEngine'
-import { LogoWordmark } from '@/components/ui/Logo'
+import { LogoV2 } from '@/components/ui/LogoV2'
 
 /* ─── Palette dark premium ──────────────────────────────────────────── */
 // bg-base   : #08090e
@@ -30,7 +30,7 @@ const NavV2 = () => {
       borderBottom: scrolled ? '1px solid rgba(255,255,255,0.07)' : '1px solid transparent',
     }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', height: 64, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-        <LogoWordmark dark={false} />
+        <LogoV2 />
         <div style={{ display: 'flex', gap: 32, alignItems: 'center' }}>
           {[['Conseils', '/blog'], ['Contact', '/contact']].map(([label, href]) => (
             <a key={label} href={href} style={{ color: 'rgba(255,255,255,0.55)', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: 'color 0.2s' }}
@@ -506,7 +506,7 @@ const CTAV2 = () => (
 const FooterV2 = () => (
   <footer style={{ background: '#0f1623', borderTop: '1px solid rgba(255,255,255,0.05)', padding: '32px 24px' }}>
     <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16 }}>
-      <LogoWordmark dark={false} />
+      <LogoV2 />
       <div style={{ display: 'flex', gap: 24 }}>
         {[['Mentions légales', '/mentions-legales'], ['CGU', '/cgu'], ['Confidentialité', '/politique-confidentialite']].map(([l, h]) => (
           <a key={l} href={h} style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', textDecoration: 'none' }}>{l}</a>
